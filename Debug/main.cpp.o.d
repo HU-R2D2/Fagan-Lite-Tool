@@ -1,1 +1,3 @@
-Debug/main.cpp.o: main.cpp
+Debug/main.cpp.o: main.cpp FileSearcher.hpp
+
+FileSearcher.hpp:

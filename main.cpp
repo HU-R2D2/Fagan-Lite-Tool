@@ -44,6 +44,8 @@
 #include <fstream>
 #include <ctime>
 #include <sstream>
+#include "FileSearcher.hpp"
+using namespace format_tool;
 using namespace std;
 // ToDo Read template and insert in every folder / subdirectory
 void findSubDirectoriesAndFiles(std::string dir, std::vector<std::string>& a)
@@ -285,7 +287,9 @@ int main(int argc, char* argv[])
 	}
 	cout << "template file is: " << t_file << endl;
 	
-	std::ifstream ifs(t_file);
+	FileSearcher testSearcher;
+	testSearcher.getFiles("nothing", "emp", "test", "moretest");
+	/*std::ifstream ifs(t_file);
 	std::string template_content( (std::istreambuf_iterator<char>(ifs) ),
                        (std::istreambuf_iterator<char>()    ) );
 	ifs.close();
@@ -325,7 +329,7 @@ int main(int argc, char* argv[])
 			  else
 				puts( "File successfully deleted" );
 		}
-	}
+	}*/
 	// Read template file
 	return 0;
 }
