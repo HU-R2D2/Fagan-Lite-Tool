@@ -18,8 +18,8 @@ set(CMAKE_LDFLAGS "${CMAKE_LDFLAGS} -L\".\" ")
 
 # Define the CXX sources
 set ( CXX_SRCS
-    main.cpp
-)
+        source/src/main.cpp
+        test/FaganCommentTest.cpp)
 
 set_source_files_properties(
     ${CXX_SRCS} PROPERTIES COMPILE_FLAGS 

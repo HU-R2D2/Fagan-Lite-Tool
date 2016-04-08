@@ -39,12 +39,12 @@
 #include <stdio.h>
 #include <iostream>
 #include <string>
-#include <Windows.h>
+#include "windows.h"
 #include <vector>
 #include <fstream>
 #include <ctime>
 #include <sstream>
-#include "FileSearcher.hpp"
+#include "../include/FileSearcher.hpp"
 using namespace format_tool;
 using namespace std;
 // ToDo Read template and insert in every folder / subdirectory
