@@ -16,4 +16,4 @@ ADD_LIBRARY(gtest ../deps/gtest-1.7.0/src/gtest-all.cc)
 ADD_LIBRARY(gtest_main ../deps/gtest-1.7.0/src/gtest_main.cc)
 
 add_executable(fagan_test ${GTEST} ${SOURCES_GTEST})
-target_link_libraries(ADT_test gtest gtest_main ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(fagan_test gtest gtest_main ${CMAKE_THREAD_LIBS_INIT})
