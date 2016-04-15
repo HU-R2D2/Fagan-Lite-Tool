@@ -1,17 +1,17 @@
-////// !~< #TEMPLATE_version 7416 >~!
-// \addtogroup <Project_Number> <Project_name>
-// \brief <Brief description of module>
+
+// \addtogroup 1.0 Jordan
+// \brief brief description
 //
-// <Description of module>
+// NOmaless
 //
-// \file   <Filename.extension>
-// \brief  <Brief description of file.>
+// \file   template.cpp
+// \brief  this is fun
 //
-// <Detailed description of file>
+// very detailed description
 //
-// \author <full name and student nr>
-// \date   Created: <dd-mm-yy>
-// \date   Last Modified: <dd-mm-yy>
+// \author bombladbee
+// \date   Created: 03-03-17
+// \date   Last Modified: 03-03-93
 //
 // \copyright Copyright © 2016, HU University of Applied Sciences Utrecht. 
 // All rights reserved.
@@ -44,3 +44,7 @@
 // OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, 
 // EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //////
+
+class hoi{
+
+};
