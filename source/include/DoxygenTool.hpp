@@ -49,30 +49,23 @@
 namespace r2d2 {
     class DoxygenTool final {
     private:
-        std::string get_annotated(const std::string &file,
+        const std::string get_annotated(const std::string &file,
                                   const std::string &annotation) const;
 
     public:
-        std::string get_comment_block(const std::string & file) const;
-        std::vector<std::string> get_comment_blocks(const std::string &file) const;
-        std::vector<std::string> get_authors(const std::string & file) const;
+        const std::vector<std::string> get_authors(const std::string & file) const;
 
         //! @brief
         //!
         //!
-        std::string get_author(const std::string &file) const;
+        const std::string get_author(const std::string &file) const;
 
-        std::string get_date(const std::string &section) const;
+        const std::string get_date(const std::string &section) const;
 
-        std::string get_version(const std::string &section) const;
-
-        //! @brief Gets a block of Doxygen comment(s).
-        //!
-        //! A
-        std::string get_block(const std::string & file) const;
+        const std::string get_version(const std::string &section) const;
 
         //! @brief Gets all doxygen comments in the specified file.
-        std::vector<std::string> get_blocks(const std::string& file) const;
+        const std::vector<std::string> get_blocks(const std::string& file) const;
         DoxygenTool();
     };
 }

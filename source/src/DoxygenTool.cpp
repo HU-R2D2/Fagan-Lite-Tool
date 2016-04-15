@@ -51,19 +51,19 @@ namespace r2d2 {
 
     }
 
-    std::string DoxygenTool::get_author(const std::string &file) const {
+    const std::string DoxygenTool::get_author(const std::string &file) const {
         return get_annotated(file, "author");
     }
 
-    std::string DoxygenTool::get_date(const std::string &file) const {
+    const std::string DoxygenTool::get_date(const std::string &file) const {
         return get_annotated(file, "date");
     }
 
-    std::string DoxygenTool::get_version(const std::string &file) const {
+    const std::string DoxygenTool::get_version(const std::string &file) const {
         return get_annotated(file, "version");
     }
 
-    std::string DoxygenTool::get_annotated(const std::string &section,
+    const std::string DoxygenTool::get_annotated(const std::string &section,
                                            const std::string &annotation) const {
         std::string result{};
 
@@ -102,29 +102,48 @@ namespace r2d2 {
         return result;
     }
 
-    std::string DoxygenTool::get_block(const std::string &file) const {
-
-        return std::string{};
-    }
-
-    std::vector<std::string> DoxygenTool::get_blocks(
-            const std::string &file) const {
-        std::vector<std::string> blocks{};
-        return blocks;
-    }
-
-    std::vector<std::string> DoxygenTool::get_authors(
-            const std::string &file) const {
-        return std::vector<std::string>();
-    }
-
-    std::string DoxygenTool::get_comment_block(const std::string &file) const {
-        return std::string{};
-    }
-
-    std::vector<std::string> DoxygenTool::get_comment_blocks(
+    const std::vector<std::string> DoxygenTool::get_blocks(
             const std::string &file) const {
 
+
+        std::string s ("this subject has a submarine as a subsequence");
+        std::smatch m;
+        std::regex e ("\\b(sub)([^ ]*)");   // matches words beginning by "sub"
+
+        std::cout << "Target sequence: " << s << std::endl;
+        std::cout << "Regular expression: /\\b(sub)([^ ]*)/" << std::endl;
+        std::cout << "The following matches and submatches were found:" << std::endl;
+
+        while (std::regex_search (s,m,e)) {
+            for (auto x:m) std::cout << x << " ";
+            std::cout << std::endl;
+            s = m.suffix().str();
+        }
+
+
+
+        std::vector<std::string> comment_blocks{};
+        std::cout << file;
+        try {
+            std::string s{"//"};
+            std::regex regex{"//"};
+            std::smatch matches{};
+            while (std::regex_search(s, matches, regex)) {
+                comment_blocks.push_back(matches.str());
+                std::cout << matches.str() << std::endl;
+                for (auto & match : matches) {
+                    std::cout << "Constructed";
+                    comment_blocks.push_back(match.str());
+                }
+            }
+        } catch (std::regex_error & e) {
+            std::cerr << e.what() << std::endl;
+        }
+        return comment_blocks;
+    }
+
+    const std::vector<std::string> DoxygenTool::get_authors(
+            const std::string &file) const {
         return std::vector<std::string>();
     }
 }
