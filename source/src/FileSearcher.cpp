@@ -1,5 +1,5 @@
 #include "../include/FileSearcher.hpp"
-
+using namespace std;
 FileSearcher::FileSearcher(string base_dir) : base_dir{base_dir}{
     read_folder_data(base_dir);
 }
@@ -23,10 +23,8 @@ void FileSearcher::read_folder_data(string base_dir)	{
                 read_folder_data(total_path);
             }
             else	{
-                //cout << "Validating file..." << total_path <<  endl;
                 validate_and_add(total_path);
             }
-
         }
     }
 }
