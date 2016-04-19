@@ -4,7 +4,7 @@
 #include "../source/include/FileSearcher.hpp"
 
 
-
+using namespace std;
 int main(int argc, char* argv[]) {
     cout << "Starting tests" << endl;
     //CommandLineOptions(argc, argv);

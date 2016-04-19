@@ -4,6 +4,7 @@
 #include "../source/include/FileSearcher.hpp"
 
 using namespace std;
+// test will be written in the future due to folder dependenc of the filesearcher
 TEST(DIRTESt, DIRTEST)  {
     cout << endl << "Reading dir structure" << endl;
     FileSearcher fs1("../");
