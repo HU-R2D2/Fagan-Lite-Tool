@@ -8,28 +8,37 @@
 
 using namespace r2d2;
 
-TEST(DoxygenTool, other) {
-    std::stringstream test_case{""};
-    test_case << "//! @author Wim" << std::endl;
-    test_case << "//! \\author Pierre" << std::endl;
+TEST(DoxygenTool, commentBlocks) {
+    const auto & comment_block1 = ""
+            "//! Commentblock 1\n"
+            "//! @brief\n"
+            "//! @param argc Number of commandline parameters.\n"
+            "//! @param argv The actual parameters.\n";
 
+    const auto & comment_block2 = ""
+            "/**\n"
+            " * @brief Something something.\n"
+            " *\n"
+            " * A somewhat more indepth description.\n"
+            " */";
+
+    std::string test_case{};
+    test_case += comment_block1;
+    test_case += "\n";
+    test_case += comment_block2;
     DoxygenTool tool;
-    std::vector<std::string> comments = tool.get_blocks(test_case.str());
-    std::cout << comments.size() << std::endl;
-    for (auto comment : comments) {
+    std::vector<std::string> comments = tool.get_blocks(test_case);
 
-        std::cout << comment << std::endl;
-        if (comment == "//") {
+    EXPECT_EQ(comment_block1, comments[0]) << "";
+    EXPECT_EQ(comment_block2, comments[1]) << "";
 
-        }
+#ifdef SHOW_RESULTS
+    for (const auto & comment : comments) {
+        std::cout << "Comment: " << std::endl << comment << std::endl;
     }
-#ifdef DONT_COMPILE
-    // Since there is no way to check a name matches that of the author,
-    // something different needs to be tested. In this case a check is performed
-    // which indicates the values are different than the values supplied by default.
-    // Other than that
-    EXPECT_EQ("<1.0>", tool.get_author(test_case.str()));
-    EXPECT_EQ("h", tool.get_date(test_case.str()));
-    EXPECT_EQ("i", tool.get_version(test_case.str()));
 #endif
+}
+
+TEST(DoxygenTool, author) {
+
 }

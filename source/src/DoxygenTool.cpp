@@ -64,7 +64,7 @@ namespace r2d2 {
     }
 
     const std::string DoxygenTool::get_annotated(const std::string &section,
-                                           const std::string &annotation) const {
+                                                 const std::string &annotation) const {
         std::string result{};
 
         // Since a backslash and at-sign could indicate the start of an
@@ -75,20 +75,16 @@ namespace r2d2 {
         const std::string annotated_value_regex
                 = "([\\\\@]" + annotation + "\\s)"
                   // Match any number of words until the next
-                + "([\\s\\S]*?"
-                + "((\r?\n[ \t]*\\*?){2,}|)?\\*/";
+                  + "([\\s\\S]*?"
+                  + "((\r?\n[ \t]*\\*?){2,}|)?\\*/";
 
         std::regex{"(/\\*|)" + annotation + " [\\s\\S]"};
-        // Matches an annotation in "multi line" comments ("/* */").
-        // The start is represented by "/\\*", where the double backslash is
-        // used to escape the special meaning of the asterisk (match 0 or more).
-        // "[\\s\\S]*?" is used to match the minimum number of characters
-        // which possibly precede the requested annotation.
 
 
         //\/\\*\\*?([\s\S]*?)(([\\@]author)([\s\S]*?))\*\/
         // TODO: remove above, and replace with something else.
-        std::regex{"/\\*([\\s\\S]*?)(([\\\\@]" + annotation + ")([\\s\\S]*?))\\*/"};
+        std::regex{"/\\*([\\s\\S]*?)(([\\\\@]" + annotation +
+                   ")([\\s\\S]*?))\\*/"};
         std::string word;
 #ifdef DONT_COMPILE
         while (section >> word) {
@@ -104,40 +100,41 @@ namespace r2d2 {
 
     const std::vector<std::string> DoxygenTool::get_blocks(
             const std::string &file) const {
-
-
-        std::string s ("this subject has a submarine as a subsequence");
-        std::smatch m;
-        std::regex e ("\\b(sub)([^ ]*)");   // matches words beginning by "sub"
-
-        std::cout << "Target sequence: " << s << std::endl;
-        std::cout << "Regular expression: /\\b(sub)([^ ]*)/" << std::endl;
-        std::cout << "The following matches and submatches were found:" << std::endl;
-
-        while (std::regex_search (s,m,e)) {
-            for (auto x:m) std::cout << x << " ";
-            std::cout << std::endl;
-            s = m.suffix().str();
-        }
-
-
-
+        std::string temp{file};
         std::vector<std::string> comment_blocks{};
-        std::cout << file;
         try {
-            std::string s{"//"};
-            std::regex regex{"//"};
-            std::smatch matches{};
-            while (std::regex_search(s, matches, regex)) {
-                comment_blocks.push_back(matches.str());
-                std::cout << matches.str() << std::endl;
-                for (auto & match : matches) {
-                    std::cout << "Constructed";
-                    comment_blocks.push_back(match.str());
-                }
+            std::regex regex{
+                    "" // Continue on next line.
+                            // Match a block of multiple single line comments.
+                            // By starting with "[\t ]*", indented lines can
+                            // also be matched.
+                            // "[\\S\t ]*" is used to find printable characters
+                            // and single line whitespace.
+                            // A non-comment line specifies the end of a block.
+                            // This could either be an empty line, or 'runnable'
+                            // code.
+                            "(([\t ]*//(!|/)[\\S\t ]*((\r?\n)|\\0))+)"
+
+                            "|" // Supply an alternative way to define blocks.
+
+                            // Match a comment block which is specified as /* */
+                            // Any number of characters is allowed between the
+                            // opening and closing sequence.
+                            "(/\\*\\*[\\s\\S]*?\\*/)"
+            };
+            std::smatch match{};
+            // A file could match the search pattern multiple times.
+            // Keep trying to find matches until no more matches are found.
+            while (std::regex_search(temp, match, regex)) {
+                comment_blocks.push_back(match.str());
+
+                // Ignore the part which was just scanned.
+                // The loop would otherwise not end, as the same match is found.
+                temp = match.suffix().str();
             }
-        } catch (std::regex_error & e) {
-            std::cerr << e.what() << std::endl;
+
+        } catch (std::regex_error &e) {
+            std::cerr << "Error: " << e.what() << std::endl;
         }
         return comment_blocks;
     }
