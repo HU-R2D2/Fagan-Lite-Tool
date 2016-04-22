@@ -47,11 +47,16 @@
 #include <vector>
 
 namespace r2d2 {
+    //! @brief Class which helps extracting elements from doxygen comments.
+    //!
+    //! @warning
+    //! Some versions of certain compilers might not give an implementation for
+    //! Regular Expressions (regex for short), despite giving the declaration.
+    //! As this module makes usage of said namespace, make sure it is implemented.
     class DoxygenTool final {
     private:
-        const std::string get_annotated(const std::string &file,
-                                  const std::string &annotation) const;
-
+        DoxygenTool(const DoxygenTool& rhs) = delete;
+        DoxygenTool &operator=(const DoxygenTool& rhs) = delete;
     public:
         const std::vector<std::string> get_authors(const std::string & file) const;
 
@@ -64,7 +69,36 @@ namespace r2d2 {
 
         const std::string get_version(const std::string &section) const;
 
-        //! @brief Gets all doxygen comments in the specified file.
+        //! @brief Removes comment specific characters from a string.
+        //!
+        //! Removed characters include leading whitespace, asterisks, and
+        //! multiple slashes. A single, directly trailing, whitespace to the
+        //! decoration is also removed. Therefore the structure is maintained.
+        //!
+        //! @param section Comment string to remove characters from.
+        //! @return String stripped from characters which won't appear in Doxygen.
+        const std::string strip_comment(const std::string & section) const;
+
+        //! @brief Gets all the follow-up for specified annotation in the section.
+        //!
+        //! @param section Piece of code to look for the annotation.
+        //! @param annotation
+        //! @return Gets a collection of thingies
+        const std::vector<std::string> get_annotated(const std::string &section,
+                                        const std::string &annotation) const;
+
+        //! @brief Gets all doxygen comment blocks in the file.
+        //!
+        //! Returns blocks of comments which are specified in one of doxygen's
+        //! formats. This could either be 3 slashes (///), 2 slashes and an
+        //! exclamation mark (//!) or 1 slash 2 asterisks ending in an asterisk
+        //! and slash (/** */). Aside from the last block, all blocks
+        //! should be specified on consecutive lines, with a similar style.
+        //! This means an empty line, a line of code or another comment style,
+        //! ends the block; thus starting a new block.
+        //!
+        //! @param file Contents of the file to extract blocks from.
+        //! @return A list containing all found blocks.
         const std::vector<std::string> get_blocks(const std::string& file) const;
         DoxygenTool();
     };

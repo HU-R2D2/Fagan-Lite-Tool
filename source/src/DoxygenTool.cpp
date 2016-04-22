@@ -3,10 +3,10 @@
 // \package r2d2
 //
 // \file DoxygenTool.cpp
-// \date Created: <dd-mm-yy>
-// \version <0.0.0>
+// \date Created: 08-04-16
+// \version 1.0
 //
-// \author <full name and student nr>
+// \author Matthijs Mud
 //
 // \section LICENSE
 // License: newBSD
@@ -52,21 +52,23 @@ namespace r2d2 {
     }
 
     const std::string DoxygenTool::get_author(const std::string &file) const {
-        return get_annotated(file, "author");
+        return get_annotated(strip_comment(file), "author")[0];
     }
 
     const std::string DoxygenTool::get_date(const std::string &file) const {
-        return get_annotated(file, "date");
+        return get_annotated(strip_comment(file), "date")[0];
     }
 
     const std::string DoxygenTool::get_version(const std::string &file) const {
-        return get_annotated(file, "version");
+        return get_annotated(strip_comment(file), "version")[0];
     }
 
-    const std::string DoxygenTool::get_annotated(const std::string &section,
-                                                 const std::string &annotation) const {
-        std::string result{};
-
+    const std::vector<std::string> DoxygenTool::get_annotated(
+            const std::string &section,
+            const std::string &annotation) const {
+        std::vector<std::string> annotated_values{};
+        std::string::const_iterator begin = section.begin();
+        const std::string::const_iterator end = section.end();
         // Since a backslash and at-sign could indicate the start of an
         // annotation, "[\\\\@]" is used. If a backslash should be matched in
         // a regex, it should be preceded by a backslash. The same applies for
@@ -74,33 +76,32 @@ namespace r2d2 {
         // whitespace character.
         const std::string annotated_value_regex
                 = "([\\\\@]" + annotation + "\\s)"
-                  // Match any number of words until the next
-                  + "([\\s\\S]*?"
-                  + "((\r?\n[ \t]*\\*?){2,}|)?\\*/";
+                  // Match any number of "words" until the next paragraph.
+                  // Though try to match the minimum amount possible to still
+                  // create a complete match.
+                  + "([\\s\\S]*?)"
+                  // The end of an annotation is either indicated by:
+                  // - The end of a paragraph;
+                  //   which is specified as 2 or more consecutive line breaks
+                  //   ("(\r?\n[\t ]*){2,}"), ignoring trailing whitespace.
+                  // - The end of the string "$".
+                  // - Or the start of a different annotation ("\\s@\\S+").
+                  + "(?=((\r?\n[\t ]*){2,}|$|(\\s*[\\\\@]\\S+)))";
 
-        std::regex{"(/\\*|)" + annotation + " [\\s\\S]"};
-
-
-        //\/\\*\\*?([\s\S]*?)(([\\@]author)([\s\S]*?))\*\/
-        // TODO: remove above, and replace with something else.
-        std::regex{"/\\*([\\s\\S]*?)(([\\\\@]" + annotation +
-                   ")([\\s\\S]*?))\\*/"};
-        std::string word;
-#ifdef DONT_COMPILE
-        while (section >> word) {
-            // The '\\' and '@' indicate a Doxygen field.
-            if (word == ("\\" + annotation) || word == ("@" + annotation)) {
-                std::getline(section, result);
-                return result;
-            }
+        std::regex regex{annotated_value_regex};
+        std::smatch match{};
+        while (std::regex_search(begin, end, match, regex)) {
+            annotated_values.push_back(match[2].str());
+            begin = match.suffix().first;
         }
-#endif // DONT_COMPILE
-        return result;
+        return annotated_values;
     }
 
     const std::vector<std::string> DoxygenTool::get_blocks(
             const std::string &file) const {
-        std::string temp{file};
+        std::string::const_iterator begin = file.begin();
+        const std::string::const_iterator end = file.end();
+
         std::vector<std::string> comment_blocks{};
         try {
             std::regex regex{
@@ -125,184 +126,30 @@ namespace r2d2 {
             std::smatch match{};
             // A file could match the search pattern multiple times.
             // Keep trying to find matches until no more matches are found.
-            while (std::regex_search(temp, match, regex)) {
+            while (std::regex_search(begin, end, match, regex)) {
                 comment_blocks.push_back(match.str());
 
                 // Ignore the part which was just scanned.
                 // The loop would otherwise not end, as the same match is found.
-                temp = match.suffix().str();
+                begin = match.suffix().first;
             }
 
         } catch (std::regex_error &e) {
+            //
             std::cerr << "Error: " << e.what() << std::endl;
+            exit(2);
         }
         return comment_blocks;
     }
 
     const std::vector<std::string> DoxygenTool::get_authors(
             const std::string &file) const {
-        return std::vector<std::string>();
-    }
-}
-#ifdef DONT_COMPILE
-void changeDate(string& template_content, string& file)	{
-    // ToDo variables should be renamed...
-    std::size_t foundDate = template_content.find("<dd-mm-yy>");
-    std::size_t foundDateField = file.find("@date");
-    if(foundDateField == string::npos){ // If file doesnt already contain @date field, add current date as date to file.
-        time_t givenTime = time(0);
-        struct tm * now = localtime( & givenTime );
-        stringstream ss;
-        string mDay;
-        if((int)(now->tm_mday / 10) >= 1)	{
-            stringstream ss0;
-            ss << ( now->tm_mday + 1 );
-            mDay = ss.str();
-        }
-        else	{
-            mDay = now->tm_mday + '0'; // + 48
-            mDay.insert(0, 1, '0');
-        }
-        string month;
-        if((int)((now->tm_mon + 1) / 10) == 1)	{
-            stringstream ss0;
-            ss << ( now->tm_mon + 1 );
-            month = ss.str();
-        }
-        else	{
-            month = (now->tm_mon + 1) + '0'; // + 48
-            month.insert(0, 1, '0');
-        }
-        cout << "month day is: " << mDay << endl;
-        ss << "<" << mDay << "-" << month << "-" << (now->tm_year + 1900 - 2000) << ">";
-        string currentDate;
-        ss >> currentDate;
-        template_content.replace(foundDate, 10, currentDate.c_str());
-        return;
-    }
-    while(file.at(foundDateField) < '0' || file.at(foundDateField) > '9')	{
-        ++foundDateField;
-    }
-    string dateField = "<";
-
-    while(file.at(foundDateField) != '\r' && file.at(foundDateField) != '\n' )	{
-        cout << file.at(foundDateField);
-        dateField += file.at(foundDateField);
-        ++foundDateField;
-    }
-    dateField += ">";
-    string emptyField("          ");
-    cout << "inserting date: " << dateField << endl;
-    template_content.replace(foundDate, 10, emptyField.c_str());
-    template_content.insert(foundDate, dateField.c_str());
-
-}
-void changeVersion(string& template_content, string& file)	{
-    std::size_t foundVersion = template_content.find("<0.0.0>");
-    std::size_t foundVersionTag = file.find("@version");
-    if(foundVersionTag == string::npos){ // could not find version
-        return;
+        return get_annotated(strip_comment(file), "author");
     }
 
-    while(file.at(foundVersionTag) < '0' || file.at(foundVersionTag) > '9')	{
-        ++foundVersionTag;
+    const std::string DoxygenTool::strip_comment(
+            const std::string &section) const {
+        std::regex regex{"(([\\t ]*//(!|/))|([\t ]*\\*))[\t ]?"};
+        return std::regex_replace(section, regex, "");
     }
-    string versionField = "<";
-    while(file.at(foundVersionTag) != '\r' && file.at(foundVersionTag) != '\n' )	{
-        cout << file.at(foundVersionTag);
-        versionField += file.at(foundVersionTag);
-        ++foundVersionTag;
-    }
-    versionField +=  ">";
-    string emptyField("       ");
-    template_content.replace(foundVersion, 10, emptyField.c_str());
-    template_content.insert(foundVersion, versionField.c_str());
 }
-void changeAuthor(string& template_content, string& file)	{
-    std::size_t foundAuthorField = template_content.find("<full name>");
-    if(foundAuthorField == string::npos){
-        return;
-    }
-    std::size_t foundAuthorTag = file.find("@author");
-    if(foundAuthorTag == string::npos){
-        return;
-    }
-    foundAuthorTag += 7;
-    while(file.at(foundAuthorTag) < 'A' || file.at(foundAuthorTag) > 'z')	{
-        ++foundAuthorTag;
-    }
-    string authorName("<");
-    uint8_t authorNameLength = 0;
-    // get name
-    while(file.at(foundAuthorTag) != '\r' && file.at(foundAuthorTag) != '\n' )	{
-        cout << file.at(foundAuthorTag);
-        authorName += file.at(foundAuthorTag);
-        ++authorNameLength;
-        ++foundAuthorTag;
-    }
-    cout << endl;
-    authorName += ">";
-    cout << "author name is: " << authorName << endl;
-    string emptyField("           ");
-    template_content.replace(foundAuthorField, 11, emptyField.c_str());
-    template_content.insert(foundAuthorField, authorName.c_str());
-    //template_content.replace(foundAuthorField, authorNameLength, authorName.c_str());
-}
-void removeTemplate(string& file)	{
-    string t_identifier("++--++");
-    std::size_t eot = file.find(t_identifier); // end of template
-    eot = file.find(t_identifier, eot + t_identifier.length());
-    if(eot == std::string::npos)	{
-        cout << "could not find second template identifier" << endl;
-        return;
-    }
-    else	{
-        cout << "found second template identifier!" << endl;
-    }
-    cout << "eot is: " << eot + t_identifier.length() << endl;
-    file.erase(0, eot + t_identifier.length());
-    file.erase(0, 1);
-    cout << "Removed old template version..." << endl;
-}
-void validateTemplateVersion(string& template_content, string& file)	{
-    string version_identifier("#version");
-    std::size_t file_template_tag = file.find(version_identifier);
-    if(file_template_tag == std::string::npos)	{ 	// if file does not contain version tag
-        cout << "file does not contain template version!" << endl;
-        return;
-    }
-    // get template in file version and store in int
-    string r_file_content = file;
-    r_file_content.erase(0, file_template_tag + version_identifier.length());
-    stringstream ss1(r_file_content);
-    int file_version;
-    ss1 >> file_version;
-
-    std::size_t template_version_tag = template_content.find(version_identifier);
-    if(template_version_tag == std::string::npos)	{	// if template does not contain version tag
-        cout << "template does not contain template version!" << endl;
-        return;
-    }
-
-    string t_template_content = template_content;
-    t_template_content.erase(0, file_template_tag + version_identifier.length());
-    stringstream ss2(t_template_content);
-    int template_version;
-    ss2 >> template_version;
-
-    cout << "template_version is: " << template_version << ", file_version is: " << file_version << endl;
-    if(template_version > file_version)	{
-        removeTemplate(file);
-    }
-
-}
-void changeFileName(string& template_content, string fileName)	{
-    std::size_t foundFile = template_content.find("<filename>");
-    std::size_t foundName = fileName.find_last_of('/');
-    string fName = "<" + fileName.substr(foundName + 1, fileName.length()) + ">";
-    string emptyField("          ");
-    template_content.replace(foundFile, 10, emptyField.c_str());
-    template_content.insert(foundFile, fName);
-    cout << "replaced string filename with " << fName << endl;
-}
-#endif

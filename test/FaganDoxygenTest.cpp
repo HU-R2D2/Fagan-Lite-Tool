@@ -40,5 +40,24 @@ TEST(DoxygenTool, commentBlocks) {
 }
 
 TEST(DoxygenTool, author) {
+    const auto & test = ""
+            "//! @author Alpha Bravo\n"
+            "//! \\author\n"
+            "//! Charlie Delta\n"
+            "//! @brief Some irrelevant code.\n"
+            "//! \\author Echo Foxtrot\n"
+            "//! \n"
+            "//! Descriptive text which should not be part of an author.\n"
+            "//! @author Golf Hotel";
+    DoxygenTool tool;
+
+    const std::vector<std::string> authors = tool.get_authors(test);
+    ASSERT_GE(4u, authors.size()) << "At least 2 authors should be found";
+    EXPECT_EQ("Alpha Bravo", authors[0]) << "First author was incorrect";
+    EXPECT_EQ("Charlie Delta", authors[1]) << "Second author was incorrect";
+    EXPECT_EQ("Echo Foxtrot", authors[2]) << "Third author was incorrect";
+    EXPECT_EQ("Golf Hotel", authors[3]) << "Fourth author was incorrect";
+    EXPECT_EQ(4u, authors.size()) << "More authors were found than expected.";
+
 
 }
