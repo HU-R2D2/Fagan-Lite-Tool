@@ -12,7 +12,7 @@ class CommandLineOptions {
 public:
     CommandLineOptions(int argc, char* argv[]);
     CommandLineOptions();
-    std::string getCommand(uint i);
+    std::string getCommand(unsigned int i);
 private:
     std::vector<std::string> cmds;
 };
