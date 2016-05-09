@@ -10,7 +10,7 @@ CommandLineOptions::CommandLineOptions(int argc, char* argv[])  {
     }
 
 }
-string CommandLineOptions::getCommand(uint index)    {
+string CommandLineOptions::getCommand(unsigned int index)    {
     if(index > cmds.size()); // Throw exception in the future
     return cmds[index];
 }
