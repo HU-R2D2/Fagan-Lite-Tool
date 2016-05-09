@@ -7,14 +7,16 @@
 
 #include <string>
 #include <vector>
+enum class XML_DATA{
+    LINE_LENGTH
+};
 class XmlFileFormat {
 public:
     void add_xml_data(std::string data, XML_DATA xml_data_type);
+    const std::vector<std::string>& get_xml_data();
 private:
     std::vector<std::string> xml_data;
 };
-enum class XML_DATA{
 
-};
 
 #endif //FAGAN_XMLFILEFORMAT_HPP
