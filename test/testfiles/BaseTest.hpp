@@ -11,10 +11,10 @@ public:
     BaseTest(XmlFileFormat& current_xml) : current_xml{current_xml}{}
     virtual void inspect() = 0;
     // virtual void inspect_and_fix();
-    const bool is_valid() { return test_is_valid; }
+    const bool is_valid() { return test_failed; }
 protected:
     XmlFileFormat& current_xml;
-    bool test_is_valid = false;
+    bool test_failed = true;
 };
 
 

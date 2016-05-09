@@ -4,21 +4,25 @@
 
 #include <gtest/gtest.h>
 #include <string>
+#include <vector>
 #include "../source/include/LineLength.hpp"
 
 using namespace std;
 TEST(FaganFeature, LineLength)  {
     XmlFileFormat xmlf;
-    string fileformat("ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss\n"
+    vector<string> fileformat;
+    fileformat.push_back("ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss\n");
+/*    string fileformat("ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss\n"
                             "test \n"
-                            "ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss\n");
+                            "ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss\n");*/
     {
         LineLength ll(xmlf, fileformat);
         ll.inspect();
         ASSERT_FALSE(ll.is_valid()) << "Linelength returned true where false was expected!";
     }
     {
-        fileformat = string("test\n anothertest");
+        fileformat.pop_back();
+        fileformat.push_back("test");
         LineLength ll(xmlf, fileformat);
         ll.inspect();
         cout << "Faganfeature linelength start" << endl;
