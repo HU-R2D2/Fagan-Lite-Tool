@@ -22,14 +22,7 @@ void LineLength::inspect() {
     //ToDo run the linelength test in here. For each line in the file, check the linelength.
     //ToDo if the linelength is greater than allowed, save linenumber and linelength.
     string linelength_errors;
-    //istringstream iss(f_contents);
     bool test_ran_successful = true;
-
-/*    vector<string> strings{istream_iterator<string>{iss},
-                           istream_iterator<string>{}};*/
-/*    for(string s : f_contents) {
-        cout << s << endl;
-    }*/
     cout << "stringsize" << f_contents.size() << endl;
     for (uint16_t i = 0; i < f_contents.size(); ++i) {
         if(f_contents[i].length() > max_line_length)   {

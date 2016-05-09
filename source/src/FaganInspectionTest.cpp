@@ -15,21 +15,24 @@ FaganInspectionTest::FaganInspectionTest()  {
 }
 void FaganInspectionTest::run_all_inspections()  {
     //ToDo get all files and run all inspections on each file
-    FileSearcher files("E:\\Development\\HBO\\Year2\\BlokC\\ThemaOpdracht7-8\\Fagan-Lite-Tool\\test\\testfiles");
+    FileSearcher files("E:/Development/HBO/Year2/BlokC/ThemaOpdracht7-8/Fagan-Lite-Tool/test/testfiles");
     for(std::string s : files.get_files())  {
-        std::cout << s << std::endl;
+        XmlFileFormat xmlff;
+        xmlff.add_xml_data(s, XML_DATA::BEGIN);
         ifstream iFile(s);
+        // get file contents and store in string vector
         vector<string> file_contents;
         while(!iFile.eof()) {
             string s;
             getline(iFile, s);
             file_contents.push_back(s);
         }
-        std::string file_content( (std::istreambuf_iterator<char>(iFile) ),
-                                 (std::istreambuf_iterator<char>()    ) );
-        XmlFileFormat xmlff;
+
+        // linelength test:
         LineLength ll(xmlff, file_contents);
         ll.inspect();
+
+        xmlff.add_xml_data(s, XML_DATA::END);
         for(string s : xmlff.get_xml_data())    {
             cout << s << "\n";
         }

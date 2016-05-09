@@ -8,6 +8,8 @@
 #include <string>
 #include <vector>
 enum class XML_DATA{
+    BEGIN,
+    END,
     LINE_LENGTH
 };
 class XmlFileFormat {
