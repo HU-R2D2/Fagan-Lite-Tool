@@ -5,7 +5,6 @@
 #include "../include/XmlFileFormat.hpp"
 #include <iostream>
 void XmlFileFormat::add_xml_data(std::string data, XML_DATA xml_data_type)  {
-    std::cout << "adding xml data..." << std::endl;
     //ToDo Check for XML_DATA type and adjust current xml data about file to insert new data in the correct structure
     switch(xml_data_type)   {
         case XML_DATA::LINE_LENGTH:
