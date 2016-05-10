@@ -6,9 +6,11 @@
 #define FAGAN_CORRECTCOMMENTSTEST_HPP
 
 
-class CorrectCommentsTest : public BaseTest {
+#include "BaseTest.hpp"
+
+class CommenStyle : public BaseTest {
 public:
-    CorrectCommentsTest(XmlFileFormat& current_xml, std::vector<std::string> & f_contents);
+    CommenStyle(XmlFileFormat& current_xml, std::vector<std::string> & f_contents);
     void inspect();
 private:
     std::vector<std::string> f_contents;

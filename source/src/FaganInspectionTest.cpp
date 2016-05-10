@@ -28,7 +28,7 @@ void FaganInspectionTest::run_all_inspections()  {
         ll.inspect();
 
         // Comment-style test:
-        CorrectCommentsTest cs(xmlff, file_contents);
+        CommenStyle cs(xmlff, file_contents);
         cs.inspect();
         xmlff.add_xml_data(XML_DATA::END);
         for(string s : xmlff.get_xml_data())    {
