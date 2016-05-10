@@ -5,9 +5,9 @@
 #include "../include/FaganInspectionTest.hpp"
 #include "../include/FileSearcher.hpp"
 #include "../include/LineLength.hpp"
-#include <iostream>
+#include "../include/CommentStyle.hpp"
 #include <fstream>
-#include <vector>
+
 using namespace std;
 FaganInspectionTest::FaganInspectionTest()  {
     //ToDo Insert all inspections to run
@@ -27,6 +27,9 @@ void FaganInspectionTest::run_all_inspections()  {
         LineLength ll(xmlff, file_contents);
         ll.inspect();
 
+        // Comment-style test:
+        CorrectCommentsTest cs(xmlff, file_contents);
+        cs.inspect();
         xmlff.add_xml_data(XML_DATA::END);
         for(string s : xmlff.get_xml_data())    {
             cout << s << "\n";

@@ -10,7 +10,8 @@
 enum class XML_DATA{
     BEGIN,
     END,
-    LINE_LENGTH
+    LINE_LENGTH,
+    COMMENT_STYLE
 };
 class XmlFileFormat {
 public:
