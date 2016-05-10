@@ -23,7 +23,6 @@ void LineLength::inspect() {
     //ToDo if the linelength is greater than allowed, save linenumber and linelength.
     string linelength_errors;
     bool test_ran_successful = true;
-    cout << "stringsize" << f_contents.size() << endl;
     for (uint16_t i = 0; i < f_contents.size(); ++i) {
         if(f_contents[i].length() > max_line_length)   {
             //PROBLEM WITH COUNTING LENGTH, TAB IS CONVERTED TO SPACE IN MOST IDE'S. NOT IN string.length()
@@ -33,11 +32,11 @@ void LineLength::inspect() {
     }
     if(test_ran_successful) {
         string no_errors = "No linelength errors found in file\n";
-        current_xml.add_xml_data(no_errors, XML_DATA::LINE_LENGTH);
+        current_xml.add_xml_data(XML_DATA::LINE_LENGTH, no_errors);
         test_is_valid = true; // default is false
     }
     else    {
-        current_xml.add_xml_data(linelength_errors, XML_DATA::LINE_LENGTH);
+        current_xml.add_xml_data(XML_DATA::LINE_LENGTH, linelength_errors);
     }
 
 

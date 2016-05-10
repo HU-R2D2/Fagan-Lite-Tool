@@ -14,7 +14,7 @@ enum class XML_DATA{
 };
 class XmlFileFormat {
 public:
-    void add_xml_data(std::string data, XML_DATA xml_data_type);
+    void add_xml_data(XML_DATA xml_data_type, std::string data = "");
     const std::vector<std::string>& get_xml_data();
 private:
     std::vector<std::string> xml_data;

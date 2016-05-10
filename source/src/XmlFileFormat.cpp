@@ -4,7 +4,7 @@
 
 #include "../include/XmlFileFormat.hpp"
 #include <iostream>
-void XmlFileFormat::add_xml_data(std::string data, XML_DATA xml_data_type)  {
+void XmlFileFormat::add_xml_data(XML_DATA xml_data_type, std::string data)  {
     //ToDo Check for XML_DATA type and adjust current xml data about file to insert new data in the correct structure
     //ToDo fix tab indention in xml data (extra tab in each sub node)
     switch(xml_data_type)   {
