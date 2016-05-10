@@ -6,6 +6,7 @@
 #include "../include/FileSearcher.hpp"
 #include "../include/LineLength.hpp"
 #include "../include/CommentStyle.hpp"
+#include "../include/InclusionGuards.hpp"
 #include <fstream>
 
 using namespace std;
@@ -30,6 +31,11 @@ void FaganInspectionTest::run_all_inspections()  {
         // Comment-style test:
         CommenStyle cs(xmlff, file_contents);
         cs.inspect();
+        if(fpath.find(".hpp") != fpath.npos)    {
+            InclusionGuards IG(xmlff, file_contents);
+            IG.inspect();
+        }
+
         xmlff.add_xml_data(XML_DATA::END);
         for(string s : xmlff.get_xml_data())    {
             cout << s << "\n";

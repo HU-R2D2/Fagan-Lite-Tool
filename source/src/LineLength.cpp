@@ -16,6 +16,7 @@ LineLength::LineLength(XmlFileFormat& current_xml, vector<string>& f_contents) :
 string LineLength::xml_formatted() {
     //ToDo format warnings as correct xml format
     //ToDo Discuss or decide what correct xml format is
+    //ToDo decide whether this method should be removed or not!
     return std::string();
 }
 void LineLength::inspect() {

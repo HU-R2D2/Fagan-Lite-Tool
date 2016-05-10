@@ -20,8 +20,10 @@ void XmlFileFormat::add_xml_data(XML_DATA xml_data_type, std::string data)  {
         case XML_DATA::COMMENT_STYLE:
             xml_data.push_back("<comment-style>\n" + data + "</comment-style>");
             break;
+        case XML_DATA::INCLUSION_GUARD:
+            xml_data.push_back("<inclusion-guard>\n" + data + "</inclusion-guard>");
+            break;
     }
-
 }
 const std::vector<std::string>& XmlFileFormat::get_xml_data()   {
     return xml_data;
