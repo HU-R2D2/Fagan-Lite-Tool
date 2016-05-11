@@ -21,4 +21,7 @@ LineLength::LineLength(string& f_contents, Test_Type TT) : f_content{f_contents}
 string LineLength::xml_formatted() {
     //ToDo format warnings as correct xml format
     //ToDo Discuss or decide what correct xml format is
+    <file file_name = "filename">
+        <"invalid line length on lines:">
+    </file>
 }
