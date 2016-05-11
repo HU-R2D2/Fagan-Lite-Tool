@@ -9,9 +9,15 @@
 #include <vector>
 #include "Test_Type.hpp"
 #include "BaseTest.hpp"
+// @brief This Test checks the LineLength of the given contents,
+// and fails when a line is longer than 80 chars.
+// @date 11-05-16
+// @warning Not yet finished and released!
+// @bug Sometimes the linelength that is checked is wrong,
+// this could be because of IDE's making tabs into spaces.
 class LineLength : public BaseTest{
 public:
-    //LineLength(XmlFileFormat& current_xml, std::string& f_contents);
+    
     LineLength(XmlFileFormat& current_xml, std::vector<std::string> & f_contents);
     std::string xml_formatted();
     void inspect();
