@@ -13,11 +13,13 @@ void FileSearcher::read_folder_data(string base_dir)	{
     d = opendir(base_dir.c_str());
     if (d)
     {
+        cout << "directory: " << base_dir << endl;
         while ((dir = readdir(d)) != NULL)	{
             string new_path = "/" + string(dir->d_name);
             string total_path = base_dir;
             total_path.append(new_path);
             if ((total_path.find(".") == std::string::npos) || total_path.find_last_of(".") < base_dir.length())	{
+                cout << "Reading folder..." << total_path << endl;
                 read_folder_data(total_path);
             }
             else	{
@@ -40,6 +42,7 @@ bool FileSearcher::is_of_type(string total_path, string s)	{
     std::size_t eofn;
     if ((eofn = total_path.find(s)) != std::string::npos &&
         total_path.length() == eofn + s.length())	{
+        files.push_back(total_path);
         return true;
     }
     return false;
