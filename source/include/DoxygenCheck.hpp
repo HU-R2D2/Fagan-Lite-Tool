@@ -59,10 +59,14 @@ namespace r2d2 {
     class DoxygenCheck final {
     private:
         DoxygenTool tool;
-        std::string file;
         std::map<std::string, std::vector<std::string>> invalid_tag_values;
 
-        size_t get_line_number(const std::string &text) const;
+        size_t get_line_number(const std::string &text,
+                               const std::string &file) const;
+
+        bool test_invalid_tag(const std::string &tagname,
+                              const std::vector<std::string> &values,
+                              const std::string &file) const;
 
     public:
         //! @brief Checks whether an author is specified other than the default.
@@ -71,7 +75,7 @@ namespace r2d2 {
         //! to the std::cerr.
         //!
         //! @return Whether all specified authors were valid.
-        bool check_version() const;
+        bool check_version(const std::string &file) const;
 
         //! @brief Checks whether an author is specified other than the default.
         //!
@@ -79,7 +83,7 @@ namespace r2d2 {
         //! to the std::cerr.
         //!
         //! @return Whether all specified authors were valid.
-        bool check_author() const;
+        bool check_author(const std::string &file) const;
 
         //! @brief Tests whether each comment block in the file contains a
         //! "brief" tag.
@@ -87,16 +91,17 @@ namespace r2d2 {
         //! Per comment block lacking a "brief" tag a description is written
         //! to the std::cerr.
         //!
+        //! @param file
         //! @return Whether all comment blocks contain a brief description
         //! (true), or not (false).
-        bool check_brief() const;
+        bool check_brief(const std::string &file) const;
 
         //! @brief
         //!
         void add_invalid_tag_value(const std::string &tagname,
                                    const std::string &value);
 
-        explicit DoxygenCheck(const std::string &file_contents);
+        explicit DoxygenCheck();
     };
 }
 

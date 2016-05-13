@@ -55,31 +55,18 @@
 #include <regex>
 
 namespace r2d2 {
-    DoxygenCheck::DoxygenCheck(const std::string &file)
-            : tool{}, file{file} {
+    DoxygenCheck::DoxygenCheck()
+            : tool{} {
 
     }
 
-    bool DoxygenCheck::check_author() const {
+    bool DoxygenCheck::check_author(const std::string &file) const {
         bool result = true;
         int number_of_authors = 0;
         for (const std::string &comment : tool.get_blocks(file)) {
             const std::vector<std::string> authors = tool.get_authors(comment);
             number_of_authors += authors.size();
-            for (const std::string &author : authors) {
-                if (invalid_tag_values.find("author") !=
-                    invalid_tag_values.end()) {
-                    for (const auto &invalid_tag :invalid_tag_values.at(
-                            "author")) {
-                        if (author == invalid_tag) {
-                            std::cerr << "Author on line " <<
-                            get_line_number(author) << " is specified as \"" <<
-                            author << "\" which is not allowed." << std::endl;
-                            result = false;
-                        }
-                    }
-                }
-            }
+            result = result && test_invalid_tag("author", authors, file);
         }
         if (!number_of_authors) {
             std::cerr << "No authors are specified in the file." << std::endl;
@@ -87,13 +74,13 @@ namespace r2d2 {
         return result && number_of_authors;
     }
 
-    bool DoxygenCheck::check_brief() const {
+    bool DoxygenCheck::check_brief(const std::string &file) const {
         // Test whether each doxygen comment block has a brief description.
         bool result = true;
 
         for (const std::string &comment : tool.get_blocks(file)) {
             if (!tool.get_annotated(comment, "brief").size()) {
-                auto comment_line = get_line_number(comment);
+                auto comment_line = get_line_number(comment, file);
                 auto comment_size = std::count(comment.begin(), comment.end(),
                                                '\n') - 1;
 
@@ -106,11 +93,12 @@ namespace r2d2 {
         return result;
     }
 
-    bool DoxygenCheck::check_version() const {
+    bool DoxygenCheck::check_version(const std::string &file) const {
         return false;
     }
 
-    size_t DoxygenCheck::get_line_number(const std::string &text) const {
+    size_t DoxygenCheck::get_line_number(const std::string &text,
+                                         const std::string &file) const {
         const auto index = file.find(text);
         // Line count starts at 1 by default.
         return ((file.begin() + index) != file.end())
@@ -124,5 +112,26 @@ namespace r2d2 {
     void DoxygenCheck::add_invalid_tag_value(const std::string &tagname,
                                              const std::string &value) {
         invalid_tag_values[tagname].push_back(value);
+    }
+
+    bool DoxygenCheck::test_invalid_tag(const std::string &tagname,
+                                        const std::vector<std::string> &values,
+                                        const std::string &file) const {
+        bool result = true;
+        for (const std::string &value : values) {
+            if (invalid_tag_values.find("value") !=
+                invalid_tag_values.end()) {
+                for (const auto &invalid_tag :invalid_tag_values.at(
+                        "value")) {
+                    if (value == invalid_tag) {
+                        std::cerr << tagname <<" on line " <<
+                        get_line_number(value, file) << " is specified as \"" <<
+                        value << "\" which is not allowed." << std::endl;
+                        result = false;
+                    }
+                }
+            }
+        }
+        return result;
     }
 }
