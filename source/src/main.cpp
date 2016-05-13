@@ -278,6 +278,7 @@ void changeFileName(string& template_content, string fileName)	{
 
 int main(int argc, char* argv[])
 {
+	CommandLineOptions CLO;
 	string t_file;
 	if(argc == 1)
 		t_file = "template.txt";
