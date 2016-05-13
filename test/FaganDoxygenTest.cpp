@@ -67,20 +67,42 @@ TEST(DoxygenTool, author) {
 }
 
 TEST(DoxygenCheck, all) {
-    DoxygenCheck c{""
-                           "//! @brief\n"
-                           "//!\n"
-                           "//!\n"
-                           "//!\n"
-                           "void foo(){}\n"
-                           "\n"
-                           "\n"
-                           "//! Does nothing useful\n"
-                           "//! Even more useless than an immediate return.\n"
-                           "void bar(){}\n"
-                           "\n"
-                           "\n"
-                           "//! Foobar\'s description\n"
-                           "void Foobar(){}"};
-    EXPECT_FALSE(c.check_brief());
+
+    // Make sure that when an exception occurs, the streams are returned to how
+    // they originally were. It could otherwise give strange results.
+    struct StreamRedirection {
+    private:
+        std::streambuf *temp;
+    public:
+        StreamRedirection() : temp {std::cerr.rdbuf()} {
+            std::cerr.rdbuf(std::cout.rdbuf());
+        }
+        ~StreamRedirection() {
+            std::cerr.rdbuf(temp);
+        }
+    } stream_redirection;
+
+    DoxygenCheck dc{};
+    dc.add_invalid_tag_value("name", "<full name and student nr>");
+    const std::string file{""
+                                   "//! @brief\n"
+                                   "//!\n"
+                                   "//!\n"
+                                   "//!\n"
+                                   "void foo(){}\n"
+                                   "\n"
+                                   "\n"
+                                   "//! Does nothing useful\n"
+                                   "//! Even more useless than an immediate return.\n"
+                                   "void bar(){}\n"
+                                   "\n"
+                                   "\n"
+                                   "//! Foobar\'s description\n"
+                                   "void Foobar(){}"};
+
+    EXPECT_FALSE(dc.check_brief(file));
+}
+
+TEST(DoxygenCheck, name) {
+    std::cerr << "Hello" << std::endl;
 }
