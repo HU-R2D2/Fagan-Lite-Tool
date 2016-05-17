@@ -86,7 +86,7 @@ namespace r2d2 {
                   //   ("(\r?\n[\t ]*){2,}"), ignoring trailing whitespace.
                   // - The end of the string "$".
                   // - Or the start of a different annotation ("\\s@\\S+").
-                  + "(?=((\r?\n[\t ]*){2,}|$|(\\s*[\\\\@]\\S+)))";
+                  + "(?=((\r?\n[\t ]*){2,}|$|(\\s+[\\\\@]\\S+)))";
 
         std::regex regex{annotated_value_regex};
         std::smatch match{};
