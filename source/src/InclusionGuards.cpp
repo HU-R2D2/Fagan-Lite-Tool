@@ -14,12 +14,11 @@ void InclusionGuards::inspect() {
     bool ifndef = false;
     bool define = false;
     bool endif = false;
-    for (uint16_t i = 0; i < f_contents.size(); ++i) {
-        if(f_contents[i].find("#ifndef") && !ifndef)    {
-            // ifndef comes before includes
+    for (uint16_t i = 0; i < f_contents.size(); i++) {
+        if(!ifndef && f_contents[i].find("#ifndef") != f_contents[i].npos)    {
             ifndef = true;
         }
-        else if(f_contents[i].find("#define") && ifndef)    {
+        else if(ifndef && !define && f_contents[i].find("#define") != f_contents[i].npos )    {
             // ifndef comes before includes
             define = true;
         }
@@ -27,33 +26,34 @@ void InclusionGuards::inspect() {
                     f_contents[i].find("class")     ||
                     f_contents[i].find("struct")    ||
                     f_contents[i].find("enum"))      && !define) {
-            cout << "gotten to this stage already...\n\n\n";
             test_ran_successful = false;
             break;
 
         }
-        else if(f_contents[i].find("#endif") && define && (i == f_contents.size() || i == f_contents.size() - 1)) {
-            endif = true;
-
-        }
-        else    {
-            test_ran_successful = false;
-        }
 
     }
+    if(define && !endif && (f_contents[f_contents.size() - 1].find("#endif") !=  f_contents[f_contents.size() - 1].npos ||
+                f_contents[f_contents.size() - 2].find("#endif") !=  f_contents[f_contents.size() - 2].npos)) {
+        endif = true;
+        cout << "something weird" << endl;
+    }
+    else    {
+        test_is_valid = false;
+    }
+
     if(test_ran_successful) {
         string no_errors = "No Inclusion Guard errors found in file\n";
         current_xml.add_xml_data(XML_DATA::LINE_LENGTH, no_errors);
         test_is_valid = true; // default is false
     }
     else    {
-        if(ifndef)  {
+        if(!ifndef)  {
             current_xml.add_xml_data(XML_DATA::INCLUSION_GUARD, "\tInvalid ifndef found for Inclusion Guard!\n");
         }
-        else if(define)  {
+        else if(!define)  {
             current_xml.add_xml_data(XML_DATA::INCLUSION_GUARD, "\tInvalid define found for Inclusion Guard!\n");
         }
-        else if(endif)  {
+        else if(!endif)  {
             current_xml.add_xml_data(XML_DATA::INCLUSION_GUARD, "\tInvalid endif found for Inclusion Guard!\n");
         }
     }
