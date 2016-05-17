@@ -55,8 +55,9 @@
 #include <regex>
 
 namespace r2d2 {
-    DoxygenCheck::DoxygenCheck()
-            : tool{} {
+    DoxygenCheck::DoxygenCheck(XmlFileFormat & xml)
+            : BaseTest{xml}
+            , tool{} {
 
     }
 
@@ -133,5 +134,15 @@ namespace r2d2 {
             }
         }
         return result;
+    }
+
+    void DoxygenCheck::inspect() {
+        //if (check_brief())
+
+    }
+
+    void DoxygenCheck::inspect_and_fix() {
+        //
+        return;
     }
 }

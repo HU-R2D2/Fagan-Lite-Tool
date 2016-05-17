@@ -52,11 +52,12 @@
 #define FAGAN_DOXYGENCHECK_HPP
 
 #include "DoxygenTool.hpp"
+#include "BaseTest.hpp"
 #include <vector>
 #include <map>
 
 namespace r2d2 {
-    class DoxygenCheck final {
+    class DoxygenCheck final : public BaseTest {
     private:
         DoxygenTool tool;
         std::map<std::string, std::vector<std::string>> invalid_tag_values;
@@ -101,7 +102,11 @@ namespace r2d2 {
         void add_invalid_tag_value(const std::string &tagname,
                                    const std::string &value);
 
-        explicit DoxygenCheck();
+        void inspect() override;
+
+        void inspect_and_fix() override;
+
+        explicit DoxygenCheck(XmlFileFormat & xml);
     };
 }
 

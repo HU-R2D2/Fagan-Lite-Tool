@@ -82,7 +82,8 @@ TEST(DoxygenCheck, all) {
         }
     } stream_redirection;
 
-    DoxygenCheck dc{};
+    XmlFileFormat xml;
+    DoxygenCheck dc{xml};
     dc.add_invalid_tag_value("name", "<full name and student nr>");
     const std::string file{""
                                    "//! @brief\n"
@@ -101,8 +102,4 @@ TEST(DoxygenCheck, all) {
                                    "void Foobar(){}"};
 
     EXPECT_FALSE(dc.check_brief(file));
-}
-
-TEST(DoxygenCheck, name) {
-    std::cerr << "Hello" << std::endl;
 }
