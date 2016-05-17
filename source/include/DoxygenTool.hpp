@@ -60,14 +60,35 @@ namespace r2d2 {
     public:
         const std::vector<std::string> get_authors(const std::string & file) const;
 
-        //! @brief
+        // The backslash preceding the tags is there so Doxygen ignores them.
+        //! @brief Returns the "paragraph" following the first instance of
+        //! \\author or \@author.
         //!
+        //! Note that any comment specific characters are removed if the
+        //! text spans multiple lines.
         //!
+        //! @param file (Part of) the contents of the file to process.
+        //! @return First (block of) author(s) found in the text.
         const std::string get_author(const std::string &file) const;
 
-        const std::string get_date(const std::string &section) const;
+        //! @brief Gets the value of the first date specified (\\date or \@date)
+        //!
+        //! Note that any comment specific characters are removed if the
+        //! text spans multiple lines.
+        //!
+        //! @param file (Part of) the contents of the file to process.
+        //! @return First (block of) author(s) found in the text.
+        const std::string get_date(const std::string &file) const;
 
-        const std::string get_version(const std::string &section) const;
+        //! @brief Gets the value of the first version specified
+        //! (\\version or \@version)
+        //!
+        //! Note that any comment specific characters are removed if the
+        //! text spans multiple lines.
+        //!
+        //! @param (Part of) the contents of the file to process.
+        //! @return First paragraph following a \@date or \\date tag.
+        const std::string get_version(const std::string &file) const;
 
         //! @brief Removes comment specific characters from a string.
         //!
