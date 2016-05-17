@@ -25,7 +25,7 @@ void FaganInspectionTest::run_all_inspections()  {
 
         // linelength test:
         LineLength ll(xmlff, file_contents);
-        ll.inspect();
+        ll.inspect("");
 
         xmlff.add_xml_data(XML_DATA::END);
         for(string s : xmlff.get_xml_data())    {

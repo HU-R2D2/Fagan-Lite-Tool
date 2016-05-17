@@ -14,23 +14,30 @@
 // @warning This class is only meant to be inherited from!
 class BaseTest {
 public:
-    // @brief Constructor taking in a XmlFileFormat and storing the reference.
-    // @param current_xml A reference to a XmlFileFormat object. It will write its test results to this.
-    BaseTest(XmlFileFormat& current_xml) : current_xml{current_xml}{}
+    //! @brief Constructor taking in a XmlFileFormat and storing the reference.
+    //! @param current_xml A reference to a XmlFileFormat object. It will write its test results to this.
+    explicit BaseTest(XmlFileFormat& current_xml) : current_xml{current_xml}{}
 
-    // @brief Virtual method that will be overwritten to contain the fagan inspection tests.
-    // @warning Pure method!
-    virtual void inspect() = 0;
+    //! @brief Virtual method that will be overwritten to contain the fagan inspection tests.
+    //!
+    //! @param file_contents contents of the file to inspect.
+    //! @return True indicates found deviations from standard do not exist.
+    //! @warning Pure method!
+    virtual bool inspect(const std::string & file_contents) = 0;
 
-    // @brief Virtual method that will be overwritten to contain the fagan inspection tests,
-    // and fix the issues wherever possible.
-    // @warning Pure method!
-    virtual void inspect_and_fix() = 0;
+    //! @brief Virtual method that will be overwritten to contain the fagan inspection tests,
+    //! and fix the issues wherever possible.
+    //!
+    //! @param file_contents Contents of the file to inspect and possibly change.
+    //! @return True indicates found deviations from standard do not exist
+    //! after performing possible fixes.
+    //! @warning Pure method!
+    virtual bool inspect_and_fix(std::string & file_contents) = 0;
 
-    // @brief Returns the boolean that contains the result that is stored by running inspect OR inspect_and_fix.
-    //          Should only be checked after running inspect OR inspect_and_fix, otherwise it is always false.
-    // @return Returns true if the test has run succesful and false otherwise.
-    // @warning Only use after running one of the fagan inspection test methods (inspect, inspect_and_fix).
+    //! @brief Returns the boolean that contains the result that is stored by running inspect OR inspect_and_fix.
+    //!          Should only be checked after running inspect OR inspect_and_fix, otherwise it is always false.
+    //! @return Returns true if the test has run succesful and false otherwise.
+    //! @warning Only use after running one of the fagan inspection test methods (inspect, inspect_and_fix).
     const bool is_valid() { return test_is_valid; }
 protected:
     XmlFileFormat& current_xml; // Reference to the XMlFileFormat object, to write to.

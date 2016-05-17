@@ -14,8 +14,8 @@ public:
     //LineLength(XmlFileFormat& current_xml, std::string& f_contents);
     LineLength(XmlFileFormat& current_xml, std::vector<std::string> & f_contents);
     std::string xml_formatted();
-    void inspect();
-    void inspect_and_fix(){}
+    bool inspect(const std::string & file_contents);
+    bool inspect_and_fix(std::string & file_contents){return false;}
 private:
     std::vector<std::string> f_contents;
     //std::string& f_content;

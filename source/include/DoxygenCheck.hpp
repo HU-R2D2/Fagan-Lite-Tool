@@ -102,9 +102,9 @@ namespace r2d2 {
         void add_invalid_tag_value(const std::string &tagname,
                                    const std::string &value);
 
-        void inspect() override;
+        bool inspect(const std::string & file_contents) override;
 
-        void inspect_and_fix() override;
+        bool inspect_and_fix(std::string & file_contents) override;
 
         explicit DoxygenCheck(XmlFileFormat & xml);
     };

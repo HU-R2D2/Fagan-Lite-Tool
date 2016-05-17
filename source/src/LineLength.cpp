@@ -18,7 +18,7 @@ string LineLength::xml_formatted() {
     //ToDo Discuss or decide what correct xml format is
     return "";
 }
-void LineLength::inspect() {
+bool LineLength::inspect(const std::string & file_contents) {
     //ToDo run the linelength test in here. For each line in the file, check the linelength.
     //ToDo if the linelength is greater than allowed, save linenumber and linelength.
     string linelength_errors;
@@ -38,5 +38,5 @@ void LineLength::inspect() {
     else    {
         current_xml.add_xml_data(XML_DATA::LINE_LENGTH, linelength_errors);
     }
-
+    return false;
 }
