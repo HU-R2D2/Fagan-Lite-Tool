@@ -136,13 +136,13 @@ namespace r2d2 {
         return result;
     }
 
-    void DoxygenCheck::inspect() {
+    bool DoxygenCheck::inspect(const std::string & file_contents) {
         //if (check_brief())
-
+        return false;
     }
 
-    void DoxygenCheck::inspect_and_fix() {
+    bool DoxygenCheck::inspect_and_fix(std::string & file_contents) {
         //
-        return;
+        return false;
     }
 }
