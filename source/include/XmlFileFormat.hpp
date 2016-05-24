@@ -11,6 +11,7 @@ enum class XML_DATA{
     BEGIN,
     END,
     LINE_LENGTH,
+    DOXYGEN,
     COMMENT_STYLE,
     INCLUSION_GUARD
 };
