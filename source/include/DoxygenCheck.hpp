@@ -97,15 +97,31 @@ namespace r2d2 {
         //! (true), or not (false).
         bool check_brief(const std::string &file) const;
 
-        //! @brief
+        //! @brief Adds a invalid value for a certain tag when encountered while
+        //! inspecting a file.
         //!
+        //! @param tagname Name of the tag to which it applies.
+        //! @param value
         void add_invalid_tag_value(const std::string &tagname,
                                    const std::string &value);
 
+        //! @brief Performs various checks pertaining doxygen comments.
+        //!
+        //! @param file_contents
+        //! @return True indicates that the file does not violate any rule this
+        //! step checks for. False indicates at least 1 requirement is not met.
         bool inspect(const std::string & file_contents) override;
 
+        //! @brief
+        //!
+        //! @param file_contents File containing possible errors to fix.
+        //! @return The same result as inspect.
         bool inspect_and_fix(std::string & file_contents) override;
 
+        //! @brief Constructs an object which can check for issues regarding
+        //! Doxygen.
+        //!
+        //! @param xml Target file to write found errors to.
         explicit DoxygenCheck(XmlFileFormat & xml);
     };
 }
