@@ -19,6 +19,7 @@ void XmlFileFormat::add_xml_data(XML_DATA xml_data_type, std::string data)  {
             break;
         case XML_DATA::DOXYGEN:
             xml_data.push_back("<doxygen>\n" + data + "</doxygen>\n");
+            break;
         case XML_DATA::COMMENT_STYLE:
             xml_data.push_back("<comment-style>\n" + data + "</comment-style>");
             break;
