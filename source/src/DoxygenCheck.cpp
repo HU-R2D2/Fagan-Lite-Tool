@@ -176,6 +176,6 @@ namespace r2d2 {
 
     bool DoxygenCheck::inspect_and_fix(std::string &file_contents) {
         //
-        return false;
+        return inspect(file_contents);
     }
 }
