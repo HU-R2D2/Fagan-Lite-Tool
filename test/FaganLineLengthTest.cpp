@@ -16,15 +16,15 @@ TEST(FaganFeature, LineLength)  {
                             "test \n"
                             "ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss\n");*/
     {
-        LineLength ll(xmlf, fileformat);
-        ll.inspect();
+        LineLength ll(xmlf);
+        ll.inspect(fileformat[0]);
         ASSERT_FALSE(ll.is_valid()) << "Linelength returned true where false was expected!";
     }
     {
         fileformat.pop_back();
         fileformat.push_back("test");
-        LineLength ll(xmlf, fileformat);
-        ll.inspect();
+        LineLength ll(xmlf);
+        ll.inspect(fileformat[0]);
         cout << "Faganfeature linelength start" << endl;
         ASSERT_TRUE(ll.is_valid()) << "Linelength returned false where true was expected!";
     }

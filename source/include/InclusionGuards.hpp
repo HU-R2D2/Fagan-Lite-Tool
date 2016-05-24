@@ -8,10 +8,10 @@
 #include "BaseTest.hpp"
 class InclusionGuards : public BaseTest{
 public:
-    InclusionGuards(XmlFileFormat& current_xml, std::vector<std::string> & f_contents);
-    void inspect();
+    InclusionGuards(XmlFileFormat& current_xml);
+    bool inspect(const std::string & file_contents) override;
+    bool inspect_and_fix(std::string & file_contents){return false;}
 private:
-    std::vector<std::string> f_contents;
 };
 
 

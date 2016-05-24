@@ -3,12 +3,21 @@
 //
 
 #include <iostream>
+#include <sstream>
 #include "../include/InclusionGuards.hpp"
 using namespace std;
-InclusionGuards::InclusionGuards(XmlFileFormat& current_xml, std::vector<std::string> & f_contents) : BaseTest{current_xml}, f_contents{f_contents} {
+InclusionGuards::InclusionGuards(XmlFileFormat& current_xml) : BaseTest{current_xml} {
 
 }
-void InclusionGuards::inspect() {
+bool InclusionGuards::inspect(const std::string & file_contents) {
+    //ToDo change test and fix
+    string line;
+    stringstream sstream1;
+    sstream1.str(file_contents);
+    vector<string> f_contents;
+    while(std::getline(sstream1, line))
+        f_contents.push_back(line);
+
 
     bool test_ran_successful = true;
     bool ifndef = false;
@@ -57,4 +66,5 @@ void InclusionGuards::inspect() {
             current_xml.add_xml_data(XML_DATA::INCLUSION_GUARD, "\tInvalid endif found for Inclusion Guard!\n");
         }
     }
+    return test_ran_successful;
 }

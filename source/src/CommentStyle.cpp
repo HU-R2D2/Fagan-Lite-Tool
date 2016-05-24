@@ -5,15 +5,16 @@
 #include "../include/CommentStyle.hpp"
 
 using namespace std;
-CommenStyle::CommenStyle(XmlFileFormat& current_xml, std::vector<std::string> & f_contents)  : BaseTest{current_xml}, f_contents{f_contents}  {
+CommenStyle::CommenStyle(XmlFileFormat& current_xml)  : BaseTest{current_xml} {
 
 }
-void CommenStyle::inspect()  {
+bool CommenStyle::inspect(const std::string & file_contents)  {
+    // ToDo test has been rewritten and should be tested again!
     string errors;
     bool test_ran_successful = true;
-    for (uint16_t i = 0; i < f_contents.size(); ++i) {
+    for (uint16_t i = 0; i < file_contents.size(); ++i) {
         // if /* OR */ found
-        if(f_contents[i].find("/*") != f_contents[i].npos || f_contents[i].find("*/") != f_contents[i].npos)   {
+        if(file_contents.find("/*") != file_contents.npos || file_contents.find("*/") != file_contents.npos)   {
             test_ran_successful = false;
             errors += "\tline= " + to_string(i + 1) + " wrong comment style found\n";
         }
@@ -26,4 +27,5 @@ void CommenStyle::inspect()  {
     else    {
         current_xml.add_xml_data(XML_DATA::LINE_LENGTH, errors);
     }
+    return test_ran_successful;
 }
