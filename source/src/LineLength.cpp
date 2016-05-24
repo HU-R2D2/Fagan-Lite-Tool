@@ -10,17 +10,26 @@ using namespace std;
 /*LineLength::LineLength(XmlFileFormat& current_xml, string& f_contents) : BaseTest{current_xml}, f_content{f_contents}  {
 
 }*/
-LineLength::LineLength(XmlFileFormat& current_xml, vector<string>& f_contents) : BaseTest{current_xml}, f_contents{f_contents}  {
+LineLength::LineLength(XmlFileFormat& current_xml) : BaseTest{current_xml}  {
 
 }
 string LineLength::xml_formatted() {
     //ToDo format warnings as correct xml format
     //ToDo Discuss or decide what correct xml format is
-    return "";
+    //ToDo decide whether this method should be removed or not!
+    return std::string();
 }
 bool LineLength::inspect(const std::string & file_contents) {
     //ToDo run the linelength test in here. For each line in the file, check the linelength.
     //ToDo if the linelength is greater than allowed, save linenumber and linelength.
+
+    string line;
+    stringstream sstream1;
+    sstream1.str(file_contents);
+    vector<string> f_contents;
+    while(std::getline(sstream1, line))
+        f_contents.push_back(line);
+
     string linelength_errors;
     bool test_ran_successful = true;
     for (uint16_t i = 0; i < f_contents.size(); ++i) {

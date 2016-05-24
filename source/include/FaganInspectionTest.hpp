@@ -12,6 +12,7 @@ public:
     FaganInspectionTest();
 private:
     void run_all_inspections();
+    std::string get_file_contents(const char *filename);
     std::vector<std::string> get_file_data(std::string file_path);
 };
 
