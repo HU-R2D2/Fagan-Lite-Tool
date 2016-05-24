@@ -50,14 +50,14 @@
 
 #include "../include/DoxygenTool.hpp"
 #include "../include/DoxygenCheck.hpp"
+#include "../include/StreamRedirector.hpp"
 #include <sstream>
 #include <algorithm>
 #include <regex>
 
 namespace r2d2 {
-    DoxygenCheck::DoxygenCheck(XmlFileFormat & xml)
-            : BaseTest{xml}
-            , tool{} {
+    DoxygenCheck::DoxygenCheck(XmlFileFormat &xml)
+            : BaseTest{xml}, tool{} {
 
     }
 
@@ -95,7 +95,24 @@ namespace r2d2 {
     }
 
     bool DoxygenCheck::check_version(const std::string &file) const {
-        return false;
+        std::vector<std::string> versions{};
+        for (const std::string &comment : tool.get_blocks(file)) {
+            const std::string version = tool.get_version(comment);
+            if (version != "") {
+                versions.push_back(version);
+            }
+        }
+        if (versions.size() != 1) {
+            std::cerr <<
+            "A file should have 1 version specified; no more no less." <<
+            std::endl;
+            for (auto const &i : versions) {
+                std::cerr << "Version on line: " << get_line_number(i, file) <<
+                std::endl;
+            }
+            return false;
+        }
+        return true;
     }
 
     size_t DoxygenCheck::get_line_number(const std::string &text,
@@ -125,7 +142,7 @@ namespace r2d2 {
                 for (const auto &invalid_tag :invalid_tag_values.at(
                         "value")) {
                     if (value == invalid_tag) {
-                        std::cerr << tagname <<" on line " <<
+                        std::cerr << tagname << " on line " <<
                         get_line_number(value, file) << " is specified as \"" <<
                         value << "\" which is not allowed." << std::endl;
                         result = false;
@@ -136,12 +153,28 @@ namespace r2d2 {
         return result;
     }
 
-    bool DoxygenCheck::inspect(const std::string & file_contents) {
-        //if (check_brief())
-        return false;
+    bool DoxygenCheck::inspect(const std::string &file_contents) {
+        std::function<bool(DoxygenCheck *, const std::string &)> checks[] = {
+                //bool (*checks[])(r2d2::DoxygenCheck *, const std::string &) const ={
+                &check_author,
+                &check_brief,
+                &check_version,
+        };
+        bool result = true;
+        for (auto &check : checks) {
+            std::stringstream output;
+            // Used to restore the default error stream in case of exceptions.
+            OStreamRedirector osr{std::cerr, output};
+            if (!check(this, file_contents)) {
+                current_xml.add_xml_data(XML_DATA::DOXYGEN, output.str());
+                result = false;
+            }
+        }
+
+        return result;
     }
 
-    bool DoxygenCheck::inspect_and_fix(std::string & file_contents) {
+    bool DoxygenCheck::inspect_and_fix(std::string &file_contents) {
         //
         return false;
     }
