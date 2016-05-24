@@ -17,6 +17,9 @@ void XmlFileFormat::add_xml_data(XML_DATA xml_data_type, std::string data)  {
         case XML_DATA::LINE_LENGTH:
             xml_data.push_back("<linelength>\n" + data + "</linelength>");
             break;
+        case XML_DATA::DOXYGEN:
+            xml_data.push_back("<doxygen>\n" + data + "</doxygen>\n");
+            break;
     }
 
 }
