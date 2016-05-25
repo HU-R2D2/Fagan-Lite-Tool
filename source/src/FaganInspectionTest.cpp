@@ -9,19 +9,15 @@
 #include "../include/InclusionGuards.hpp"
 #include <fstream>
 
-#include <string>
-#include <cstdio>
-#include <cerrno>
-
 using namespace std;
-FaganInspectionTest::FaganInspectionTest()  {
-    //ToDo Insert all inspections to run
-    run_all_inspections();
+FaganInspectionTest::FaganInspectionTest(vector<string> fileLocations)  {
+
+    run_all_inspections(fileLocations);
 }
-void FaganInspectionTest::run_all_inspections()  {
+void FaganInspectionTest::run_all_inspections(vector<string> fileLocations)  {
     //ToDo get all files and run all inspections on each file
-    FileSearcher files("E:/Development/HBO/Year2/BlokC/ThemaOpdracht7-8/Fagan-Lite-Tool/test/testfiles");
-    for(std::string fpath : files.get_files())  {
+    //FileSearcher files("E:/Development/HBO/Year2/BlokC/ThemaOpdracht7-8/Fagan-Lite-Tool/test/testfiles");
+    for(std::string fpath : fileLocations)  {
         XmlFileFormat xmlff;
         xmlff.add_xml_data(XML_DATA::BEGIN, fpath);
 

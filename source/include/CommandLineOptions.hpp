@@ -17,12 +17,13 @@ public:
     CommandLineOptions(int argc, char* argv[]);
     CommandLineOptions();
     std::string getCommand(unsigned int i);
+    std::map<Commands, std::string> cmdOptions; // development only
 private:
 
     void checkInspections();
     bool checkDirectory();
     std::vector<std::string> cmds;
-    std::map<Commands, std::string> cmdOptions;
+
 };
 
 

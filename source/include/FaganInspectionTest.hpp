@@ -9,9 +9,9 @@
 #include <string>
 class FaganInspectionTest {
 public:
-    FaganInspectionTest();
+    FaganInspectionTest(std::vector<std::string> fileLocations);
 private:
-    void run_all_inspections();
+    void run_all_inspections(std::vector<std::string> fileLocations);
     std::string get_file_contents(const char *filename);
     std::vector<std::string> get_file_data(std::string file_path);
 };
