@@ -52,15 +52,27 @@ namespace r2d2 {
     }
 
     const std::string DoxygenTool::get_author(const std::string &file) const {
-        return get_annotated(strip_comment(file), "author")[0];
+        const std::vector<std::string> annotations =get_annotated(strip_comment(file), "author");
+        if (annotations.size()) {
+            return annotations[0];
+        }
+        return "";
     }
 
     const std::string DoxygenTool::get_date(const std::string &file) const {
-        return get_annotated(strip_comment(file), "date")[0];
+        const std::vector<std::string> annotations =get_annotated(strip_comment(file), "date");
+        if (annotations.size()) {
+            return annotations[0];
+        }
+        return "";
     }
 
     const std::string DoxygenTool::get_version(const std::string &file) const {
-        return get_annotated(strip_comment(file), "version")[0];
+        const std::vector<std::string> annotations =get_annotated(strip_comment(file), "version");
+        if (annotations.size()) {
+            return annotations[0];
+        }
+        return "";
     }
 
     const std::vector<std::string> DoxygenTool::get_annotated(
