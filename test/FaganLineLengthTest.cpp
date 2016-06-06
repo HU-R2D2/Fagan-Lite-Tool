@@ -6,7 +6,10 @@
 #include <string>
 #include <vector>
 #include "../source/include/LineLength.hpp"
+/*
+wrong comment
 
+*/
 using namespace std;
 TEST(FaganFeature, LineLength)  {
     XmlFileFormat xmlf;
