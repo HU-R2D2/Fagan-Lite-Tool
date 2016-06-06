@@ -5,10 +5,10 @@
 #include "../include/CommentStyle.hpp"
 
 using namespace std;
-CommenStyle::CommenStyle(XmlFileFormat& current_xml)  : BaseTest{current_xml} {
+CommentStyle::CommentStyle(XmlFileFormat& current_xml)  : BaseTest{current_xml} {
 
 }
-bool CommenStyle::inspect(const std::string & file_contents)  {
+bool CommentStyle::inspect(const std::string & file_contents)  {
     // ToDo test has been rewritten and should be tested again!
     string errors;
     bool test_ran_successful = true;
