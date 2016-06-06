@@ -15,7 +15,7 @@ enum class Commands : uint16_t {
 class CommandLineOptions {
 public:
     CommandLineOptions(int argc, char* argv[]);
-    CommandLineOptions();
+    CommandLineOptions()= default;
     std::string getCommand(unsigned int i);
     std::map<Commands, std::string> cmdOptions; // development only
 private:

@@ -296,9 +296,9 @@ void changeFileName(string &template_content, string fileName) {
 int main(int argc, char *argv[]) {
 
     cout << "test everywhere" << endl;
-    //CommandLineOptions CLO(int argc, char*argv[]);
-
-    FileSearcher fs("C:\\Development\\HBO\\Year2\\BlokC\\ThemaOpdracht78\\Fagan-Lite-Tool\\test");
+    CommandLineOptions CLO(argc, argv);
+    cout << "CLO.cmdOptions[Commands::DIRECTORY] " << CLO.cmdOptions[Commands::DIRECTORY];
+    FileSearcher fs(CLO.cmdOptions[Commands::DIRECTORY]);
     FaganInspectionTest FIT(fs.get_files());
 
     string t_file;
