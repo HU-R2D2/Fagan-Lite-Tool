@@ -7,7 +7,9 @@
 #include "../include/LineLength.hpp"
 #include "../include/CommentStyle.hpp"
 #include "../include/InclusionGuards.hpp"
+#include "../include/DoxygenCheck.hpp"
 #include <fstream>
+#include <bits/unique_ptr.h>
 
 using namespace std;
 
@@ -18,21 +20,32 @@ FaganInspectionTest::FaganInspectionTest(vector<string> fileLocations) {
 
 void FaganInspectionTest::run_all_inspections(vector<string> fileLocations) {
     //ToDo get all files and run all inspections on each file
+
+
     //FileSearcher files("E:/Development/HBO/Year2/BlokC/ThemaOpdracht7-8/Fagan-Lite-Tool/test/testfiles");
     for (std::string fpath : fileLocations) {
-        XmlFileFormat xmlff;
+        XmlFileFormat xmlff{};
+        std::vector<BaseTest *> tests;
+
+        r2d2::DoxygenCheck dc{xmlff};
+        tests.push_back(&dc);
+
+        LineLength ll(xmlff);
+        tests.push_back(&ll);
+
+        CommentStyle cs(xmlff);
+        tests.push_back(&cs);
+
         xmlff.add_xml_data(XML_DATA::BEGIN, fpath);
 
         // get file contents and store in string vector
         // vector<string> file_contents = get_file_data(fpath);
         string f_content = get_file_contents(fpath.c_str());
-        // linelength test:
-        LineLength ll(xmlff);
-        ll.inspect(f_content);
 
-        // Comment-style test:
-        CommentStyle cs(xmlff);
-        cs.inspect(f_content);
+        for(const auto & test : tests) {
+            test->inspect(f_content);
+        }
+
         if (fpath.find(".hpp") != fpath.npos) {
             InclusionGuards IG(xmlff);
             IG.inspect(f_content);
