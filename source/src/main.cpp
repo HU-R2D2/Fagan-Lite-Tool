@@ -57,7 +57,7 @@ void findSubDirectoriesAndFiles(std::string dir, std::vector<std::string> &a) {
     hFind = FindFirstFile((dir + "/*").c_str(), &FindFileData);
 
     if (hFind == INVALID_HANDLE_VALUE) {
-       // printf("\nFindFirstFile failed (%d)\n", GetLastError());
+        // printf("\nFindFirstFile failed (%d)\n", GetLastError());
         return;
     }
     else {
@@ -86,7 +86,7 @@ void findSubDirectoriesAndFiles(std::string dir, std::vector<std::string> &a) {
                      std::string::npos) {
                 cout << "endOfFileName " << endOfFileName << endl;
                 if (nextDir.length() == endOfFileName + 4) {
-                   // char iOLE = nextDir.length() - 1; // index of last element
+                    // char iOLE = nextDir.length() - 1; // index of last element
                     if (nextDir.find('.', endOfFileName + 2) ==
                         std::string::npos) {
                         cout << "is .cpp only" << endl;
@@ -298,20 +298,21 @@ int main(int argc, char *argv[]) {
     cout << "aids everywhere" << endl;
     //CommandLineOptions CLO(int argc, char*argv[]);
 
-    FileSearcher fs("E:\\Development\\HBO\\Year2\\BlokC\\ThemaOpdracht7-8\\Fagan-Lite-Tool\\test\\testfiles");
+    FileSearcher fs(
+            "E:\\Development\\HBO\\Year2\\BlokC\\ThemaOpdracht7-8\\Fagan-Lite-Tool\\test\\testfiles");
     FaganInspectionTest FIT(fs.get_files());
 
     string t_file;
- /*   if (argc == 1)
-        t_file = "template.txt";SOURCES
-    else {
-        const char *templateFile = argv[1];
-        t_file = templateFile;
-    }
-    cout << "template file is: " << t_file << endl;
+    /*   if (argc == 1)
+           t_file = "template.txt";SOURCES
+       else {
+           const char *templateFile = argv[1];
+           t_file = templateFile;
+       }
+       cout << "template file is: " << t_file << endl;
 
-    FileSearcher testSearcher;
-    testSearcher.getFiles("nothing", "emp", "test", "moretest");*/
+       FileSearcher testSearcher;
+       testSearcher.getFiles("nothing", "emp", "test", "moretest");*/
     /*std::ifstream ifs(t_file);
     std::string template_content( (std::istreambuf_iterator<char>(ifs) ),
                        (std::istreambuf_iterator<char>()    ) );
