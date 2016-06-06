@@ -9,7 +9,7 @@ using namespace std;
 int main(int argc, char* argv[]) {
     cout << "Starting tests" << endl;
     //CommandLineOptions(argc, argv);
-    //FaganIadnspectionTest FIT;
+    //FaganInspectionTest FIT{};
 
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
