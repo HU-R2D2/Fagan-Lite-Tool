@@ -1,11 +1,7 @@
 //! \addtogroup 24 Fagan lite tool
-//! \brief <Brief description of module>
-//!
-//! <Description of module>
 //!
 //! \file   DoxygenCheck.hpp
 //! \author Matthijs Mud 1657223
-//! \date   22-04-16
 //! \date   22-04-16
 //! \brief  Performs various checks on the doxygen comments in any specified file.
 //!
@@ -110,19 +106,24 @@ namespace r2d2 {
         //! @param file_contents
         //! @return True indicates that the file does not violate any rule this
         //! step checks for. False indicates at least 1 requirement is not met.
-        bool inspect(const std::string & file_contents) override;
+        bool inspect(const std::string &file_contents) override;
 
-        //! @brief
+        //! @brief Perform various checks pertaining doxygen comments.
+        //!
+        //! As there is no easy way to create artificial intelligence which
+        //! can produce meaningful comments from the code, this function does
+        //! not fix the code in any way. Therefore it yields the same result as
+        //! calling the function "inspect".
         //!
         //! @param file_contents File containing possible errors to fix.
         //! @return The same result as inspect.
-        bool inspect_and_fix(std::string & file_contents) override;
+        bool inspect_and_fix(std::string &file_contents) override;
 
         //! @brief Constructs an object which can check for issues regarding
         //! Doxygen.
         //!
         //! @param xml Target file to write found errors to.
-        explicit DoxygenCheck(XmlFileFormat & xml);
+        explicit DoxygenCheck(XmlFileFormat &xml);
     };
 }
 
