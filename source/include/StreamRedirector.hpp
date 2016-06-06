@@ -3,7 +3,7 @@
 //!
 //! <Description of module>
 //!
-//! \file   DoxygenCheck.hpp
+//! \file   StreamRedirector.hpp
 //! \author Matthijs Mud 1657223
 //! \date   24-05-16
 //! \brief  Helps by temporarily treating one buffer as another.
@@ -48,14 +48,27 @@ namespace r2d2 {
     class OStreamRedirector final {
     private:
         std::ostream &old_stream;
-        std::streambuf * originalBuffer;
+        std::streambuf *original_buffer;
     public:
         //! @brief Temporarily use the buffer from the new_stream as that of the
         //! old_stream.
         //!
+        //! Intended for usage in a function which requires a temporary
+        //! redirection of a stream. By reverting the changes when this object
+        //! is destructed (mainly when going out of scope), it is a 'safe' way
+        //! to alter streams in functions which have various ways of exiting
+        //! like different return statements or (uncaught) exceptions.
+        //!
+        //! It is advised to only use this utility on the stack.
+        //! Furthermore avoid instances in multithreaded environments where
+        //! the same stream is manipulated by different threads; this could
+        //! result in the streams being restored in the wrong order, which ends
+        //! up as undefined behaviour.
         //! @param old_stream Stream to have it buffer altered.
         //! @param new_stream Stream with which to share the buffer.
         OStreamRedirector(std::ostream& old_stream, std::ostream& new_stream);
+
+        //! @brief Restores the stream's buffer to what it was before.
         ~OStreamRedirector();
     };
 }
