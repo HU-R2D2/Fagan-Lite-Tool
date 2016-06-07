@@ -17,14 +17,13 @@ TEST(IndentCheck, ALL) {
                               "            \t//TODO: implement\n"
                               "    };\n"
                               "}\n"};
-    check.inspect_and_fix(value);
-    std::cout << value;
-    EXPECT_EQ("     \t     Hello", value);
-    EXPECT_TRUE(check.inspect(value)) << "Inspection failed";
+    EXPECT_FALSE(check.inspect(value)) << "Inspection failed";
 
+#ifdef SHOW_RESULTS
     std::cout << "== XML File ==" << std::endl;
     for (const auto & line : xml.get_xml_data()) {
         std::cout << line;
     }
     std::cout << "== XML File ==" << std::endl;
+#endif //SHOW_RESULTS
 }
