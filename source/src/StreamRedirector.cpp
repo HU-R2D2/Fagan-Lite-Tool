@@ -44,13 +44,13 @@
 
 namespace r2d2 {
 
-    OStreamRedirector::OStreamRedirector(std::ostream & old_stream, std::ostream & new_stream)
-    : old_stream{old_stream}
-    , originalBuffer{old_stream.rdbuf()} {
+    OStreamRedirector::OStreamRedirector(std::ostream &old_stream,
+                                         std::ostream &new_stream)
+            : old_stream{old_stream}, original_buffer{old_stream.rdbuf()} {
         old_stream.rdbuf(new_stream.rdbuf());
     }
 
     OStreamRedirector::~OStreamRedirector() {
-        old_stream.rdbuf(originalBuffer);
+        old_stream.rdbuf(original_buffer);
     }
 }

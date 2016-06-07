@@ -156,9 +156,9 @@ namespace r2d2 {
     bool DoxygenCheck::inspect(const std::string &file_contents) {
         std::function<bool(DoxygenCheck *, const std::string &)> checks[] = {
                 //bool (*checks[])(r2d2::DoxygenCheck *, const std::string &) const ={
-                &check_author,
-                &check_brief,
-                &check_version,
+                &DoxygenCheck::check_author,
+                &DoxygenCheck::check_brief,
+                &DoxygenCheck::check_version,
         };
         bool result = true;
         for (auto &check : checks) {

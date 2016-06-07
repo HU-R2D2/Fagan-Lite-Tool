@@ -1,44 +1,43 @@
 ////
-// \project Roborescue
-// \package r2d2
-//
-// \file DoxygenTool.hpp
-// \date Created: 08-04-16
-// \version <0.0.0>
-//
-// \author Matthijs Mud 1657223
-//
-// \section LICENSE
-// License: newBSD
-//
-// Copyright © 2016, HU University of Applied Sciences Utrecht.
-// All rights reserved.
-//
-// Redistribution and use in source and binary forms,
-// with or without modification, are permitted provided that
-// the following conditions are met:
-// - Redistributions of source code must retain the above copyright notice,
-//   this list of conditions and the following disclaimer.
-// - Redistributions in binary form must reproduce the above copyright notice,
-//   this list of conditions and the following disclaimer in the documentation
-//   and/or other materials provided with the distribution.
-// - Neither the name of the HU University of Applied Sciences Utrecht
-//   nor the names of its contributors may be used to endorse or promote
-//   products derived from this software without specific prior written
-//   permission.
-//
-// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,
-// BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
-// AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
-// IN NO EVENT SHALL THE HU UNIVERSITY OF APPLIED SCIENCES UTRECHT
-// BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-// CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-// PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
-// OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-// WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
-// OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
-// EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//! \project Roborescue
+//! \package r2d2
+//!
+//! \file DoxygenTool.hpp
+//! \date Created: 08-04-16
+//!
+//! \author Matthijs Mud 1657223
+//!
+//! \section LICENSE
+//! License: newBSD
+//!
+//! Copyright © 2016, HU University of Applied Sciences Utrecht.
+//! All rights reserved.
+//!
+//! Redistribution and use in source and binary forms,
+//! with or without modification, are permitted provided that
+//! the following conditions are met:
+//! - Redistributions of source code must retain the above copyright notice,
+//!   this list of conditions and the following disclaimer.
+//! - Redistributions in binary form must reproduce the above copyright notice,
+//!   this list of conditions and the following disclaimer in the documentation
+//!   and/or other materials provided with the distribution.
+//! - Neither the name of the HU University of Applied Sciences Utrecht
+//!   nor the names of its contributors may be used to endorse or promote
+//!   products derived from this software without specific prior written
+//!   permission.
+//!
+//! THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+//! "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,
+//! BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+//! AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+//! IN NO EVENT SHALL THE HU UNIVERSITY OF APPLIED SCIENCES UTRECHT
+//! BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+//! CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+//! PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+//! OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+//! WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+//! OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+//! EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ////
 #ifndef HEADERTOOL_HPP
 #define HEADERTOOL_HPP
@@ -55,12 +54,16 @@ namespace r2d2 {
     //! As this module makes usage of said namespace, make sure it is implemented.
     class DoxygenTool final {
     private:
-        DoxygenTool(const DoxygenTool& rhs) = delete;
-        DoxygenTool &operator=(const DoxygenTool& rhs) = delete;
-    public:
-        const std::vector<std::string> get_authors(const std::string & file) const;
+        // Delete unused copy and assignment functions.
+        DoxygenTool(const DoxygenTool &rhs) = delete;
 
-        // The backslash preceding the tags is there so Doxygen ignores them.
+        DoxygenTool &operator=(const DoxygenTool &rhs) = delete;
+
+    public:
+        const std::vector<std::string> get_authors(
+                const std::string &file) const;
+
+        // The backslash preceding the tags is there so Doxygen ignores the tag.
         //! @brief Returns the "paragraph" following the first instance of
         //! \\author or \@author.
         //!
@@ -98,7 +101,7 @@ namespace r2d2 {
         //!
         //! @param section Comment string to remove characters from.
         //! @return String stripped from characters which won't appear in Doxygen.
-        const std::string strip_comment(const std::string & section) const;
+        const std::string strip_comment(const std::string &section) const;
 
         //! @brief Gets all the follow-up for specified annotation in the section.
         //!
@@ -106,7 +109,7 @@ namespace r2d2 {
         //! @param annotation
         //! @return Gets a collection of thingies
         const std::vector<std::string> get_annotated(const std::string &section,
-                                        const std::string &annotation) const;
+                                                     const std::string &annotation) const;
 
         //! @brief Gets all doxygen comment blocks in the file.
         //!
@@ -120,7 +123,11 @@ namespace r2d2 {
         //!
         //! @param file Contents of the file to extract blocks from.
         //! @return A list containing all found blocks.
-        const std::vector<std::string> get_blocks(const std::string& file) const;
+        const std::vector<std::string> get_blocks(
+                const std::string &file) const;
+
+        //! @brief Constructs a tool which makes supplies methods for easily
+        //! obtaining doxygen information.
         DoxygenTool();
     };
 }
