@@ -5,7 +5,7 @@
 //! \date   06-06-16
 //! \brief  Utility for helping create an xml file with the found issues.
 //!
-//! \copyright Copyright © 2016, HU University of Applied Sciences Utrecht.
+//! \copyright Copyright ï¿½ 2016, HU University of Applied Sciences Utrecht.
 //! All rights reserved.
 //!
 //! License: newBSD
@@ -53,7 +53,6 @@ enum class XML_DATA {
 };
 
 //! @brief Utility for "easily" creating xml files.
-//!
 class XmlFileFormat {
 public:
     //! @brief Adds a tag to the xml document with a specific tag.
