@@ -8,6 +8,7 @@
 void XmlFileFormat::add_xml_data(XML_DATA xml_data_type, std::string data) {
     //ToDo Check for XML_DATA type and adjust current xml data about file to insert new data in the correct structure
     //ToDo fix tab indention in xml data (extra tab in each sub node)
+    //ToDO Responsibility changed to inspections
     switch (xml_data_type) {
         case XML_DATA::BEGIN:
             xml_data.push_back("<file= " + data + ">");
@@ -16,13 +17,13 @@ void XmlFileFormat::add_xml_data(XML_DATA xml_data_type, std::string data) {
             xml_data.push_back("</file>\n");
             break;
         case XML_DATA::LINE_LENGTH:
-            xml_data.push_back("<linelength>\n" + data + "</linelength>");
+            xml_data.push_back(data);
             break;
         case XML_DATA::DOXYGEN:
             xml_data.push_back("<doxygen>\n" + data + "</doxygen>\n");
             break;
         case XML_DATA::COMMENT_STYLE:
-            xml_data.push_back("<comment-style>\n" + data + "</comment-style>");
+            xml_data.push_back(data);
             break;
         case XML_DATA::INCLUSION_GUARD:
             xml_data.push_back(
