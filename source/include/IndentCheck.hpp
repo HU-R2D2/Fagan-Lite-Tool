@@ -4,16 +4,23 @@
 
 #ifndef FAGAN_INDENTCHECK_HPP
 #define FAGAN_INDENTCHECK_HPP
+
 #include "BaseTest.hpp"
+
 namespace r2d2 {
     class IndentCheck : BaseTest {
     private:
         std::string style;
 
-    public:
-        IndentCheck(XmlFileFormat & xml);
+        bool is_indented_correctly(
+                const std::string::const_iterator start_of_line,
+                const unsigned int scope_level,
+                std::string::const_iterator &end_of_indent) const;
 
-        void set_indent_style(const std::string & style);
+    public:
+        IndentCheck(XmlFileFormat &xml);
+
+        void set_indent_style(const std::string &style);
 
         bool inspect(const std::string &file_contents) override;
 
