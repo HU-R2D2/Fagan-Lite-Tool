@@ -8,6 +8,7 @@
 #include "../include/CommentStyle.hpp"
 #include "../include/InclusionGuards.hpp"
 #include "../include/DoxygenCheck.hpp"
+#include "../include/IndentCheck.hpp"
 #include <fstream>
 #include <bits/unique_ptr.h>
 
@@ -21,20 +22,24 @@ FaganInspectionTest::FaganInspectionTest(vector<string> fileLocations) {
 void FaganInspectionTest::run_all_inspections(vector<string> fileLocations) {
     //ToDo get all files and run all inspections on each file
 
+    XmlFileFormat xmlff{};
+    std::vector<BaseTest *> tests;
+
+    r2d2::DoxygenCheck dc{xmlff};
+    tests.push_back(&dc);
+
+    r2d2::IndentCheck ic{xmlff};
+    tests.push_back(&ic);
+
+    LineLength ll(xmlff);
+    tests.push_back(&ll);
+
+    CommentStyle cs(xmlff);
+    tests.push_back(&cs);
 
     //FileSearcher files("E:/Development/HBO/Year2/BlokC/ThemaOpdracht7-8/Fagan-Lite-Tool/test/testfiles");
     for (std::string fpath : fileLocations) {
-        XmlFileFormat xmlff{};
-        std::vector<BaseTest *> tests;
 
-        r2d2::DoxygenCheck dc{xmlff};
-        tests.push_back(&dc);
-
-        LineLength ll(xmlff);
-        tests.push_back(&ll);
-
-        CommentStyle cs(xmlff);
-        tests.push_back(&cs);
 
         xmlff.add_xml_data(XML_DATA::BEGIN, fpath);
 
