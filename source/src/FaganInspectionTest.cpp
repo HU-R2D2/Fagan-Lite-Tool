@@ -8,6 +8,7 @@
 #include "../include/CommentStyle.hpp"
 #include "../include/InclusionGuards.hpp"
 #include "../include/DoxygenCheck.hpp"
+#include "../include/IndentCheck.hpp"
 #include <fstream>
 #include <bits/unique_ptr.h>
 
@@ -21,22 +22,30 @@ FaganInspectionTest::FaganInspectionTest(vector<string> fileLocations) {
 void FaganInspectionTest::run_all_inspections(vector<string> fileLocations) {
     //ToDo get all files and run all inspections on each file
 
+    XmlFileFormat xmlff{};
+    std::vector<BaseTest *> tests;
 
     //FileSearcher files("E:/Development/HBO/Year2/BlokC/ThemaOpdracht7-8/Fagan-Lite-Tool/test/testfiles");
     for (std::string fpath : fileLocations) {
-        XmlFileFormat xmlff{};
-        xmlff.add_base_node("file", fpath);
-        std::vector<BaseTest *> tests;
+    XmlFileFormat xmlff{};
+    xmlff.add_base_node("file", fpath);
+    std::vector<BaseTest *> tests;
+    r2d2::DoxygenCheck dc{xmlff};
+    tests.push_back(&dc);
 
-        r2d2::DoxygenCheck dc{xmlff};
-        tests.push_back(&dc);
+    //r2d2::IndentCheck ic{xmlff};
+   // tests.push_back(&ic);
 
-        LineLength ll(xmlff);
+    LineLength ll(xmlff);
+    tests.push_back(&ll);
 
-        tests.push_back(&ll);
+    CommentStyle cs(xmlff);
+    tests.push_back(&cs);
 
-        CommentStyle cs(xmlff);
-        tests.push_back(&cs);
+/*    //FileSearcher files("E:/Development/HBO/Year2/BlokC/ThemaOpdracht7-8/Fagan-Lite-Tool/test/testfiles");
+    for (std::string fpath : fileLocations) {
+>>>>>>> 9012e3d3039f0ddb1d00b0994d59d511da72efba*/
+
 
         xmlff.add_xml_data(fpath);
 

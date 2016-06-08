@@ -54,63 +54,18 @@ int main(int argc, char *argv[]) {
     cout << "test everywhere" << endl;
 
     CommandLineOptions CLO(argc, argv);
-    cout << "CLO.cmdOptions[Commands::DIRECTORY] " << CLO.cmdOptions[Commands::DIRECTORY] << endl;
+
+    cout << "CLO.cmdOptions[Commands::DIRECTORY] " <<
+    CLO.cmdOptions[Commands::DIRECTORY] << endl;
+
     FileSearcher fs(CLO.cmdOptions[Commands::DIRECTORY]);
 
     FaganInspectionTest FIT(fs.get_files());
 
     string t_file;
-    /*   if (argc == 1)
-           t_file = "template.txt";SOURCES
-       else {
-           const char *templateFile = argv[1];
-           t_file = templateFile;
-       }
-       cout << "template file is: " << t_file << endl;
 
-       FileSearcher testSearcher;
-       testSearcher.getFiles("nothing", "emp", "test", "moretest");*/
-    /*std::ifstream ifs(t_file);
-    std::string template_content( (std::istreambuf_iterator<char>(ifs) ),
-                       (std::istreambuf_iterator<char>()    ) );
-    ifs.close();
-    cout << template_content;
-
-    for (string& str : getSubDirectories("../"))	{
-        string filled_template = template_content;
-        cout << "Writing into file... " << str << endl;
-        ofstream oFile(str + "format");
-        ifstream iFile(str);
-        std::string hpp_content( (std::istreambuf_iterator<char>(iFile) ),
-                                (std::istreambuf_iterator<char>()    ) );
-        validateTemplateVersion(filled_template, hpp_content);
-        changeAuthor(filled_template, hpp_content);
-        changeDate(filled_template, hpp_content);
-        changeVersion(filled_template, hpp_content);
-        changeFileName(filled_template, str);
-        std::size_t found = hpp_content.find("++--++");
-        if(found == string::npos)	{
-            oFile << filled_template << endl; // write template
-            oFile << hpp_content;
-            iFile.close();
-            oFile.close();
-            string f1 = str + "format";
-            string f2 = str + "renamed";
-              if( remove( str.c_str() ) != 0 )
-                perror( "Error deleting file" );
-              else
-                puts( "File successfully deleted" );
-            rename(f1.c_str(), str.c_str());
-        }
-        else {
-            iFile.close();
-            oFile.close();
-            if( remove( (str + "format").c_str() ) != 0 )
-                perror( "Error deleting file" );
-              else
-                puts( "File successfully deleted" );
-        }
-    }*/
     // Read template file
+    char c;
+    std::cin >> c;
     return 0;
 }

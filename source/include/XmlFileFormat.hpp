@@ -139,7 +139,9 @@ enum class XML_DATA {
     BEGIN,
     END,
     DOXYGEN,
-    DEFAULT
+    DEFAULT,
+    INCLUSION_GUARD,
+    INDENTATION,
 };
 
 //! @brief Utility for "easily" creating xml files.

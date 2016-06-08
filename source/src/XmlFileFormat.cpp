@@ -22,6 +22,14 @@ void XmlFileFormat::add_xml_data(std::string data, XML_DATA xml_data_type) {
             break;
         case XML_DATA::DEFAULT:
             xml_data.push_back(data);
+            break;
+        case XML_DATA::INCLUSION_GUARD:
+            xml_data.push_back(
+                    "<inclusion-guard>\n" + data + "</inclusion-guard>");
+            break;
+        case XML_DATA::INDENTATION:
+            xml_data.push_back("<indentation>\n" + data + "</indentation>\n");
+            break;
     }
 }
 void XmlFileFormat::add_base_node(std::string xml_node_name, std::string node_value)    {
