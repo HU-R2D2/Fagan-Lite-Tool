@@ -49,7 +49,8 @@ enum class XML_DATA {
     LINE_LENGTH,
     DOXYGEN,
     COMMENT_STYLE,
-    INCLUSION_GUARD
+    INCLUSION_GUARD,
+    INDENTATION,
 };
 
 //! @brief Utility for "easily" creating xml files.

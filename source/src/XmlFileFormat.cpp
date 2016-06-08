@@ -29,6 +29,9 @@ void XmlFileFormat::add_xml_data(XML_DATA xml_data_type, std::string data) {
             xml_data.push_back(
                     "<inclusion-guard>\n" + data + "</inclusion-guard>");
             break;
+        case XML_DATA::INDENTATION:
+            xml_data.push_back("<indentation>\n" + data + "</indentation>\n");
+            break;
     }
 }
 
