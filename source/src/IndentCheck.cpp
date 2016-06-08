@@ -1,6 +1,44 @@
-//
-// Created by Matthijs on 6-6-2016.
-//
+//! \addtogroup 24 Fagan lite tool
+//!
+//! \file   IndentCheck.hpp
+//! \author Matthijs Mud 1657223
+//! \date   08-06-16
+//! \brief  Tests whether the indentation in any given file is according to
+//! the specified standard.
+//!
+//!
+//!
+//! \copyright Copyright � 2016, HU University of Applied Sciences Utrecht.
+//! All rights reserved.
+//!
+//! License: newBSD
+//!
+//! Redistribution and use in source and binary forms,
+//! with or without modification, are permitted provided that
+//! the following conditions are met:
+//! - Redistributions of source code must retain the above copyright notice,
+//!   this list of conditions and the following disclaimer.
+//! - Redistributions in binary form must reproduce the above copyright notice,
+//!   this list of conditions and the following disclaimer in the documentation
+//!   and/or other materials provided with the distribution.
+//! - Neither the name of the HU University of Applied Sciences Utrecht
+//!   nor the names of its contributors may be used to endorse or promote
+//!   products derived from this software without specific prior written
+//!   permission.
+//!
+//! THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+//! "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,
+//! BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+//! AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+//! IN NO EVENT SHALL THE HU UNIVERSITY OF APPLIED SCIENCES UTRECHT
+//! BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+//! CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+//! PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+//! OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+//! WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+//! OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+//! EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+// ~< HEADER_VERSION 2016 04 12 >~
 
 #include "../include/IndentCheck.hpp"
 #include <iostream>
@@ -26,19 +64,22 @@ namespace r2d2 {
             switch (c) {
                 case '\n':
                     ++line;
-                    if (!is_indented_correctly(++i, scope_level, i)) {
+                    if (!is_indented_correctly(i, scope_level, i)) {
                         std::stringstream stream{""};
                         stream << "Indentation on line " << line <<
-                        " is not according to the standard." << std::endl;
+                        " is not according to the standard."
+                        << " Encountered unexpected character \'"
+                        << (*(i+1)) << "\'" << std::endl;
                         current_xml.add_xml_data(XML_DATA::INDENTATION,
                                                  stream.str());
+
                     }
                     break;
-                case '{':
+                case '{': // }
                     //
                     ++scope_level;
                     break;
-                case '}':
+                case '}': // {
                     --scope_level;
                     break;
                 default:
@@ -50,6 +91,7 @@ namespace r2d2 {
     }
 
     bool IndentCheck::inspect_and_fix(std::string &file_contents) {
+#ifdef DONT_COMPILE
         std::string regex_pattern =
                 // Marks the beginning of a line/file.
                 "(^|\n)"
@@ -62,7 +104,8 @@ namespace r2d2 {
         std::regex regex{regex_pattern};
         file_contents = std::regex_replace(file_contents, regex,
                                            "$1$2" + style + "$5");
-        return true;
+#endif // DONT_COMPILE
+        return inspect(file_contents);
     }
 
     bool IndentCheck::is_indented_correctly(
@@ -73,7 +116,7 @@ namespace r2d2 {
         end_of_indent = start_of_line;
         if (style != "") {
             for (unsigned int i = 0; i < scope_level * style.size(); ++i) {
-                char c = *(start_of_line + i);
+                char c = *(start_of_line + i + 1);
                 switch (c) {
                     // Empty lines are allowed between code lines.
                     // Don't complain about a wrong indent in that case.
@@ -84,13 +127,18 @@ namespace r2d2 {
                         // Carriage return could be followed by line feed.
                         // Therefore let the decision be based on the next char.
                         break;
+                    case '}':
+                        if (i == ((scope_level - 1) * style.size())) {
+                            return true;
+                        }
+                        break;
                     default:
                         if (c != style[i % style.size()]) {
                             return false;
                         }
                         break;
                 }
-                end_of_indent = start_of_line + i;
+                end_of_indent = start_of_line + i + 1;
             }
         }
         return true;
