@@ -19,7 +19,10 @@ LineLength::LineLength(XmlFileFormat &current_xml) : BaseTest{current_xml} {
 bool LineLength::inspect(const std::string &file_contents) {
     //ToDo run the linelength test in here. For each line in the file, check the linelength.
     //ToDo if the linelength is greater than allowed, save linenumber and linelength.
-    string xml_output = "<linelength";
+    //string xml_output = "<linelength";
+    std::shared_ptr<xmlnode> node = std::shared_ptr<xmlnode>(new xmlnode(current_xml.base_node));
+    node->fix("linelength");
+    string xml_output;
     string line;
     stringstream sstream1;
     sstream1.str(file_contents);
@@ -36,18 +39,29 @@ bool LineLength::inspect(const std::string &file_contents) {
             ++error_counter;
             //PROBLEM WITH COUNTING LENGTH, TAB IS CONVERTED TO SPACE IN MOST IDE'S. NOT IN string.length()
             test_ran_successful = false;
-            linelength_errors += "\tline= " + to_string(i + 1) + " length= " +
-                                 to_string(f_contents[i].length()) + "\n";
+            node->add_node_text("line= " + to_string(i + 1) + " length= " +
+                                to_string(f_contents[i].length()) + "\n");
+
+            /*linelength_errors += "\tline= " + to_string(i + 1) + " length= " +
+                                 to_string(f_contents[i].length()) + "\n";*/
         }
     }
+
+
+    if(error_counter == 0)  {
+
+        node->clear_node();
+    }
+    node->add_attribute("errors", to_string(error_counter));
     xml_output +=  " errors = \"" + to_string(error_counter) + "\">\n";
     if (test_ran_successful) {
         xml_output += "No linelength errors found in file\n";
         //ToDo test_is_valid has to be removed, old code
         test_is_valid = true; // default is false
     }
-    xml_output += linelength_errors;
-    xml_output += "</linelength>";
-    current_xml.add_xml_data(XML_DATA::LINE_LENGTH, xml_output);
+  //  xml_output += linelength_errors;
+   // xml_output += "</linelength>";
+    current_xml.add_xml_data(xml_output);
+    //current_xml.inspection_data(current_xml.base_node, "linelength", error_counter, linelength_errors);
     return false;
 }

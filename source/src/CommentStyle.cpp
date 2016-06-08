@@ -50,6 +50,6 @@ bool CommentStyle::inspect(const std::string & file_contents)  {
     }
     xml_output += errors;
     xml_output += "</" + inspection_name + ">\n";
-    current_xml.add_xml_data(XML_DATA::COMMENT_STYLE, xml_output);
+    current_xml.add_xml_data(xml_output);
     return test_ran_successful;
 }

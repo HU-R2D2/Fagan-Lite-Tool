@@ -16,7 +16,7 @@
 //!   author is practically impossible.)
 //! -
 //!
-//! \copyright Copyright © 2016, HU University of Applied Sciences Utrecht.
+//! \copyright Copyright ï¿½ 2016, HU University of Applied Sciences Utrecht.
 //! All rights reserved.
 //!
 //! License: newBSD
@@ -166,7 +166,7 @@ namespace r2d2 {
             // Used to restore the default error stream in case of exceptions.
             OStreamRedirector osr{std::cerr, output};
             if (!check(this, file_contents)) {
-                current_xml.add_xml_data(XML_DATA::DOXYGEN, output.str());
+                current_xml.add_xml_data(output.str(), XML_DATA::DOXYGEN);
                 result = false;
             }
         }

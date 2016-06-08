@@ -54,7 +54,7 @@ int main(int argc, char *argv[]) {
     cout << "test everywhere" << endl;
 
     CommandLineOptions CLO(argc, argv);
-    cout << "CLO.cmdOptions[Commands::DIRECTORY] " << CLO.cmdOptions[Commands::DIRECTORY];
+    cout << "CLO.cmdOptions[Commands::DIRECTORY] " << CLO.cmdOptions[Commands::DIRECTORY] << endl;
     FileSearcher fs(CLO.cmdOptions[Commands::DIRECTORY]);
 
     FaganInspectionTest FIT(fs.get_files());

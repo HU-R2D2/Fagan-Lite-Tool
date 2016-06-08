@@ -64,7 +64,7 @@ bool InclusionGuards::inspect(const std::string &file_contents) {
     xml_output +=  " errors = \"" + to_string(error_counter) + "\">\n";
     if (test_ran_successful) {
         string no_errors = "No Inclusion Guard errors found in file\n";
-        current_xml.add_xml_data(XML_DATA::LINE_LENGTH, no_errors);
+        current_xml.add_xml_data(no_errors);
         test_is_valid = true; // default is false
     }
     else {
@@ -80,6 +80,6 @@ bool InclusionGuards::inspect(const std::string &file_contents) {
         }
     }
     xml_output += "</" + inspection_name + ">\n";
-    current_xml.add_xml_data(XML_DATA::INCLUSION_GUARD, xml_output);
+    current_xml.add_xml_data(xml_output);
     return test_ran_successful;
 }

@@ -25,18 +25,20 @@ void FaganInspectionTest::run_all_inspections(vector<string> fileLocations) {
     //FileSearcher files("E:/Development/HBO/Year2/BlokC/ThemaOpdracht7-8/Fagan-Lite-Tool/test/testfiles");
     for (std::string fpath : fileLocations) {
         XmlFileFormat xmlff{};
+        xmlff.add_base_node("file", fpath);
         std::vector<BaseTest *> tests;
 
         r2d2::DoxygenCheck dc{xmlff};
         tests.push_back(&dc);
 
         LineLength ll(xmlff);
+
         tests.push_back(&ll);
 
         CommentStyle cs(xmlff);
         tests.push_back(&cs);
 
-        xmlff.add_xml_data(XML_DATA::BEGIN, fpath);
+        xmlff.add_xml_data(fpath);
 
         // get file contents and store in string vector
         // vector<string> file_contents = get_file_data(fpath);
@@ -45,15 +47,15 @@ void FaganInspectionTest::run_all_inspections(vector<string> fileLocations) {
         for(const auto & test : tests) {
             test->inspect(f_content);
         }
-
+        std::cout << xmlff.data();
         if (fpath.find(".hpp") != fpath.npos) {
             InclusionGuards IG(xmlff);
             IG.inspect(f_content);
         }
 
-        xmlff.add_xml_data(XML_DATA::END);
+        xmlff.add_xml_data("</file>\n");
         for (string s : xmlff.get_xml_data()) {
-            cout << s << "\n";
+           // cout << s << "\n";
         }
     }
 }

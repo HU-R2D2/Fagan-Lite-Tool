@@ -5,7 +5,7 @@
 #include "../include/XmlFileFormat.hpp"
 #include <iostream>
 
-void XmlFileFormat::add_xml_data(XML_DATA xml_data_type, std::string data) {
+void XmlFileFormat::add_xml_data(std::string data, XML_DATA xml_data_type) {
     //ToDo Check for XML_DATA type and adjust current xml data about file to insert new data in the correct structure
     //ToDo fix tab indention in xml data (extra tab in each sub node)
     //ToDO Responsibility changed to inspections
@@ -16,22 +16,34 @@ void XmlFileFormat::add_xml_data(XML_DATA xml_data_type, std::string data) {
         case XML_DATA::END:
             xml_data.push_back("</file>\n");
             break;
-        case XML_DATA::LINE_LENGTH:
-            xml_data.push_back(data);
             break;
         case XML_DATA::DOXYGEN:
-            xml_data.push_back("<doxygen>\n" + data + "</doxygen>\n");
+            xml_data.push_back(data + "</doxygen>\n");
             break;
-        case XML_DATA::COMMENT_STYLE:
+        case XML_DATA::DEFAULT:
             xml_data.push_back(data);
-            break;
-        case XML_DATA::INCLUSION_GUARD:
-            xml_data.push_back(
-                    "<inclusion-guard>\n" + data + "</inclusion-guard>");
-            break;
     }
 }
-
+void XmlFileFormat::add_base_node(std::string xml_node_name, std::string node_value)    {
+    base_node = std::shared_ptr<xmlnode>(new xmlnode(xml_node_name, node_value));
+}
+void XmlFileFormat::inspection_data(std::shared_ptr<xmlnode> parent_node,std::string inspection_name, int errors_in_inspection)  {
+    std::shared_ptr<xmlnode> node = std::shared_ptr<xmlnode>(new xmlnode(parent_node));
+    node->fix(inspection_name);
+    node->add_attribute("errors", std::to_string(errors_in_inspection));
+}
+void XmlFileFormat::inspection_data(std::shared_ptr<xmlnode> parent_node,std::string inspection_name, int errors_in_inspection, std::string text)  {
+    std::shared_ptr<xmlnode> node = std::shared_ptr<xmlnode>(new xmlnode(parent_node));
+    node->fix(inspection_name);
+    node->add_attribute("errors", std::to_string(errors_in_inspection));
+    node->add_node_text(text);
+}
+/*void  XmlFileFormat::add_xml_node(std::shared_ptr<xmlnode> node) {
+    node->fix(inspection_name);
+}*/
+const std::string XmlFileFormat::data()  {
+    return base_node->get_all_nodes_data();
+}
 const std::vector<std::string> &XmlFileFormat::get_xml_data() {
     return xml_data;
 }
