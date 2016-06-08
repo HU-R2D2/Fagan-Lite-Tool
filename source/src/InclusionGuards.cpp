@@ -15,6 +15,9 @@ InclusionGuards::InclusionGuards(XmlFileFormat &current_xml) : BaseTest{
 
 bool InclusionGuards::inspect(const std::string &file_contents) {
     //ToDo change test and fix
+    const string inspection_name = "inclusion-guards";
+    string xml_output = "<" + inspection_name;
+
     string line;
     stringstream sstream1;
     sstream1.str(file_contents);
@@ -27,6 +30,8 @@ bool InclusionGuards::inspect(const std::string &file_contents) {
     bool ifndef = false;
     bool define = false;
     bool endif = false;
+
+    int error_counter = 0;
     for (uint16_t i = 0; i < f_contents.size(); i++) {
         if (!ifndef && f_contents[i].find("#ifndef") != f_contents[i].npos) {
             ifndef = true;
@@ -41,6 +46,7 @@ bool InclusionGuards::inspect(const std::string &file_contents) {
                   f_contents[i].find("struct") ||
                   f_contents[i].find("enum")) && !define) {
             test_ran_successful = false;
+            ++error_counter;
             break;
 
         }
@@ -55,7 +61,7 @@ bool InclusionGuards::inspect(const std::string &file_contents) {
     else {
         test_is_valid = false;
     }
-
+    xml_output +=  " errors = \"" + to_string(error_counter) + "\">\n";
     if (test_ran_successful) {
         string no_errors = "No Inclusion Guard errors found in file\n";
         current_xml.add_xml_data(XML_DATA::LINE_LENGTH, no_errors);
@@ -63,17 +69,17 @@ bool InclusionGuards::inspect(const std::string &file_contents) {
     }
     else {
         if (!ifndef) {
-            current_xml.add_xml_data(XML_DATA::INCLUSION_GUARD,
-                                     "\tInvalid ifndef found for Inclusion Guard!\n");
+            xml_output += "\tInvalid ifndef found for Inclusion Guard!\n";
+
         }
         else if (!define) {
-            current_xml.add_xml_data(XML_DATA::INCLUSION_GUARD,
-                                     "\tInvalid define found for Inclusion Guard!\n");
+            xml_output +=  "\tInvalid define found for Inclusion Guard!\n";
         }
         else if (!endif) {
-            current_xml.add_xml_data(XML_DATA::INCLUSION_GUARD,
-                                     "\tInvalid endif found for Inclusion Guard!\n");
+            xml_output = "\tInvalid endif found for Inclusion Guard!\n";
         }
     }
+    xml_output += "</" + inspection_name + ">\n";
+    current_xml.add_xml_data(XML_DATA::INCLUSION_GUARD, xml_output);
     return test_ran_successful;
 }
