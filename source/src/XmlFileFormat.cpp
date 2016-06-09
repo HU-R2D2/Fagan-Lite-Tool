@@ -33,20 +33,20 @@ void XmlFileFormat::add_xml_data(std::string data, XML_DATA xml_data_type) {
     }
 }
 void XmlFileFormat::add_base_node(std::string xml_node_name, std::string node_value)    {
-    base_node = std::shared_ptr<xmlnode>(new xmlnode(xml_node_name, node_value));
+    base_node = std::shared_ptr<XmlNode>(new XmlNode(xml_node_name, node_value));
 }
-void XmlFileFormat::inspection_data(std::shared_ptr<xmlnode> parent_node,std::string inspection_name, int errors_in_inspection)  {
-    std::shared_ptr<xmlnode> node = std::shared_ptr<xmlnode>(new xmlnode(parent_node));
+void XmlFileFormat::inspection_data(std::shared_ptr<XmlNode> parent_node,std::string inspection_name, int errors_in_inspection)  {
+    std::shared_ptr<XmlNode> node = std::shared_ptr<XmlNode>(new XmlNode(parent_node));
     node->fix(inspection_name);
     node->add_attribute("errors", std::to_string(errors_in_inspection));
 }
-void XmlFileFormat::inspection_data(std::shared_ptr<xmlnode> parent_node,std::string inspection_name, int errors_in_inspection, std::string text)  {
-    std::shared_ptr<xmlnode> node = std::shared_ptr<xmlnode>(new xmlnode(parent_node));
+void XmlFileFormat::inspection_data(std::shared_ptr<XmlNode> parent_node,std::string inspection_name, int errors_in_inspection, std::string text)  {
+    std::shared_ptr<XmlNode> node = std::shared_ptr<XmlNode>(new XmlNode(parent_node));
     node->fix(inspection_name);
     node->add_attribute("errors", std::to_string(errors_in_inspection));
     node->add_node_text(text);
 }
-/*void  XmlFileFormat::add_xml_node(std::shared_ptr<xmlnode> node) {
+/*void  XmlFileFormat::add_xml_node(std::shared_ptr<XmlNode> node) {
     node->fix(inspection_name);
 }*/
 const std::string XmlFileFormat::data()  {

@@ -56,12 +56,12 @@ void FaganInspectionTest::run_all_inspections(vector<string> fileLocations) {
         for(const auto & test : tests) {
             test->inspect(f_content);
         }
-        std::cout << xmlff.data();
+
         if (fpath.find(".hpp") != fpath.npos) {
             InclusionGuards IG(xmlff);
             IG.inspect(f_content);
         }
-
+        std::cout << xmlff.data();
         xmlff.add_xml_data("</file>\n");
         for (string s : xmlff.get_xml_data()) {
            // cout << s << "\n";

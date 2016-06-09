@@ -65,7 +65,7 @@ int main(int argc, char *argv[]) {
     string t_file;
 
     // Read template file
-    char c;
-    std::cin >> c;
+/*    char c;
+    std::cin >> c;*/
     return 0;
 }

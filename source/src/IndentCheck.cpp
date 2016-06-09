@@ -70,8 +70,8 @@ namespace r2d2 {
                         " is not according to the standard."
                         << " Encountered unexpected character \'"
                         << (*(i+1)) << "\'" << std::endl;
-                        current_xml.add_xml_data(XML_DATA::INDENTATION,
-                                                 stream.str());
+                        current_xml.add_xml_data(
+                                                 stream.str(), XML_DATA::INDENTATION);
 
                     }
                     break;
