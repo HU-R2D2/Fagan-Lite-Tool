@@ -164,14 +164,12 @@ namespace r2d2 {
                 {&DoxygenCheck::check_version, "version"},
         };
         bool result = true;
-
+        int total_errors_in_file=0;
         auto node = std::shared_ptr<XmlNode>(new XmlNode("doxygen"));
-        current_xml.base_node->add_child_node(node);
 
         for (auto &check : checks) {
             auto issue_node = std::shared_ptr<XmlNode>(
                     new XmlNode(check.label));
-            node->add_child_node(issue_node);
             int errors = 0;
 
             std::stringstream output;
@@ -186,6 +184,13 @@ namespace r2d2 {
                 result = false;
                 issue_node->add_attribute("errors", std::to_string(errors));
             }
+            if (errors) {
+                node->add_child_node(issue_node);
+                total_errors_in_file += errors;
+            }
+        }
+        if(total_errors_in_file) {
+            current_xml.base_node->add_child_node(node);
         }
 
         return result;
