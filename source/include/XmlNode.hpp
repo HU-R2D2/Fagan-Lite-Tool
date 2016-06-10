@@ -39,6 +39,4 @@ private:
     std::vector<std::shared_ptr<XmlNode>> children;
 
 };
-
-
 #endif //FAGAN_XmlNode_HPP

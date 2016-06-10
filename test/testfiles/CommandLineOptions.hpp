@@ -3,6 +3,7 @@
 //
 
 #ifndef FAGAN_COMMANDLINEOPTIONS_HPP
+#define FAGAN_COMMANDLINEOPTIONS_HPP
 #include <iostream>
 #include <vector>
 
@@ -17,4 +18,3 @@ private:
 };
 
 
-#endif //FAGAN_COMMANDLINEOPTIONS_HPP

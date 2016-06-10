@@ -22,8 +22,6 @@ bool LineLength::inspect(const std::string &file_contents) {
     //string xml_output = "<linelength";
     std::shared_ptr<XmlNode> node = std::shared_ptr<XmlNode>(new XmlNode("linelength"));
     current_xml.base_node->add_child_node(node);
-    //node->initialize();
-    //node->add_node_name("linelength");
     string xml_output;
     string line;
     stringstream sstream1;
