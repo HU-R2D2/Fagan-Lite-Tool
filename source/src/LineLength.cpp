@@ -20,9 +20,10 @@ bool LineLength::inspect(const std::string &file_contents) {
     //ToDo run the linelength test in here. For each line in the file, check the linelength.
     //ToDo if the linelength is greater than allowed, save linenumber and linelength.
     //string xml_output = "<linelength";
-    std::shared_ptr<XmlNode> node = std::shared_ptr<XmlNode>(new XmlNode(current_xml.base_node));
-    node->initialize();
-    node->add_node_name("linelength");
+    std::shared_ptr<XmlNode> node = std::shared_ptr<XmlNode>(new XmlNode("linelength"));
+    current_xml.base_node->add_child_node(node);
+    //node->initialize();
+    //node->add_node_name("linelength");
     string xml_output;
     string line;
     stringstream sstream1;
@@ -59,3 +60,5 @@ bool LineLength::inspect(const std::string &file_contents) {
     current_xml.add_xml_data(xml_output);
     return false;
 }
+
+

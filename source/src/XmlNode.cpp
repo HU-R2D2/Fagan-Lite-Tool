@@ -19,7 +19,9 @@ void XmlNode::initialize()   {
     }
     set_indentation_depth();
 }
+
 void XmlNode::add_child_node(std::shared_ptr<XmlNode> child) {
+    child->set_parent(shared_from_this());
     children.push_back(child);
 }
 void XmlNode::add_attribute(std::string attribute, std::string attribute_value)   {
@@ -69,4 +71,8 @@ std::string XmlNode::get_all_nodes_data()    {
     }
     xml_data += node_data.end;
     return xml_data;
+}
+
+void XmlNode::set_parent(std::weak_ptr<XmlNode> p) {
+    this->parent = p;
 }

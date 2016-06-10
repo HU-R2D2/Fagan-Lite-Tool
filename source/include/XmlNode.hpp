@@ -17,7 +17,7 @@ struct XmlData{
 class XmlNode : public std::enable_shared_from_this<XmlNode> {
 public:
 
-    XmlNode(std::string xml_node_name, std::string node_value);
+    XmlNode(std::string xml_node_name, std::string node_value = "");
     XmlNode(std::shared_ptr<XmlNode> parent);
 
     void initialize();
@@ -33,7 +33,7 @@ public:
 private:
     int calculate_node_depth();
     void set_indentation_depth();
-
+    void set_parent(std::weak_ptr<XmlNode>);
     XmlData node_data;
     std::weak_ptr<XmlNode> parent;
     std::vector<std::shared_ptr<XmlNode>> children;

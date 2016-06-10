@@ -24,7 +24,6 @@ void FaganInspectionTest::run_all_inspections(vector<string> fileLocations) {
 
     XmlFileFormat xmlff{};
     std::vector<BaseTest *> tests;
-    bool testbool = false;
     //FileSearcher files("E:/Development/HBO/Year2/BlokC/ThemaOpdracht7-8/Fagan-Lite-Tool/test/testfiles");
     for (std::string fpath : fileLocations) {
         XmlFileFormat xmlff;
@@ -58,11 +57,6 @@ void FaganInspectionTest::run_all_inspections(vector<string> fileLocations) {
             InclusionGuards IG(xmlff);
             IG.inspect(f_content);
         }
-        if(testbool)    {
-            xmlff.base_node->clear_node_data();
-
-        }
-        testbool = true;
         std::cout << xmlff.data();
         xmlff.add_xml_data("</file>\n");
         for (string s : xmlff.get_xml_data()) {
