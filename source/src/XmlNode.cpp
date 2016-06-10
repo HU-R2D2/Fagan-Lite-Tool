@@ -22,6 +22,7 @@ void XmlNode::initialize()   {
 
 void XmlNode::add_child_node(std::shared_ptr<XmlNode> child) {
     child->set_parent(shared_from_this());
+    child->set_indentation_depth();
     children.push_back(child);
 }
 void XmlNode::add_attribute(std::string attribute, std::string attribute_value)   {
@@ -37,7 +38,8 @@ void XmlNode::add_node_name(std::string node_name, std::string value)   {
     node_data.end     += "</" + node_name + ">\n";
 }
 void XmlNode::add_node_text(std::string text)    {
-    node_data.node_text += node_data.node_indentation + "\t" + text;
+    //node_data.node_indentation + "\t" +
+    node_data.node_text.push_back(text);
 }
 int XmlNode::calculate_node_depth() {
     int indent = 0;
@@ -60,15 +62,20 @@ void XmlNode::clear_node_data()   {
     for(auto child : children)  {
         child->clear_node_data();
         child->node_data.node_indentation = child->node_data.node_depth = 0;
-        child->node_data.begin = child->node_data.end = child->node_data.node_text = "";
+        child->node_data.begin = child->node_data.end = "";
+        child->node_data.node_text.clear();
     }
     node_data. node_indentation = node_data.node_depth = 0;
-    node_data.begin = node_data.end = node_data.node_text = "";
+    node_data.begin = node_data.end;
+    node_data.node_text.clear();
 }
 
 std::string XmlNode::get_all_nodes_data()    {
     std::string xml_data = node_data.node_indentation + node_data.begin;
-    xml_data += node_data.node_text;
+    for(auto str : node_data.node_text) {
+        xml_data += node_data.node_indentation + "\t" + str;
+    }
+
     for(auto child : children)  {
         xml_data += child->get_all_nodes_data();
     }

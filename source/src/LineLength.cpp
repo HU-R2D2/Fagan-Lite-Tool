@@ -21,7 +21,8 @@ bool LineLength::inspect(const std::string &file_contents) {
     //ToDo if the linelength is greater than allowed, save linenumber and linelength.
     //string xml_output = "<linelength";
     std::shared_ptr<XmlNode> node = std::shared_ptr<XmlNode>(new XmlNode("linelength"));
-    current_xml.base_node->add_child_node(node);
+
+
     string xml_output;
     string line;
     stringstream sstream1;
@@ -44,16 +45,17 @@ bool LineLength::inspect(const std::string &file_contents) {
         }
     }
 
-    if(error_counter == 0)  {
 
-        node->clear_node_data();
-    }
     node->add_attribute("errors", to_string(error_counter));
     xml_output +=  " errors = \"" + to_string(error_counter) + "\">\n";
     if (test_ran_successful) {
         xml_output += "No linelength errors found in file\n";
         //ToDo test_is_valid has to be removed, old code
         test_is_valid = true; // default is false
+    }
+
+    if(error_counter > 0)  {
+        current_xml.base_node->add_child_node(node);
     }
     current_xml.add_xml_data(xml_output);
     return false;

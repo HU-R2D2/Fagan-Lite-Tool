@@ -11,7 +11,7 @@
 struct XmlData{
     std::string node_indentation;
     std::string begin, end;
-    std::string node_text;
+    std::vector<std::string> node_text;
     uint8_t node_depth = 0;
 };
 class XmlNode : public std::enable_shared_from_this<XmlNode> {

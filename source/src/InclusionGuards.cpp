@@ -19,7 +19,7 @@ bool InclusionGuards::inspect(const std::string &file_contents) {
     string xml_output = "<" + inspection_name;
 
     std::shared_ptr<XmlNode> node = std::shared_ptr<XmlNode>(new XmlNode(current_xml.base_node));
-    node->initialize();
+    //node->initialize();
     node->add_node_name("inclusion-guards");
     string line;
     stringstream sstream1;
@@ -50,7 +50,6 @@ bool InclusionGuards::inspect(const std::string &file_contents) {
             test_ran_successful = false;
             ++error_counter;
             break;
-
         }
     }
     if (define && (f_contents[f_contents.size() - 1].find("#endif") !=
@@ -82,12 +81,12 @@ bool InclusionGuards::inspect(const std::string &file_contents) {
             node->add_node_text("Invalid endif found for Inclusion Guard!\n");
         }
     }
-    if(error_counter == 0)  {
 
-        node->clear_node_data();
-    }
     node->add_attribute("errors", to_string(error_counter));
     xml_output += "</" + inspection_name + ">\n";
     current_xml.add_xml_data(xml_output);
+    if(error_counter > 0)  {
+        current_xml.base_node->add_child_node(node);
+    }
     return test_ran_successful;
 }
