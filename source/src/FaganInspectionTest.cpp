@@ -37,8 +37,8 @@ void FaganInspectionTest::run_all_inspections(vector<string> fileLocations) {
         r2d2::DoxygenCheck dc{xmlff};
         tests.push_back(&dc);
 
-        //r2d2::IndentCheck ic{xmlff};
-       // tests.push_back(&ic);
+        r2d2::IndentCheck ic{xmlff};
+        tests.push_back(&ic);
 
         LineLength ll(xmlff);
         tests.push_back(&ll);
