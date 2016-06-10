@@ -49,28 +49,40 @@ struct XmlData{
     std::vector<std::string> node_text;
     uint8_t node_depth = 0;
 };
+
+//@brief Contains xml data and can be linked to other xml nodes to form an xml tree.
 class XmlNode : public std::enable_shared_from_this<XmlNode> {
 public:
     //! @brief Constructs a XmlNode with a node name and the node name value.
-    //! @param xml_node_name Name of this node
-    //! @param xml_node_name value of this node name
+    //! @param xml_node_name Name of this node.
+    //! @param xml_node_name value of this node name.
     XmlNode(std::string xml_node_name, std::string node_value = "");
 
-    //! @brief Constructs a XmlNode with a node name and the node name value.
-    //! @param xml_node_name Name of this node
-    //! @param xml_node_name value of this node name
+    //! @brief Adds a node as a child node to the current node.
+    //! @param std::shared_ptr<XmlNode> child Pointer to the child node.
     void add_child_node(std::shared_ptr<XmlNode> child);
-    void add_attribute(std::string attribute, std::string attribute_value);
-    void add_node_name(std::string node_name, std::string value = "");
+
+    //! @brief Adds text to the node.
+    //! @param std::string text Text to be added.
     void add_node_text(std::string text);
+    //! @brief Adds an attribute and a linked value to the current node.
+    //! @param std::string attribute The attribute name.
+    //! @param std::string attribute_value The attribute value.
+    void add_attribute(std::string attribute, std::string attribute_value);
 
     //ToDo method should be renamed to clear_node and clear_node has to be renamed to something else.
+    //! @brief Clears all the node data and the data of its subsequent childs aswell.
     void clear_node_data();
+
+    //! @brief Returns all XML data within the XML node tree.
+    //! @return std::string Containing all XML data.
     std::string get_all_nodes_data();
 private:
     int calculate_node_depth();
     void set_indentation_depth();
     void set_parent(std::weak_ptr<XmlNode>);
+    void add_node_name(std::string xml_node_name, std::string node_value = "");
+
     XmlData node_data;
     std::weak_ptr<XmlNode> parent;
     std::vector<std::shared_ptr<XmlNode>> children;

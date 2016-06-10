@@ -5,6 +5,7 @@
 #include "../include/XmlNode.hpp"
 
 XmlNode::XmlNode(std::string xml_node_name, std::string node_value)  {
+
     add_node_name(xml_node_name, node_value);
     node_data.node_depth = 0;
 }
