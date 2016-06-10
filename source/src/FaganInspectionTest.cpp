@@ -23,11 +23,13 @@ void FaganInspectionTest::run_all_inspections(vector<string> fileLocations) {
     //ToDo get all files and run all inspections on each file
 
     XmlFileFormat xmlff{};
+    auto root = std::shared_ptr<XmlNode>(new XmlNode("root"));
     std::vector<BaseTest *> tests;
     //FileSearcher files("E:/Development/HBO/Year2/BlokC/ThemaOpdracht7-8/Fagan-Lite-Tool/test/testfiles");
     for (std::string fpath : fileLocations) {
         XmlFileFormat xmlff;
         shared_ptr<XmlNode> file_node = shared_ptr<XmlNode>(new XmlNode("file", fpath));
+        root->add_child_node(file_node);
         file_node->initialize();
         xmlff.base_node = file_node;
         /*xmlff.add_base_node("file", fpath);*/
@@ -57,12 +59,13 @@ void FaganInspectionTest::run_all_inspections(vector<string> fileLocations) {
             InclusionGuards IG(xmlff);
             IG.inspect(f_content);
         }
-        std::cout << xmlff.data();
         xmlff.add_xml_data("</file>\n");
         for (string s : xmlff.get_xml_data()) {
            // cout << s << "\n";
         }
     }
+    xmlff.base_node = root;
+    std::cout << xmlff.data();
 }
 
 std::vector<std::string> FaganInspectionTest::get_file_data(string file_path) {
