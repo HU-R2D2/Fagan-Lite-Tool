@@ -73,6 +73,9 @@ public:
     //!
     //! @return The lines making up the xml file.
     const std::vector<std::string> &get_xml_data();
+
+    XmlFileFormat();
+
     std::shared_ptr<XmlNode> base_node;
 private:
 
