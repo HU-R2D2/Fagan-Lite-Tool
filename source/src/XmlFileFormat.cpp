@@ -36,3 +36,7 @@ const std::string XmlFileFormat::data()  {
 const std::vector<std::string> &XmlFileFormat::get_xml_data() {
     return xml_data;
 }
+
+XmlFileFormat::XmlFileFormat() : base_node{new XmlNode("root")}{
+
+}
