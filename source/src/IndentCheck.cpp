@@ -61,7 +61,6 @@ namespace r2d2 {
         unsigned  int errors = 0;
         // Each new scope usually gets a new indent; keep track of it.
         auto node = std::shared_ptr<XmlNode>(new XmlNode("Indentation"));
-        current_xml.base_node->add_child_node(node);
 
         unsigned int scope_level = 0;
         for (auto i = file_contents.begin(); i < file_contents.end(); ++i) {
@@ -92,6 +91,9 @@ namespace r2d2 {
             }
         }
         node->add_attribute("errors", std::to_string(errors));
+        if (errors) {
+            current_xml.base_node->add_child_node(node);
+        }
         return false;
     }
 
