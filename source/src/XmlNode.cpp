@@ -69,13 +69,15 @@ void XmlNode::clear_node_data()   {
 std::string XmlNode::get_all_nodes_data()    {
     set_indentation_depth();
     std::string xml_data = node_data.node_indentation + node_data.begin;
+    //xml_data += "<![CDATA[";
     for(auto str : node_data.node_text) {
         xml_data += node_data.node_indentation + "\t" + str;
     }
-
+    //xml_data += " ]]>";
     for(auto child : children)  {
         xml_data += child->get_all_nodes_data();
     }
+
     xml_data += node_data.node_indentation + node_data.end;
     return xml_data;
 }
