@@ -30,7 +30,7 @@ void FaganInspectionTest::run_all_inspections(vector<string> fileLocations) {
         XmlFileFormat xmlff;
         shared_ptr<XmlNode> file_node = shared_ptr<XmlNode>(new XmlNode("file", fpath));
         root->add_child_node(file_node);
-        file_node->initialize();
+
         xmlff.base_node = file_node;
         /*xmlff.add_base_node("file", fpath);*/
         std::vector<BaseTest *> tests;

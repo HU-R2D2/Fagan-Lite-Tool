@@ -18,9 +18,9 @@ bool InclusionGuards::inspect(const std::string &file_contents) {
     const string inspection_name = "inclusion-guards";
     string xml_output = "<" + inspection_name;
 
-    std::shared_ptr<XmlNode> node = std::shared_ptr<XmlNode>(new XmlNode(current_xml.base_node));
+    std::shared_ptr<XmlNode> node = std::shared_ptr<XmlNode>(new XmlNode("inclusion-guards"));
     //node->initialize();
-    node->add_node_name("inclusion-guards");
+    //node->add_node_name("inclusion-guards");
     string line;
     stringstream sstream1;
     sstream1.str(file_contents);

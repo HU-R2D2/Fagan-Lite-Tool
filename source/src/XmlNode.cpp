@@ -9,20 +9,12 @@ XmlNode::XmlNode(std::string xml_node_name, std::string node_value)  {
     node_data.node_depth = 0;
 }
 
-XmlNode::XmlNode(std::shared_ptr<XmlNode> parent) :
-parent{parent}  {}
-
-void XmlNode::initialize()   {
-    std::shared_ptr<XmlNode> p = parent.lock();
-    if(p)   {
-        p->add_child_node(shared_from_this());
-    }
-    set_indentation_depth();
-}
-
 void XmlNode::add_child_node(std::shared_ptr<XmlNode> child) {
     child->set_parent(shared_from_this());
-    child->set_indentation_depth();
+    //child->set_indentation_depth();
+/*    for(auto ch : child->children)  {
+        ch->set_indentation_depth();
+    }*/
     children.push_back(child);
 }
 void XmlNode::add_attribute(std::string attribute, std::string attribute_value)   {
@@ -56,6 +48,9 @@ void XmlNode::set_indentation_depth()   {
     while(n_depth--) {
         node_data.node_indentation += "\t";
     }
+    for(auto ch : children) {
+        ch->set_indentation_depth();
+    }
 }
 //ToDo method should be renamed to clear_node and clear_node has to be renamed to something else.
 void XmlNode::clear_node_data()   {
@@ -71,6 +66,7 @@ void XmlNode::clear_node_data()   {
 }
 
 std::string XmlNode::get_all_nodes_data()    {
+    set_indentation_depth();
     std::string xml_data = node_data.node_indentation + node_data.begin;
     for(auto str : node_data.node_text) {
         xml_data += node_data.node_indentation + "\t" + str;
@@ -85,5 +81,5 @@ std::string XmlNode::get_all_nodes_data()    {
 
 void XmlNode::set_parent(std::weak_ptr<XmlNode> p) {
     this->parent = p;
-    this->set_indentation_depth();
+    //this->set_indentation_depth();
 }
