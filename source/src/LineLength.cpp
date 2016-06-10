@@ -47,7 +47,7 @@ bool LineLength::inspect(const std::string &file_contents) {
 
     if(error_counter == 0)  {
 
-        node->clear_node();
+        node->clear_node_data();
     }
     node->add_attribute("errors", to_string(error_counter));
     xml_output +=  " errors = \"" + to_string(error_counter) + "\">\n";

@@ -63,7 +63,7 @@ public:
     //! @param data
     void add_xml_data(std::string data = "", XML_DATA xml_data_type = XML_DATA::DEFAULT);
 
-    void add_base_node(std::string xml_node_name, std::string type_name);
+    //void add_base_node(std::string xml_node_name, std::string type_name);
     void inspection_data(std::shared_ptr<XmlNode> node,std::string inspection_name, int errors_in_inspection);
     void inspection_data(std::shared_ptr<XmlNode> node,std::string inspection_name, int errors_in_inspection, std::string);
     void add_xml_node(std::shared_ptr<XmlNode> node);

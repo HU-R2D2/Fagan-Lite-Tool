@@ -24,33 +24,30 @@ void FaganInspectionTest::run_all_inspections(vector<string> fileLocations) {
 
     XmlFileFormat xmlff{};
     std::vector<BaseTest *> tests;
-
+    bool testbool = false;
     //FileSearcher files("E:/Development/HBO/Year2/BlokC/ThemaOpdracht7-8/Fagan-Lite-Tool/test/testfiles");
     for (std::string fpath : fileLocations) {
-    XmlFileFormat xmlff{};
-    xmlff.add_base_node("file", fpath);
-    std::vector<BaseTest *> tests;
-    r2d2::DoxygenCheck dc{xmlff};
-    tests.push_back(&dc);
+        XmlFileFormat xmlff;
+        shared_ptr<XmlNode> file_node = shared_ptr<XmlNode>(new XmlNode("file", fpath));
+        file_node->initialize();
+        xmlff.base_node = file_node;
+        /*xmlff.add_base_node("file", fpath);*/
+        std::vector<BaseTest *> tests;
+        r2d2::DoxygenCheck dc{xmlff};
+        tests.push_back(&dc);
 
-    //r2d2::IndentCheck ic{xmlff};
-   // tests.push_back(&ic);
+        //r2d2::IndentCheck ic{xmlff};
+       // tests.push_back(&ic);
 
-    LineLength ll(xmlff);
-    tests.push_back(&ll);
+        LineLength ll(xmlff);
+        tests.push_back(&ll);
 
-    CommentStyle cs(xmlff);
-    tests.push_back(&cs);
-
-/*    //FileSearcher files("E:/Development/HBO/Year2/BlokC/ThemaOpdracht7-8/Fagan-Lite-Tool/test/testfiles");
-    for (std::string fpath : fileLocations) {
->>>>>>> 9012e3d3039f0ddb1d00b0994d59d511da72efba*/
+        CommentStyle cs(xmlff);
+        tests.push_back(&cs);
 
 
         xmlff.add_xml_data(fpath);
 
-        // get file contents and store in string vector
-        // vector<string> file_contents = get_file_data(fpath);
         string f_content = get_file_contents(fpath.c_str());
 
         for(const auto & test : tests) {
@@ -61,6 +58,11 @@ void FaganInspectionTest::run_all_inspections(vector<string> fileLocations) {
             InclusionGuards IG(xmlff);
             IG.inspect(f_content);
         }
+        if(testbool)    {
+            xmlff.base_node->clear_node_data();
+
+        }
+        testbool = true;
         std::cout << xmlff.data();
         xmlff.add_xml_data("</file>\n");
         for (string s : xmlff.get_xml_data()) {
