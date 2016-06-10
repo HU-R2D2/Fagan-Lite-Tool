@@ -159,9 +159,9 @@ namespace r2d2 {
             std::function<bool(DoxygenCheck *, const std::string &)> function;
             std::string label;
         } checks[] = {
-                {&DoxygenCheck::check_author,  "Author"},
-                {&DoxygenCheck::check_brief,   "Brief"},
-                {&DoxygenCheck::check_version, "Version"},
+                {&DoxygenCheck::check_author,  "author"},
+                {&DoxygenCheck::check_brief,   "brief"},
+                {&DoxygenCheck::check_version, "version"},
         };
         bool result = true;
 

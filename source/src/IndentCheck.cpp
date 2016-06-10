@@ -57,7 +57,12 @@ namespace r2d2 {
     bool IndentCheck::inspect(const std::string &file_contents) {
         // Keeps track of the line number for a clearer error message.
         unsigned int line = 1;
+
+        unsigned  int errors = 0;
         // Each new scope usually gets a new indent; keep track of it.
+        auto node = std::shared_ptr<XmlNode>(new XmlNode("Indentation"));
+        current_xml.base_node->add_child_node(node);
+
         unsigned int scope_level = 0;
         for (auto i = file_contents.begin(); i < file_contents.end(); ++i) {
             char c = *i;
@@ -70,9 +75,8 @@ namespace r2d2 {
                         " is not according to the standard."
                         << " Encountered unexpected character \'"
                         << (*(i+1)) << "\'" << std::endl;
-                        current_xml.add_xml_data(
-                                                 stream.str(), XML_DATA::INDENTATION);
-
+                        node->add_node_text(stream.str());
+                        ++errors;
                     }
                     break;
                 case '{': // }
@@ -87,6 +91,7 @@ namespace r2d2 {
                     break;
             }
         }
+        node->add_attribute("errors", std::to_string(errors));
         return false;
     }
 
