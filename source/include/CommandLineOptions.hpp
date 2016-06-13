@@ -47,26 +47,40 @@
 #include <iostream>
 #include <vector>
 #include <map>
-
+//! \brief Contains Commands as an enum for easy and readable access.
+//!         The values that are linked to the enums,
+//!         can be obtained by calling the getCommand method from CommandLineOptions.
+//!
 enum class Commands : uint16_t {
     INSPECTIONS,
     DIRECTORY,
 };
-
+//! \brief This class contains all of the valid command line options,
+//!         that are passed through its ctor as an argument list.
+//!
 class CommandLineOptions {
 public:
-
+    //! \brief The constructor call is required,
+    //!         because it validates all the program arguments that are passed in
+    //!         by its second argument.
+    //!         These cmd line options can then be used by other classes.
+    //! \param argc The amount of command arguments that are passed in by its second argument.
+    //! \param argv The array, containing all of the arguments that are to be validated and,
+    //!             if validated correctly also added as a valid option.
     CommandLineOptions(int argc, char* argv[]);
-    CommandLineOptions()= default;
-    std::string getCommand(unsigned int i);
 
+    //! \brief Contains a link between the Commands and their respective string values,
+    //          that are past in as program arguments.
+    //!         By passing in a command, a cmd option can be retrieved (if one is available).
+    //! @warning WILL BE CHANGED TO PRIVATE, AND METHOD WILL BE AVAILABLE.
     std::map<Commands, std::string> cmdOptions; // development only
 private:
 
-    void checkInspections();
+    void checkInspections();    // Check in the cmds argument list,
+                                // for arguments that are linked to inspections.
 
-    bool checkDirectory();
-
+    bool checkDirectory();      //  Check in the cmds argument list,
+                                //  for arguments that are linked to the directories.
     std::vector<std::string> cmds;
 
 };
