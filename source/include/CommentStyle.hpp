@@ -1,7 +1,7 @@
 //! \addtogroup 24 Fagan lite tool
 //!
 //! \file   CommentStyle.hpp
-//! \author Ferdi Stoelti
+//! \author Ferdi Stoeltie
 //! \date   06-06-16
 //! \brief  Makes sure the comment style is conform the specified standard.
 //!
@@ -15,7 +15,7 @@
 //! single line comments, or with a preprocessor directive. Though the former
 //! is more appalling since comments most likely don't contain compilable code.
 //!
-//! \copyright Copyright © 2016, HU University of Applied Sciences Utrecht.
+//! \copyright Copyright ï¿½ 2016, HU University of Applied Sciences Utrecht.
 //! All rights reserved.
 //!
 //! License: newBSD

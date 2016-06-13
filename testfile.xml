@@ -1,0 +1,2024 @@
+<?xml version="1.0" encoding="utf-8"?><root xml:space="preserve">
+	<file file_name="E:\Development\HBO\Year2\BlokC\ThemaOpdracht7-8\adt\source/include/Acceleration.hpp">
+		<doxygen>
+			<author errors="1">
+				No authors are specified in the file.
+			</author>
+			<brief errors="2">
+				Doxygen comment on line(s) 1 through 1 does not contain a brief description.
+				Doxygen comment on line(s) 1 through 1 does not contain a brief description.
+			</brief>
+			<version errors="1">
+				A file should have 1 version specified; no more no less.
+			</version>
+		</doxygen>
+		<Indentation errors="37">
+			Indentation on line 52 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 53 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 54 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 55 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 56 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 57 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 58 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 59 is not according to the standard. Encountered unexpected character 'A'
+			Indentation on line 60 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 61 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 62 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 63 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 64 is not according to the standard. Encountered unexpected character 'A'
+			Indentation on line 66 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 67 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 68 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 69 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 70 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 71 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 72 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 73 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 75 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 76 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 77 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 78 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 79 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 80 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 81 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 84 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 85 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 86 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 87 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 88 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 89 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 91 is not according to the standard. Encountered unexpected character ';'
+			Indentation on line 92 is not according to the standard. Encountered unexpected character 'A'
+			Indentation on line 94 is not according to the standard. Encountered unexpected character '#'
+		</Indentation>
+		<linelength errors="18">
+			line= 2 length= 232
+			line= 3 length= 248
+			line= 4 length= 218
+			line= 5 length= 218
+			line= 6 length= 246
+			line= 7 length= 230
+			line= 8 length= 141
+			line= 22 length= 146
+			line= 23 length= 130
+			line= 24 length= 208
+			line= 25 length= 218
+			line= 28 length= 81
+			line= 29 length= 82
+			line= 30 length= 83
+			line= 32 length= 83
+			line= 35 length= 81
+			line= 36 length= 83
+			line= 75 length= 81
+		</linelength>
+		<inclusion-guards errors="2">
+			Invalid ifndef found for Inclusion Guard!
+		</inclusion-guards>
+	</file>
+	<file file_name="E:\Development\HBO\Year2\BlokC\ThemaOpdracht7-8\adt\source/include/ADT_Base.hpp">
+		<Indentation errors="120">
+			Indentation on line 41 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 42 is not according to the standard. Encountered unexpected character '{'
+			Indentation on line 43 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 44 is not according to the standard. Encountered unexpected character 'd'
+			Indentation on line 45 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 46 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 47 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 48 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 49 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 50 is not according to the standard. Encountered unexpected character 'A'
+			Indentation on line 51 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 52 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 53 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 54 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 55 is not according to the standard. Encountered unexpected character 'A'
+			Indentation on line 57 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 58 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 59 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 60 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 61 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 62 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 63 is not according to the standard. Encountered unexpected character 'v'
+			Indentation on line 64 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 67 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 68 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 69 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 70 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 71 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 72 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 73 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 76 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 77 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 78 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 79 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 80 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 81 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 82 is not according to the standard. Encountered unexpected character 'v'
+			Indentation on line 83 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 86 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 87 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 88 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 89 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 90 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 91 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 92 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 95 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 96 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 97 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 98 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 99 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 100 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 101 is not according to the standard. Encountered unexpected character 'v'
+			Indentation on line 102 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 105 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 106 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 107 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 108 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 109 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 110 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 111 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 114 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 115 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 116 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 117 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 118 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 119 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 120 is not according to the standard. Encountered unexpected character 'v'
+			Indentation on line 121 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 124 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 125 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 126 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 127 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 128 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 129 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 130 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 131 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 133 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 136 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 137 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 138 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 139 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 140 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 141 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 142 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 143 is not according to the standard. Encountered unexpected character 'v'
+			Indentation on line 145 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 148 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 149 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 150 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 151 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 152 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 153 is not according to the standard. Encountered unexpected character 'd'
+			Indentation on line 154 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 155 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 157 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 160 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 161 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 162 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 163 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 164 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 165 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 166 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 167 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 168 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 172 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 173 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 174 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 175 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 176 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 177 is not according to the standard. Encountered unexpected character 'b'
+			Indentation on line 178 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 181 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 182 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 183 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 184 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 185 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 186 is not according to the standard. Encountered unexpected character 'b'
+			Indentation on line 187 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 190 is not according to the standard. Encountered unexpected character ';'
+			Indentation on line 192 is not according to the standard. Encountered unexpected character '#'
+		</Indentation>
+		<linelength errors="10">
+			line= 13 length= 146
+			line= 14 length= 130
+			line= 15 length= 208
+			line= 16 length= 218
+			line= 19 length= 81
+			line= 20 length= 82
+			line= 21 length= 83
+			line= 23 length= 83
+			line= 26 length= 81
+			line= 27 length= 83
+		</linelength>
+		<inclusion-guards errors="2">
+			Invalid ifndef found for Inclusion Guard!
+		</inclusion-guards>
+	</file>
+	<file file_name="E:\Development\HBO\Year2\BlokC\ThemaOpdracht7-8\adt\source/include/Angle.hpp">
+		<doxygen>
+			<author errors="1">
+				No authors are specified in the file.
+			</author>
+			<brief errors="2">
+				Doxygen comment on line(s) 1 through 1 does not contain a brief description.
+				Doxygen comment on line(s) 1 through 1 does not contain a brief description.
+			</brief>
+			<version errors="1">
+				A file should have 1 version specified; no more no less.
+			</version>
+		</doxygen>
+		<Indentation errors="2">
+			Indentation on line 48 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 62 is not according to the standard. Encountered unexpected character 'p'
+		</Indentation>
+		<linelength errors="23">
+			line= 2 length= 232
+			line= 3 length= 248
+			line= 4 length= 216
+			line= 5 length= 216
+			line= 6 length= 246
+			line= 7 length= 230
+			line= 22 length= 146
+			line= 23 length= 130
+			line= 24 length= 208
+			line= 25 length= 218
+			line= 28 length= 81
+			line= 29 length= 82
+			line= 30 length= 83
+			line= 32 length= 83
+			line= 35 length= 81
+			line= 36 length= 83
+			line= 66 length= 87
+			line= 72 length= 85
+			line= 75 length= 84
+			line= 77 length= 83
+			line= 101 length= 85
+			line= 104 length= 84
+			line= 131 length= 83
+		</linelength>
+	</file>
+	<file file_name="E:\Development\HBO\Year2\BlokC\ThemaOpdracht7-8\adt\source/include/Attitude.hpp">
+		<doxygen>
+			<brief errors="1">
+				Doxygen comment on line(s) 1 through 36 does not contain a brief description.
+			</brief>
+		</doxygen>
+		<Indentation errors="5">
+			Indentation on line 55 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 56 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 59 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 143 is not according to the standard. Encountered unexpected character ';'
+			Indentation on line 145 is not according to the standard. Encountered unexpected character '#'
+		</Indentation>
+		<linelength errors="9">
+			line= 19 length= 81
+			line= 20 length= 81
+			line= 29 length= 81
+			line= 31 length= 81
+			line= 36 length= 81
+			line= 103 length= 81
+			line= 111 length= 81
+			line= 118 length= 81
+			line= 142 length= 81
+		</linelength>
+	</file>
+	<file file_name="E:\Development\HBO\Year2\BlokC\ThemaOpdracht7-8\adt\source/include/Box.hpp">
+		<doxygen>
+			<author errors="1">
+				No authors are specified in the file.
+			</author>
+			<brief errors="2">
+				Doxygen comment on line(s) 1 through 1 does not contain a brief description.
+				Doxygen comment on line(s) 1 through 1 does not contain a brief description.
+			</brief>
+			<version errors="1">
+				A file should have 1 version specified; no more no less.
+			</version>
+		</doxygen>
+		<Indentation errors="81">
+			Indentation on line 47 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 48 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 49 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 50 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 51 is not according to the standard. Encountered unexpected character 'B'
+			Indentation on line 52 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 53 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 54 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 55 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 56 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 57 is not according to the standard. Encountered unexpected character 'B'
+			Indentation on line 59 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 60 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 61 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 62 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 63 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 64 is not according to the standard. Encountered unexpected character 'B'
+			Indentation on line 66 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 67 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 68 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 69 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 70 is not according to the standard. Encountered unexpected character 'b'
+			Indentation on line 72 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 73 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 74 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 75 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 76 is not according to the standard. Encountered unexpected character 'b'
+			Indentation on line 78 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 79 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 80 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 81 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 82 is not according to the standard. Encountered unexpected character 'b'
+			Indentation on line 84 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 85 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 86 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 87 is not according to the standard. Encountered unexpected character 'C'
+			Indentation on line 89 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 90 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 91 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 92 is not according to the standard. Encountered unexpected character 'C'
+			Indentation on line 94 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 95 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 96 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 97 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 98 is not according to the standard. Encountered unexpected character 'B'
+			Indentation on line 100 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 101 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 102 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 103 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 104 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 105 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 106 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 107 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 108 is not according to the standard. Encountered unexpected character 'B'
+			Indentation on line 110 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 111 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 112 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 113 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 115 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 116 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 117 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 118 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 119 is not according to the standard. Encountered unexpected character 'B'
+			Indentation on line 121 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 122 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 123 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 124 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 125 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 126 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 128 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 129 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 130 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 131 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 132 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 133 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 135 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 136 is not according to the standard. Encountered unexpected character 'C'
+			Indentation on line 137 is not according to the standard. Encountered unexpected character 'C'
+			Indentation on line 138 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 139 is not according to the standard. Encountered unexpected character ';'
+			Indentation on line 141 is not according to the standard. Encountered unexpected character '#'
+		</Indentation>
+		<linelength errors="18">
+			line= 2 length= 232
+			line= 3 length= 248
+			line= 4 length= 218
+			line= 5 length= 218
+			line= 6 length= 246
+			line= 7 length= 230
+			line= 8 length= 141
+			line= 22 length= 146
+			line= 23 length= 130
+			line= 24 length= 208
+			line= 25 length= 218
+			line= 28 length= 81
+			line= 29 length= 82
+			line= 30 length= 83
+			line= 32 length= 83
+			line= 35 length= 81
+			line= 36 length= 83
+			line= 48 length= 81
+		</linelength>
+	</file>
+	<file file_name="E:\Development\HBO\Year2\BlokC\ThemaOpdracht7-8\adt\source/include/Coordinate.hpp">
+		<doxygen>
+			<brief errors="1">
+				Doxygen comment on line(s) 1 through 34 does not contain a brief description.
+			</brief>
+		</doxygen>
+		<Indentation errors="105">
+			Indentation on line 45 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 47 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 50 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 51 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 52 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 53 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 54 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 56 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 57 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 58 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 60 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 61 is not according to the standard. Encountered unexpected character 'L'
+			Indentation on line 62 is not according to the standard. Encountered unexpected character 'L'
+			Indentation on line 63 is not according to the standard. Encountered unexpected character 'L'
+			Indentation on line 65 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 66 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 67 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 68 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 69 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 70 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 71 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 72 is not according to the standard. Encountered unexpected character 'C'
+			Indentation on line 74 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 75 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 76 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 77 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 78 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 79 is not according to the standard. Encountered unexpected character 'C'
+			Indentation on line 81 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 82 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 83 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 84 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 85 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 86 is not according to the standard. Encountered unexpected character 'C'
+			Indentation on line 88 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 89 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 90 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 91 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 92 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 93 is not according to the standard. Encountered unexpected character 'C'
+			Indentation on line 95 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 96 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 97 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 98 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 99 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 100 is not according to the standard. Encountered unexpected character 'C'
+			Indentation on line 102 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 103 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 104 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 105 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 106 is not according to the standard. Encountered unexpected character 'C'
+			Indentation on line 108 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 109 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 110 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 111 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 112 is not according to the standard. Encountered unexpected character 'C'
+			Indentation on line 114 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 115 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 116 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 117 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 118 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 120 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 121 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 123 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 124 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 125 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 126 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 127 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 128 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 129 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 130 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 131 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 132 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 133 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 134 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 136 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 137 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 138 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 139 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 140 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 141 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 142 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 143 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 144 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 145 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 146 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 147 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 148 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 149 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 150 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 151 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 153 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 154 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 155 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 156 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 158 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 159 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 160 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 161 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 163 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 164 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 165 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 166 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 167 is not according to the standard. Encountered unexpected character ';'
+			Indentation on line 169 is not according to the standard. Encountered unexpected character '#'
+		</Indentation>
+		<linelength errors="24">
+			line= 22 length= 83
+			line= 26 length= 82
+			line= 27 length= 83
+			line= 28 length= 84
+			line= 30 length= 84
+			line= 33 length= 82
+			line= 34 length= 84
+			line= 57 length= 84
+			line= 66 length= 81
+			line= 77 length= 83
+			line= 102 length= 82
+			line= 108 length= 82
+			line= 114 length= 87
+			line= 126 length= 85
+			line= 129 length= 89
+			line= 136 length= 86
+			line= 140 length= 83
+			line= 148 length= 92
+			line= 153 length= 85
+			line= 155 length= 86
+			line= 158 length= 85
+			line= 160 length= 86
+			line= 163 length= 85
+			line= 165 length= 86
+		</linelength>
+	</file>
+	<file file_name="E:\Development\HBO\Year2\BlokC\ThemaOpdracht7-8\adt\source/include/Duration.hpp">
+		<doxygen>
+			<brief errors="1">
+				Doxygen comment on line(s) 1 through 35 does not contain a brief description.
+			</brief>
+			<version errors="3">
+				A file should have 1 version specified; no more no less.
+				Version on line: 3
+				Version on line: 40
+			</version>
+		</doxygen>
+		<Indentation errors="9">
+			Indentation on line 54 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 55 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 56 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 59 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 60 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 67 is not according to the standard. Encountered unexpected character '	'
+			Indentation on line 68 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 135 is not according to the standard. Encountered unexpected character ';'
+			Indentation on line 137 is not according to the standard. Encountered unexpected character '#'
+		</Indentation>
+		<linelength errors="5">
+			line= 18 length= 81
+			line= 19 length= 81
+			line= 28 length= 81
+			line= 30 length= 81
+			line= 35 length= 81
+		</linelength>
+	</file>
+	<file file_name="E:\Development\HBO\Year2\BlokC\ThemaOpdracht7-8\adt\source/include/Force.hpp">
+		<doxygen>
+			<brief errors="1">
+				Doxygen comment on line(s) 31 through 35 does not contain a brief description.
+			</brief>
+		</doxygen>
+		<Indentation errors="51">
+			Indentation on line 44 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 45 is not according to the standard. Encountered unexpected character '{'
+			Indentation on line 46 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 47 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 48 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 49 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 50 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 51 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 52 is not according to the standard. Encountered unexpected character 'F'
+			Indentation on line 53 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 54 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 55 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 56 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 57 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 58 is not according to the standard. Encountered unexpected character 'F'
+			Indentation on line 60 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 61 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 62 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 63 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 64 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 65 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 66 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 67 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 69 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 70 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 71 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 72 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 73 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 74 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 75 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 76 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 78 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 79 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 80 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 81 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 82 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 83 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 84 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 85 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 87 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 88 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 89 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 90 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 91 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 92 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 93 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 94 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 96 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 97 is not according to the standard. Encountered unexpected character ';'
+			Indentation on line 98 is not according to the standard. Encountered unexpected character 'F'
+			Indentation on line 100 is not according to the standard. Encountered unexpected character '#'
+		</Indentation>
+		<linelength errors="10">
+			line= 15 length= 146
+			line= 16 length= 130
+			line= 17 length= 208
+			line= 18 length= 218
+			line= 21 length= 81
+			line= 22 length= 82
+			line= 23 length= 83
+			line= 25 length= 83
+			line= 28 length= 81
+			line= 29 length= 83
+		</linelength>
+	</file>
+	<file file_name="E:\Development\HBO\Year2\BlokC\ThemaOpdracht7-8\adt\source/include/Length.hpp">
+		<doxygen>
+			<brief errors="1">
+				Doxygen comment on line(s) 1 through 36 does not contain a brief description.
+			</brief>
+			<version errors="3">
+				A file should have 1 version specified; no more no less.
+				Version on line: 4
+				Version on line: 40
+			</version>
+		</doxygen>
+		<Indentation errors="11">
+			Indentation on line 62 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 63 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 65 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 66 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 67 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 68 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 70 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 77 is not according to the standard. Encountered unexpected character '	'
+			Indentation on line 78 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 126 is not according to the standard. Encountered unexpected character ';'
+			Indentation on line 128 is not according to the standard. Encountered unexpected character '#'
+		</Indentation>
+		<linelength errors="5">
+			line= 19 length= 81
+			line= 20 length= 81
+			line= 29 length= 81
+			line= 31 length= 81
+			line= 36 length= 81
+		</linelength>
+	</file>
+	<file file_name="E:\Development\HBO\Year2\BlokC\ThemaOpdracht7-8\adt\source/include/Mass.hpp">
+		<doxygen>
+			<brief errors="1">
+				Doxygen comment on line(s) 89 through 89 does not contain a brief description.
+			</brief>
+		</doxygen>
+		<Indentation errors="43">
+			Indentation on line 46 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 47 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 48 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 49 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 50 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 51 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 52 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 53 is not according to the standard. Encountered unexpected character 'M'
+			Indentation on line 55 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 56 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 57 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 58 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 59 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 60 is not according to the standard. Encountered unexpected character 'M'
+			Indentation on line 62 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 63 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 64 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 65 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 66 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 67 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 68 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 69 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 71 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 72 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 73 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 74 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 75 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 76 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 77 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 78 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 80 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 81 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 82 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 83 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 84 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 85 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 86 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 87 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 89 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 90 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 91 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 92 is not according to the standard. Encountered unexpected character ';'
+			Indentation on line 94 is not according to the standard. Encountered unexpected character '#'
+		</Indentation>
+		<linelength errors="10">
+			line= 15 length= 146
+			line= 16 length= 130
+			line= 17 length= 208
+			line= 18 length= 218
+			line= 21 length= 81
+			line= 22 length= 82
+			line= 23 length= 83
+			line= 25 length= 83
+			line= 28 length= 81
+			line= 29 length= 83
+		</linelength>
+	</file>
+	<file file_name="E:\Development\HBO\Year2\BlokC\ThemaOpdracht7-8\adt\source/include/Moment.hpp">
+		<Indentation errors="81">
+			Indentation on line 50 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 51 is not according to the standard. Encountered unexpected character '{'
+			Indentation on line 52 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 53 is not according to the standard. Encountered unexpected character 'M'
+			Indentation on line 55 is not according to the standard. Encountered unexpected character 'v'
+			Indentation on line 56 is not according to the standard. Encountered unexpected character '{'
+			Indentation on line 57 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 59 is not according to the standard. Encountered unexpected character ';'
+			Indentation on line 60 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 61 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 62 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 63 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 64 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 65 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 66 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 67 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 68 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 69 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 70 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 71 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 72 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 74 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 75 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 76 is not according to the standard. Encountered unexpected character 'M'
+			Indentation on line 78 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 79 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 80 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 81 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 82 is not according to the standard. Encountered unexpected character 'M'
+			Indentation on line 84 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 85 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 86 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 87 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 88 is not according to the standard. Encountered unexpected character 'M'
+			Indentation on line 90 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 92 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 93 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 94 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 95 is not according to the standard. Encountered unexpected character 'M'
+			Indentation on line 97 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 98 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 99 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 100 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 101 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 102 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 103 is not according to the standard. Encountered unexpected character 'D'
+			Indentation on line 105 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 106 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 107 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 108 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 109 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 110 is not according to the standard. Encountered unexpected character 'M'
+			Indentation on line 112 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 113 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 114 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 115 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 116 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 117 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 118 is not according to the standard. Encountered unexpected character 'M'
+			Indentation on line 120 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 121 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 122 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 123 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 124 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 126 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 127 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 128 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 129 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 130 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 131 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 132 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 134 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 135 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 136 is not according to the standard. Encountered unexpected character 'd'
+			Indentation on line 137 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 138 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 139 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 140 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 141 is not according to the standard. Encountered unexpected character 'M'
+			Indentation on line 142 is not according to the standard. Encountered unexpected character ';'
+			Indentation on line 144 is not according to the standard. Encountered unexpected character '#'
+		</Indentation>
+		<linelength errors="10">
+			line= 15 length= 146
+			line= 16 length= 130
+			line= 17 length= 208
+			line= 18 length= 218
+			line= 21 length= 81
+			line= 22 length= 82
+			line= 23 length= 83
+			line= 25 length= 83
+			line= 28 length= 81
+			line= 29 length= 83
+		</linelength>
+	</file>
+	<file file_name="E:\Development\HBO\Year2\BlokC\ThemaOpdracht7-8\adt\source/include/Rotation.hpp">
+		<doxygen>
+			<brief errors="1">
+				Doxygen comment on line(s) 1 through 36 does not contain a brief description.
+			</brief>
+		</doxygen>
+		<Indentation errors="5">
+			Indentation on line 56 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 57 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 59 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 133 is not according to the standard. Encountered unexpected character ';'
+			Indentation on line 135 is not according to the standard. Encountered unexpected character '#'
+		</Indentation>
+		<linelength errors="5">
+			line= 19 length= 81
+			line= 20 length= 81
+			line= 29 length= 81
+			line= 31 length= 81
+			line= 36 length= 81
+		</linelength>
+	</file>
+	<file file_name="E:\Development\HBO\Year2\BlokC\ThemaOpdracht7-8\adt\source/include/Speed.hpp">
+		<doxygen>
+			<author errors="1">
+				No authors are specified in the file.
+			</author>
+			<brief errors="1">
+				Doxygen comment on line(s) 30 through 30 does not contain a brief description.
+			</brief>
+			<version errors="1">
+				A file should have 1 version specified; no more no less.
+			</version>
+		</doxygen>
+		<Indentation errors="65">
+			Indentation on line 39 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 41 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 42 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 43 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 44 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 45 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 46 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 47 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 48 is not according to the standard. Encountered unexpected character 'S'
+			Indentation on line 49 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 50 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 51 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 52 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 53 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 54 is not according to the standard. Encountered unexpected character 'S'
+			Indentation on line 56 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 57 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 58 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 59 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 60 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 61 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 62 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 63 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 65 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 66 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 67 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 68 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 69 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 70 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 71 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 72 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 74 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 75 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 76 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 77 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 78 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 79 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 80 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 81 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 83 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 84 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 85 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 86 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 87 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 88 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 89 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 90 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 92 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 93 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 94 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 95 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 96 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 97 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 98 is not according to the standard. Encountered unexpected character 'L'
+			Indentation on line 100 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 101 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 102 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 103 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 104 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 105 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 106 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 107 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 108 is not according to the standard. Encountered unexpected character ';'
+			Indentation on line 110 is not according to the standard. Encountered unexpected character 'S'
+			Indentation on line 112 is not according to the standard. Encountered unexpected character '#'
+		</Indentation>
+		<linelength errors="12">
+			line= 15 length= 146
+			line= 16 length= 130
+			line= 17 length= 208
+			line= 18 length= 218
+			line= 21 length= 81
+			line= 22 length= 82
+			line= 23 length= 83
+			line= 25 length= 83
+			line= 28 length= 81
+			line= 29 length= 83
+			line= 94 length= 82
+			line= 102 length= 82
+		</linelength>
+	</file>
+	<file file_name="E:\Development\HBO\Year2\BlokC\ThemaOpdracht7-8\adt\source/include/Translation.hpp">
+		<doxygen>
+			<brief errors="1">
+				Doxygen comment on line(s) 1 through 36 does not contain a brief description.
+			</brief>
+		</doxygen>
+		<Indentation errors="23">
+			Indentation on line 46 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 48 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 49 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 50 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 51 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 52 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 53 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 54 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 68 is not according to the standard. Encountered unexpected character '	'
+			Indentation on line 78 is not according to the standard. Encountered unexpected character '	'
+			Indentation on line 86 is not according to the standard. Encountered unexpected character '	'
+			Indentation on line 94 is not according to the standard. Encountered unexpected character '	'
+			Indentation on line 102 is not according to the standard. Encountered unexpected character '	'
+			Indentation on line 113 is not according to the standard. Encountered unexpected character '	'
+			Indentation on line 124 is not according to the standard. Encountered unexpected character '	'
+			Indentation on line 135 is not according to the standard. Encountered unexpected character '	'
+			Indentation on line 146 is not according to the standard. Encountered unexpected character '	'
+			Indentation on line 169 is not according to the standard. Encountered unexpected character '	'
+			Indentation on line 190 is not according to the standard. Encountered unexpected character '	'
+			Indentation on line 211 is not according to the standard. Encountered unexpected character '	'
+			Indentation on line 249 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 251 is not according to the standard. Encountered unexpected character ';'
+			Indentation on line 253 is not according to the standard. Encountered unexpected character '#'
+		</Indentation>
+		<linelength errors="8">
+			line= 19 length= 81
+			line= 20 length= 81
+			line= 29 length= 81
+			line= 31 length= 81
+			line= 36 length= 81
+			line= 114 length= 81
+			line= 125 length= 81
+			line= 164 length= 81
+		</linelength>
+	</file>
+	<file file_name="E:\Development\HBO\Year2\BlokC\ThemaOpdracht7-8\adt\source/src/Acceleration.cpp">
+		<doxygen>
+			<author errors="1">
+				No authors are specified in the file.
+			</author>
+			<brief errors="2">
+				Doxygen comment on line(s) 1 through 1 does not contain a brief description.
+				Doxygen comment on line(s) 1 through 1 does not contain a brief description.
+			</brief>
+			<version errors="1">
+				A file should have 1 version specified; no more no less.
+			</version>
+		</doxygen>
+		<Indentation errors="48">
+			Indentation on line 43 is not according to the standard. Encountered unexpected character 'A'
+			Indentation on line 45 is not according to the standard. Encountered unexpected character 'A'
+			Indentation on line 47 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 48 is not according to the standard. Encountered unexpected character 'l'
+			Indentation on line 49 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 53 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 54 is not according to the standard. Encountered unexpected character 'd'
+			Indentation on line 55 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 56 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 57 is not according to the standard. Encountered unexpected character 'l'
+			Indentation on line 58 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 59 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 60 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 62 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 63 is not according to the standard. Encountered unexpected character 'w'
+			Indentation on line 64 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 65 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 66 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 67 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 68 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 69 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 70 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 71 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 72 is not according to the standard. Encountered unexpected character 'e'
+			Indentation on line 73 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 74 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 75 is not according to the standard. Encountered unexpected character 'l'
+			Indentation on line 76 is not according to the standard. Encountered unexpected character 'b'
+			Indentation on line 78 is not according to the standard. Encountered unexpected character 'e'
+			Indentation on line 79 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 80 is not according to the standard. Encountered unexpected character 'b'
+			Indentation on line 83 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 84 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 85 is not according to the standard. Encountered unexpected character '{'
+			Indentation on line 86 is not according to the standard. Encountered unexpected character ';'
+			Indentation on line 87 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 88 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 89 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 90 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 93 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 94 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 95 is not according to the standard. Encountered unexpected character 'e'
+			Indentation on line 98 is not according to the standard. Encountered unexpected character 'A'
+			Indentation on line 99 is not according to the standard. Encountered unexpected character 'd'
+			Indentation on line 100 is not according to the standard. Encountered unexpected character 'd'
+			Indentation on line 102 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 103 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 105 is not according to the standard. Encountered unexpected character 'r'
+		</Indentation>
+		<linelength errors="23">
+			line= 2 length= 232
+			line= 3 length= 248
+			line= 4 length= 218
+			line= 5 length= 218
+			line= 6 length= 246
+			line= 7 length= 230
+			line= 8 length= 141
+			line= 22 length= 146
+			line= 23 length= 130
+			line= 24 length= 208
+			line= 25 length= 218
+			line= 28 length= 81
+			line= 29 length= 82
+			line= 30 length= 83
+			line= 32 length= 83
+			line= 35 length= 81
+			line= 36 length= 83
+			line= 59 length= 81
+			line= 65 length= 89
+			line= 68 length= 85
+			line= 69 length= 92
+			line= 84 length= 84
+			line= 94 length= 90
+		</linelength>
+	</file>
+	<file file_name="E:\Development\HBO\Year2\BlokC\ThemaOpdracht7-8\adt\source/src/Angle.cpp">
+		<doxygen>
+			<author errors="1">
+				No authors are specified in the file.
+			</author>
+			<brief errors="2">
+				Doxygen comment on line(s) 1 through 1 does not contain a brief description.
+				Doxygen comment on line(s) 1 through 1 does not contain a brief description.
+			</brief>
+			<version errors="1">
+				A file should have 1 version specified; no more no less.
+			</version>
+		</doxygen>
+		<linelength errors="16">
+			line= 2 length= 232
+			line= 3 length= 248
+			line= 4 length= 216
+			line= 5 length= 216
+			line= 6 length= 246
+			line= 7 length= 230
+			line= 22 length= 146
+			line= 23 length= 130
+			line= 24 length= 208
+			line= 25 length= 218
+			line= 28 length= 81
+			line= 29 length= 82
+			line= 30 length= 83
+			line= 32 length= 83
+			line= 35 length= 81
+			line= 36 length= 83
+		</linelength>
+	</file>
+	<file file_name="E:\Development\HBO\Year2\BlokC\ThemaOpdracht7-8\adt\source/src/Attitude.cpp">
+		<doxygen>
+			<brief errors="1">
+				Doxygen comment on line(s) 1 through 36 does not contain a brief description.
+			</brief>
+		</doxygen>
+		<Indentation errors="49">
+			Indentation on line 40 is not according to the standard. Encountered unexpected character 'A'
+			Indentation on line 41 is not according to the standard. Encountered unexpected character 'x'
+			Indentation on line 42 is not according to the standard. Encountered unexpected character 'y'
+			Indentation on line 43 is not according to the standard. Encountered unexpected character 'z'
+			Indentation on line 46 is not according to the standard. Encountered unexpected character 'A'
+			Indentation on line 47 is not according to the standard. Encountered unexpected character 'x'
+			Indentation on line 48 is not according to the standard. Encountered unexpected character 'y'
+			Indentation on line 49 is not according to the standard. Encountered unexpected character 'z'
+			Indentation on line 52 is not according to the standard. Encountered unexpected character 'A'
+			Indentation on line 53 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 56 is not according to the standard. Encountered unexpected character 'A'
+			Indentation on line 57 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 60 is not according to the standard. Encountered unexpected character 'A'
+			Indentation on line 61 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 64 is not according to the standard. Encountered unexpected character 'A'
+			Indentation on line 65 is not according to the standard. Encountered unexpected character 'x'
+			Indentation on line 66 is not according to the standard. Encountered unexpected character 'y'
+			Indentation on line 67 is not according to the standard. Encountered unexpected character 'z'
+			Indentation on line 68 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 71 is not according to the standard. Encountered unexpected character 'R'
+			Indentation on line 72 is not according to the standard. Encountered unexpected character 'R'
+			Indentation on line 73 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 76 is not according to the standard. Encountered unexpected character 'R'
+			Indentation on line 77 is not according to the standard. Encountered unexpected character 'R'
+			Indentation on line 78 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 81 is not according to the standard. Encountered unexpected character 'A'
+			Indentation on line 82 is not according to the standard. Encountered unexpected character 'A'
+			Indentation on line 83 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 84 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 85 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 86 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 89 is not according to the standard. Encountered unexpected character 'A'
+			Indentation on line 90 is not according to the standard. Encountered unexpected character 'A'
+			Indentation on line 91 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 92 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 93 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 94 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 97 is not according to the standard. Encountered unexpected character 'A'
+			Indentation on line 98 is not according to the standard. Encountered unexpected character 'x'
+			Indentation on line 99 is not according to the standard. Encountered unexpected character 'y'
+			Indentation on line 100 is not according to the standard. Encountered unexpected character 'z'
+			Indentation on line 101 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 104 is not according to the standard. Encountered unexpected character 'A'
+			Indentation on line 105 is not according to the standard. Encountered unexpected character 'x'
+			Indentation on line 106 is not according to the standard. Encountered unexpected character 'y'
+			Indentation on line 107 is not according to the standard. Encountered unexpected character 'z'
+			Indentation on line 108 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 111 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 112 is not according to the standard. Encountered unexpected character 'r'
+		</Indentation>
+		<linelength errors="5">
+			line= 19 length= 81
+			line= 20 length= 81
+			line= 29 length= 81
+			line= 31 length= 81
+			line= 36 length= 81
+		</linelength>
+	</file>
+	<file file_name="E:\Development\HBO\Year2\BlokC\ThemaOpdracht7-8\adt\source/src/Box.cpp">
+		<doxygen>
+			<author errors="1">
+				No authors are specified in the file.
+			</author>
+			<brief errors="4">
+				Doxygen comment on line(s) 1 through 1 does not contain a brief description.
+				Doxygen comment on line(s) 1 through 1 does not contain a brief description.
+				Doxygen comment on line(s) 79 through 80 does not contain a brief description.
+				Doxygen comment on line(s) 111 through 112 does not contain a brief description.
+			</brief>
+			<version errors="1">
+				A file should have 1 version specified; no more no less.
+			</version>
+		</doxygen>
+		<Indentation errors="131">
+			Indentation on line 42 is not according to the standard. Encountered unexpected character 'B'
+			Indentation on line 43 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 44 is not according to the standard. Encountered unexpected character 'b'
+			Indentation on line 45 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 47 is not according to the standard. Encountered unexpected character 'e'
+			Indentation on line 48 is not according to the standard. Encountered unexpected character 'b'
+			Indentation on line 49 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 51 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 52 is not according to the standard. Encountered unexpected character 'b'
+			Indentation on line 53 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 55 is not according to the standard. Encountered unexpected character 'e'
+			Indentation on line 56 is not according to the standard. Encountered unexpected character 'b'
+			Indentation on line 57 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 59 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 60 is not according to the standard. Encountered unexpected character 'b'
+			Indentation on line 61 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 63 is not according to the standard. Encountered unexpected character 'e'
+			Indentation on line 64 is not according to the standard. Encountered unexpected character 'b'
+			Indentation on line 65 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 69 is not according to the standard. Encountered unexpected character 'B'
+			Indentation on line 70 is not according to the standard. Encountered unexpected character 'B'
+			Indentation on line 71 is not according to the standard. Encountered unexpected character '{'
+			Indentation on line 73 is not according to the standard. Encountered unexpected character 'B'
+			Indentation on line 74 is not according to the standard. Encountered unexpected character 'B'
+			Indentation on line 75 is not according to the standard. Encountered unexpected character '{'
+			Indentation on line 78 is not according to the standard. Encountered unexpected character 'b'
+			Indentation on line 79 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 80 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 81 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 82 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 83 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 84 is not according to the standard. Encountered unexpected character '{'
+			Indentation on line 86 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 87 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 88 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 89 is not according to the standard. Encountered unexpected character '{'
+			Indentation on line 90 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 95 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 96 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 97 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 98 is not according to the standard. Encountered unexpected character ')'
+			Indentation on line 99 is not according to the standard. Encountered unexpected character '{'
+			Indentation on line 100 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 101 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 102 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 103 is not according to the standard. Encountered unexpected character '{'
+			Indentation on line 104 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 107 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 110 is not according to the standard. Encountered unexpected character 'b'
+			Indentation on line 111 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 112 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 113 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 114 is not according to the standard. Encountered unexpected character '{'
+			Indentation on line 115 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 117 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 120 is not according to the standard. Encountered unexpected character 'b'
+			Indentation on line 121 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 122 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 123 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 124 is not according to the standard. Encountered unexpected character 'b'
+			Indentation on line 125 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 126 is not according to the standard. Encountered unexpected character 'b'
+			Indentation on line 127 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 128 is not according to the standard. Encountered unexpected character 'b'
+			Indentation on line 129 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 132 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 135 is not according to the standard. Encountered unexpected character 'C'
+			Indentation on line 136 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 139 is not according to the standard. Encountered unexpected character 'C'
+			Indentation on line 140 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 143 is not according to the standard. Encountered unexpected character 'B'
+			Indentation on line 144 is not according to the standard. Encountered unexpected character 'C'
+			Indentation on line 145 is not according to the standard. Encountered unexpected character 'C'
+			Indentation on line 147 is not according to the standard. Encountered unexpected character '('
+			Indentation on line 148 is not according to the standard. Encountered unexpected character 'n'
+			Indentation on line 151 is not according to the standard. Encountered unexpected character '('
+			Indentation on line 152 is not according to the standard. Encountered unexpected character 'n'
+			Indentation on line 154 is not according to the standard. Encountered unexpected character '('
+			Indentation on line 155 is not according to the standard. Encountered unexpected character 'n'
+			Indentation on line 157 is not according to the standard. Encountered unexpected character '('
+			Indentation on line 158 is not according to the standard. Encountered unexpected character 'n'
+			Indentation on line 160 is not according to the standard. Encountered unexpected character '('
+			Indentation on line 161 is not according to the standard. Encountered unexpected character 'n'
+			Indentation on line 163 is not according to the standard. Encountered unexpected character '('
+			Indentation on line 164 is not according to the standard. Encountered unexpected character 'n'
+			Indentation on line 166 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 169 is not according to the standard. Encountered unexpected character 'B'
+			Indentation on line 170 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 171 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 172 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 173 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 174 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 175 is not according to the standard. Encountered unexpected character 'e'
+			Indentation on line 176 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 178 is not according to the standard. Encountered unexpected character 'e'
+			Indentation on line 179 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 180 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 184 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 185 is not according to the standard. Encountered unexpected character '	'
+			Indentation on line 186 is not according to the standard. Encountered unexpected character '	'
+			Indentation on line 187 is not according to the standard. Encountered unexpected character '	'
+			Indentation on line 188 is not according to the standard. Encountered unexpected character '	'
+			Indentation on line 189 is not according to the standard. Encountered unexpected character '	'
+			Indentation on line 192 is not according to the standard. Encountered unexpected character 'B'
+			Indentation on line 193 is not according to the standard. Encountered unexpected character 'b'
+			Indentation on line 194 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 195 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 198 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 199 is not according to the standard. Encountered unexpected character 'l'
+			Indentation on line 200 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 203 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 204 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 205 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 207 is not according to the standard. Encountered unexpected character 'l'
+			Indentation on line 209 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 210 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 211 is not according to the standard. Encountered unexpected character '"'
+			Indentation on line 213 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 214 is not according to the standard. Encountered unexpected character 'l'
+			Indentation on line 215 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 216 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 219 is not according to the standard. Encountered unexpected character 'C'
+			Indentation on line 220 is not according to the standard. Encountered unexpected character 'C'
+			Indentation on line 222 is not according to the standard. Encountered unexpected character 'l'
+			Indentation on line 223 is not according to the standard. Encountered unexpected character 'l'
+			Indentation on line 225 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 226 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 227 is not according to the standard. Encountered unexpected character '"'
+			Indentation on line 230 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 231 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 232 is not according to the standard. Encountered unexpected character 'r'
+		</Indentation>
+		<linelength errors="18">
+			line= 2 length= 232
+			line= 3 length= 248
+			line= 4 length= 218
+			line= 5 length= 218
+			line= 6 length= 246
+			line= 7 length= 230
+			line= 8 length= 141
+			line= 22 length= 146
+			line= 23 length= 130
+			line= 24 length= 208
+			line= 25 length= 218
+			line= 28 length= 81
+			line= 29 length= 82
+			line= 30 length= 83
+			line= 32 length= 83
+			line= 35 length= 81
+			line= 36 length= 83
+			line= 226 length= 82
+		</linelength>
+	</file>
+	<file file_name="E:\Development\HBO\Year2\BlokC\ThemaOpdracht7-8\adt\source/src/Coordinate.cpp">
+		<doxygen>
+			<brief errors="1">
+				Doxygen comment on line(s) 1 through 35 does not contain a brief description.
+			</brief>
+		</doxygen>
+		<Indentation errors="73">
+			Indentation on line 42 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 45 is not according to the standard. Encountered unexpected character 'C'
+			Indentation on line 47 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 50 is not according to the standard. Encountered unexpected character 'C'
+			Indentation on line 51 is not according to the standard. Encountered unexpected character 'x'
+			Indentation on line 52 is not according to the standard. Encountered unexpected character 'y'
+			Indentation on line 53 is not according to the standard. Encountered unexpected character 'z'
+			Indentation on line 54 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 57 is not according to the standard. Encountered unexpected character 'C'
+			Indentation on line 58 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 59 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 60 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 61 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 64 is not according to the standard. Encountered unexpected character 'C'
+			Indentation on line 65 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 66 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 67 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 68 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 71 is not according to the standard. Encountered unexpected character 'C'
+			Indentation on line 72 is not according to the standard. Encountered unexpected character 'C'
+			Indentation on line 73 is not according to the standard. Encountered unexpected character 'o'
+			Indentation on line 74 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 77 is not according to the standard. Encountered unexpected character 'C'
+			Indentation on line 78 is not according to the standard. Encountered unexpected character 'C'
+			Indentation on line 79 is not according to the standard. Encountered unexpected character 'o'
+			Indentation on line 80 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 83 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 84 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 87 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 88 is not according to the standard. Encountered unexpected character 'l'
+			Indentation on line 89 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 92 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 93 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 94 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 95 is not according to the standard. Encountered unexpected character 'l'
+			Indentation on line 96 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 97 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 98 is not according to the standard. Encountered unexpected character '"'
+			Indentation on line 99 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 101 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 102 is not according to the standard. Encountered unexpected character 'l'
+			Indentation on line 103 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 104 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 107 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 108 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 109 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 110 is not according to the standard. Encountered unexpected character 'L'
+			Indentation on line 112 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 113 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 114 is not according to the standard. Encountered unexpected character 'a'
+			Indentation on line 115 is not according to the standard. Encountered unexpected character 'L'
+			Indentation on line 116 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 117 is not according to the standard. Encountered unexpected character 'l'
+			Indentation on line 118 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 119 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 121 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 122 is not according to the standard. Encountered unexpected character ';'
+			Indentation on line 123 is not according to the standard. Encountered unexpected character 'x'
+			Indentation on line 124 is not according to the standard. Encountered unexpected character 'y'
+			Indentation on line 125 is not according to the standard. Encountered unexpected character 'z'
+			Indentation on line 127 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 128 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 129 is not according to the standard. Encountered unexpected character '"'
+			Indentation on line 132 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 133 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 134 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 136 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 139 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 140 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 143 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 144 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 147 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 148 is not according to the standard. Encountered unexpected character 'r'
+		</Indentation>
+		<linelength errors="9">
+			line= 15 length= 85
+			line= 24 length= 85
+			line= 27 length= 82
+			line= 28 length= 83
+			line= 29 length= 84
+			line= 31 length= 84
+			line= 34 length= 82
+			line= 35 length= 84
+			line= 129 length= 91
+		</linelength>
+	</file>
+	<file file_name="E:\Development\HBO\Year2\BlokC\ThemaOpdracht7-8\adt\source/src/Duration.cpp">
+		<doxygen>
+			<brief errors="1">
+				Doxygen comment on line(s) 1 through 35 does not contain a brief description.
+			</brief>
+		</doxygen>
+		<Indentation errors="25">
+			Indentation on line 41 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 42 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 43 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 45 is not according to the standard. Encountered unexpected character 'D'
+			Indentation on line 47 is not according to the standard. Encountered unexpected character '{'
+			Indentation on line 49 is not according to the standard. Encountered unexpected character 'D'
+			Indentation on line 51 is not according to the standard. Encountered unexpected character '{'
+			Indentation on line 53 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 54 is not according to the standard. Encountered unexpected character 'l'
+			Indentation on line 55 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 58 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 59 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 60 is not according to the standard. Encountered unexpected character 'd'
+			Indentation on line 61 is not according to the standard. Encountered unexpected character 'l'
+			Indentation on line 62 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 63 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 64 is not according to the standard. Encountered unexpected character '"'
+			Indentation on line 66 is not according to the standard. Encountered unexpected character 'l'
+			Indentation on line 67 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 68 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 69 is not according to the standard. Encountered unexpected character '"'
+			Indentation on line 71 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 72 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 75 is not according to the standard. Encountered unexpected character 'd'
+			Indentation on line 76 is not according to the standard. Encountered unexpected character 'r'
+		</Indentation>
+		<linelength errors="6">
+			line= 18 length= 81
+			line= 19 length= 81
+			line= 28 length= 81
+			line= 30 length= 81
+			line= 35 length= 81
+			line= 69 length= 85
+		</linelength>
+	</file>
+	<file file_name="E:\Development\HBO\Year2\BlokC\ThemaOpdracht7-8\adt\source/src/Force.cpp">
+		<doxygen>
+			<author errors="1">
+				No authors are specified in the file.
+			</author>
+			<version errors="1">
+				A file should have 1 version specified; no more no less.
+			</version>
+		</doxygen>
+		<Indentation errors="52">
+			Indentation on line 34 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 35 is not according to the standard. Encountered unexpected character 'F'
+			Indentation on line 38 is not according to the standard. Encountered unexpected character 'F'
+			Indentation on line 40 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 41 is not according to the standard. Encountered unexpected character 'o'
+			Indentation on line 42 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 45 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 46 is not according to the standard. Encountered unexpected character 'd'
+			Indentation on line 47 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 48 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 49 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 50 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 51 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 52 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 54 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 55 is not according to the standard. Encountered unexpected character 'w'
+			Indentation on line 56 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 57 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 58 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 59 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 60 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 61 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 62 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 63 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 64 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 65 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 66 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 67 is not according to the standard. Encountered unexpected character 'e'
+			Indentation on line 68 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 69 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 70 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 71 is not according to the standard. Encountered unexpected character 'b'
+			Indentation on line 73 is not according to the standard. Encountered unexpected character 'e'
+			Indentation on line 74 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 75 is not according to the standard. Encountered unexpected character 'b'
+			Indentation on line 78 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 79 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 80 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 81 is not according to the standard. Encountered unexpected character '{'
+			Indentation on line 82 is not according to the standard. Encountered unexpected character ';'
+			Indentation on line 83 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 84 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 85 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 86 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 89 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 90 is not according to the standard. Encountered unexpected character 'k'
+			Indentation on line 93 is not according to the standard. Encountered unexpected character 'F'
+			Indentation on line 94 is not according to the standard. Encountered unexpected character 'd'
+			Indentation on line 95 is not according to the standard. Encountered unexpected character 'S'
+			Indentation on line 96 is not according to the standard. Encountered unexpected character 'A'
+			Indentation on line 97 is not according to the standard. Encountered unexpected character 'd'
+			Indentation on line 98 is not according to the standard. Encountered unexpected character 'r'
+		</Indentation>
+		<linelength errors="10">
+			line= 15 length= 146
+			line= 16 length= 130
+			line= 17 length= 208
+			line= 18 length= 218
+			line= 21 length= 81
+			line= 22 length= 82
+			line= 23 length= 83
+			line= 25 length= 83
+			line= 28 length= 81
+			line= 29 length= 83
+		</linelength>
+	</file>
+	<file file_name="E:\Development\HBO\Year2\BlokC\ThemaOpdracht7-8\adt\source/src/Length.cpp">
+		<doxygen>
+			<brief errors="1">
+				Doxygen comment on line(s) 1 through 36 does not contain a brief description.
+			</brief>
+		</doxygen>
+		<Indentation errors="44">
+			Indentation on line 42 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 43 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 45 is not according to the standard. Encountered unexpected character 'L'
+			Indentation on line 47 is not according to the standard. Encountered unexpected character '{'
+			Indentation on line 48 is not according to the standard. Encountered unexpected character 'L'
+			Indentation on line 50 is not according to the standard. Encountered unexpected character '{'
+			Indentation on line 52 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 53 is not according to the standard. Encountered unexpected character 'l'
+			Indentation on line 54 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 57 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 58 is not according to the standard. Encountered unexpected character 'd'
+			Indentation on line 59 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 60 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 61 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 62 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 63 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 65 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 66 is not according to the standard. Encountered unexpected character 'w'
+			Indentation on line 67 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 68 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 69 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 70 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 71 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 72 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 73 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 74 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 75 is not according to the standard. Encountered unexpected character 'e'
+			Indentation on line 76 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 77 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 78 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 79 is not according to the standard. Encountered unexpected character 'b'
+			Indentation on line 81 is not according to the standard. Encountered unexpected character 'e'
+			Indentation on line 82 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 83 is not according to the standard. Encountered unexpected character 'b'
+			Indentation on line 86 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 87 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 88 is not according to the standard. Encountered unexpected character '{'
+			Indentation on line 89 is not according to the standard. Encountered unexpected character '{'
+			Indentation on line 90 is not according to the standard. Encountered unexpected character ';'
+			Indentation on line 91 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 92 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 93 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 94 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 97 is not according to the standard. Encountered unexpected character 't'
+		</Indentation>
+		<linelength errors="11">
+			line= 19 length= 81
+			line= 20 length= 81
+			line= 29 length= 81
+			line= 31 length= 81
+			line= 36 length= 81
+			line= 63 length= 101
+			line= 68 length= 89
+			line= 71 length= 85
+			line= 72 length= 92
+			line= 87 length= 86
+			line= 97 length= 122
+		</linelength>
+	</file>
+	<file file_name="E:\Development\HBO\Year2\BlokC\ThemaOpdracht7-8\adt\source/src/Mass.cpp">
+		<doxygen>
+			<author errors="1">
+				No authors are specified in the file.
+			</author>
+			<version errors="1">
+				A file should have 1 version specified; no more no less.
+			</version>
+		</doxygen>
+		<Indentation errors="35">
+			Indentation on line 35 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 36 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 37 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 39 is not according to the standard. Encountered unexpected character 'M'
+			Indentation on line 43 is not according to the standard. Encountered unexpected character 'M'
+			Indentation on line 47 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 48 is not according to the standard. Encountered unexpected character 'o'
+			Indentation on line 49 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 52 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 53 is not according to the standard. Encountered unexpected character 'd'
+			Indentation on line 54 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 55 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 56 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 57 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 58 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 60 is not according to the standard. Encountered unexpected character 'w'
+			Indentation on line 61 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 62 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 63 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 64 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 65 is not according to the standard. Encountered unexpected character 'e'
+			Indentation on line 66 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 67 is not according to the standard. Encountered unexpected character 'b'
+			Indentation on line 69 is not according to the standard. Encountered unexpected character 'e'
+			Indentation on line 70 is not according to the standard. Encountered unexpected character 'b'
+			Indentation on line 73 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 74 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 75 is not according to the standard. Encountered unexpected character '{'
+			Indentation on line 76 is not according to the standard. Encountered unexpected character ';'
+			Indentation on line 77 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 78 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 79 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 80 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 83 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 84 is not according to the standard. Encountered unexpected character 'k'
+		</Indentation>
+		<linelength errors="10">
+			line= 15 length= 146
+			line= 16 length= 130
+			line= 17 length= 208
+			line= 18 length= 218
+			line= 21 length= 81
+			line= 22 length= 82
+			line= 23 length= 83
+			line= 25 length= 83
+			line= 28 length= 81
+			line= 29 length= 83
+		</linelength>
+	</file>
+	<file file_name="E:\Development\HBO\Year2\BlokC\ThemaOpdracht7-8\adt\source/src/Moment.cpp">
+		<doxygen>
+			<author errors="1">
+				No authors are specified in the file.
+			</author>
+			<version errors="1">
+				A file should have 1 version specified; no more no less.
+			</version>
+		</doxygen>
+		<Indentation errors="58">
+			Indentation on line 34 is not according to the standard. Encountered unexpected character 'M'
+			Indentation on line 36 is not according to the standard. Encountered unexpected character 'M'
+			Indentation on line 37 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 38 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 42 is not according to the standard. Encountered unexpected character 'M'
+			Indentation on line 43 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 44 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 46 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 47 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 49 is not according to the standard. Encountered unexpected character 'M'
+			Indentation on line 50 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 51 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 52 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 53 is not according to the standard. Encountered unexpected character 'd'
+			Indentation on line 54 is not according to the standard. Encountered unexpected character 'M'
+			Indentation on line 55 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 56 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 57 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 59 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 60 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 62 is not according to the standard. Encountered unexpected character 'M'
+			Indentation on line 63 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 64 is not according to the standard. Encountered unexpected character 'd'
+			Indentation on line 65 is not according to the standard. Encountered unexpected character 'M'
+			Indentation on line 66 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 67 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 68 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 70 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 71 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 73 is not according to the standard. Encountered unexpected character 'D'
+			Indentation on line 74 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 75 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 76 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 77 is not according to the standard. Encountered unexpected character 'a'
+			Indentation on line 78 is not according to the standard. Encountered unexpected character 'd'
+			Indentation on line 79 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 80 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 82 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 85 is not according to the standard. Encountered unexpected character 'M'
+			Indentation on line 86 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 87 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 88 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 91 is not according to the standard. Encountered unexpected character 'M'
+			Indentation on line 92 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 93 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 94 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 97 is not according to the standard. Encountered unexpected character 'd'
+			Indentation on line 98 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 101 is not according to the standard. Encountered unexpected character 'o'
+			Indentation on line 102 is not according to the standard. Encountered unexpected character 'l'
+			Indentation on line 103 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 106 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 107 is not according to the standard. Encountered unexpected character 'd'
+			Indentation on line 108 is not according to the standard. Encountered unexpected character 'l'
+			Indentation on line 109 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 110 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 112 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 113 is not according to the standard. Encountered unexpected character 'r'
+		</Indentation>
+		<linelength errors="10">
+			line= 15 length= 146
+			line= 16 length= 130
+			line= 17 length= 208
+			line= 18 length= 218
+			line= 21 length= 81
+			line= 22 length= 82
+			line= 23 length= 83
+			line= 25 length= 83
+			line= 28 length= 81
+			line= 29 length= 83
+		</linelength>
+	</file>
+	<file file_name="E:\Development\HBO\Year2\BlokC\ThemaOpdracht7-8\adt\source/src/Rotation.cpp">
+		<doxygen>
+			<brief errors="1">
+				Doxygen comment on line(s) 1 through 36 does not contain a brief description.
+			</brief>
+		</doxygen>
+		<Indentation errors="43">
+			Indentation on line 40 is not according to the standard. Encountered unexpected character 'R'
+			Indentation on line 41 is not according to the standard. Encountered unexpected character 'x'
+			Indentation on line 42 is not according to the standard. Encountered unexpected character 'y'
+			Indentation on line 43 is not according to the standard. Encountered unexpected character 'z'
+			Indentation on line 46 is not according to the standard. Encountered unexpected character 'R'
+			Indentation on line 47 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 48 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 49 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 52 is not according to the standard. Encountered unexpected character 'A'
+			Indentation on line 53 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 56 is not according to the standard. Encountered unexpected character 'A'
+			Indentation on line 57 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 60 is not according to the standard. Encountered unexpected character 'A'
+			Indentation on line 61 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 64 is not according to the standard. Encountered unexpected character 'R'
+			Indentation on line 65 is not according to the standard. Encountered unexpected character 'x'
+			Indentation on line 66 is not according to the standard. Encountered unexpected character 'y'
+			Indentation on line 67 is not according to the standard. Encountered unexpected character 'z'
+			Indentation on line 68 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 71 is not according to the standard. Encountered unexpected character 'R'
+			Indentation on line 72 is not according to the standard. Encountered unexpected character 'R'
+			Indentation on line 73 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 74 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 75 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 76 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 79 is not according to the standard. Encountered unexpected character 'R'
+			Indentation on line 80 is not according to the standard. Encountered unexpected character 'R'
+			Indentation on line 81 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 82 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 83 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 84 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 87 is not according to the standard. Encountered unexpected character 'R'
+			Indentation on line 88 is not according to the standard. Encountered unexpected character 'x'
+			Indentation on line 89 is not according to the standard. Encountered unexpected character 'y'
+			Indentation on line 90 is not according to the standard. Encountered unexpected character 'z'
+			Indentation on line 91 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 94 is not according to the standard. Encountered unexpected character 'R'
+			Indentation on line 95 is not according to the standard. Encountered unexpected character 'x'
+			Indentation on line 96 is not according to the standard. Encountered unexpected character 'y'
+			Indentation on line 97 is not according to the standard. Encountered unexpected character 'z'
+			Indentation on line 98 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 101 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 102 is not according to the standard. Encountered unexpected character 'r'
+		</Indentation>
+		<linelength errors="5">
+			line= 19 length= 81
+			line= 20 length= 81
+			line= 29 length= 81
+			line= 31 length= 81
+			line= 36 length= 81
+		</linelength>
+	</file>
+	<file file_name="E:\Development\HBO\Year2\BlokC\ThemaOpdracht7-8\adt\source/src/Speed.cpp">
+		<doxygen>
+			<author errors="1">
+				No authors are specified in the file.
+			</author>
+			<brief errors="1">
+				Doxygen comment on line(s) 30 through 30 does not contain a brief description.
+			</brief>
+			<version errors="1">
+				A file should have 1 version specified; no more no less.
+			</version>
+		</doxygen>
+		<Indentation errors="34">
+			Indentation on line 34 is not according to the standard. Encountered unexpected character 'S'
+			Indentation on line 36 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 37 is not according to the standard. Encountered unexpected character 'S'
+			Indentation on line 38 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 39 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 41 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 44 is not according to the standard. Encountered unexpected character 'L'
+			Indentation on line 45 is not according to the standard. Encountered unexpected character 'L'
+			Indentation on line 46 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 49 is not according to the standard. Encountered unexpected character 'L'
+			Indentation on line 50 is not according to the standard. Encountered unexpected character 'L'
+			Indentation on line 51 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 55 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 56 is not according to the standard. Encountered unexpected character 'o'
+			Indentation on line 57 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 60 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 61 is not according to the standard. Encountered unexpected character 'L'
+			Indentation on line 62 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 63 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 64 is not according to the standard. Encountered unexpected character '/'
+			Indentation on line 65 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 66 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 67 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 69 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 70 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 71 is not according to the standard. Encountered unexpected character '{'
+			Indentation on line 72 is not according to the standard. Encountered unexpected character '{'
+			Indentation on line 73 is not according to the standard. Encountered unexpected character ';'
+			Indentation on line 74 is not according to the standard. Encountered unexpected character 'f'
+			Indentation on line 75 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 76 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 77 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 80 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 81 is not according to the standard. Encountered unexpected character 'k'
+		</Indentation>
+		<linelength errors="10">
+			line= 15 length= 146
+			line= 16 length= 130
+			line= 17 length= 208
+			line= 18 length= 218
+			line= 21 length= 81
+			line= 22 length= 82
+			line= 23 length= 83
+			line= 25 length= 83
+			line= 28 length= 81
+			line= 29 length= 83
+		</linelength>
+	</file>
+	<file file_name="E:\Development\HBO\Year2\BlokC\ThemaOpdracht7-8\adt\source/src/Translation.cpp">
+		<doxygen>
+			<brief errors="1">
+				Doxygen comment on line(s) 1 through 36 does not contain a brief description.
+			</brief>
+		</doxygen>
+		<Indentation errors="118">
+			Indentation on line 39 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 43 is not according to the standard. Encountered unexpected character '{'
+			Indentation on line 45 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 49 is not according to the standard. Encountered unexpected character '{'
+			Indentation on line 51 is not according to the standard. Encountered unexpected character 'L'
+			Indentation on line 52 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 55 is not according to the standard. Encountered unexpected character 'L'
+			Indentation on line 56 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 59 is not according to the standard. Encountered unexpected character 'L'
+			Indentation on line 60 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 63 is not according to the standard. Encountered unexpected character 'L'
+			Indentation on line 64 is not according to the standard. Encountered unexpected character 'L'
+			Indentation on line 65 is not according to the standard. Encountered unexpected character 'd'
+			Indentation on line 66 is not according to the standard. Encountered unexpected character 'd'
+			Indentation on line 67 is not according to the standard. Encountered unexpected character 'd'
+			Indentation on line 68 is not according to the standard. Encountered unexpected character 'l'
+			Indentation on line 69 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 72 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 73 is not according to the standard. Encountered unexpected character 'x'
+			Indentation on line 74 is not according to the standard. Encountered unexpected character 'y'
+			Indentation on line 75 is not according to the standard. Encountered unexpected character 'z'
+			Indentation on line 76 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 79 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 80 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 81 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 82 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 83 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 84 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 87 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 88 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 89 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 90 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 91 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 92 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 95 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 96 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 97 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 98 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 99 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 100 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 103 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 104 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 105 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 106 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 107 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 108 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 110 is not according to the standard. Encountered unexpected character '	'
+			Indentation on line 111 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 112 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 113 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 114 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 116 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 117 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 118 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 119 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 122 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 123 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 124 is not according to the standard. Encountered unexpected character 'd'
+			Indentation on line 125 is not according to the standard. Encountered unexpected character 'd'
+			Indentation on line 126 is not according to the standard. Encountered unexpected character 'd'
+			Indentation on line 127 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 128 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 129 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 130 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 132 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 134 is not according to the standard. Encountered unexpected character '	'
+			Indentation on line 135 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 136 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 137 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 138 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 139 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 141 is not according to the standard. Encountered unexpected character '	'
+			Indentation on line 142 is not according to the standard. Encountered unexpected character 'T'
+			Indentation on line 143 is not according to the standard. Encountered unexpected character 'x'
+			Indentation on line 144 is not according to the standard. Encountered unexpected character 'y'
+			Indentation on line 145 is not according to the standard. Encountered unexpected character 'z'
+			Indentation on line 146 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 148 is not according to the standard. Encountered unexpected character '	'
+			Indentation on line 149 is not according to the standard. Encountered unexpected character 'b'
+			Indentation on line 150 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 152 is not according to the standard. Encountered unexpected character '	'
+			Indentation on line 153 is not according to the standard. Encountered unexpected character 'b'
+			Indentation on line 154 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 156 is not according to the standard. Encountered unexpected character '	'
+			Indentation on line 157 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 158 is not according to the standard. Encountered unexpected character 'l'
+			Indentation on line 159 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 162 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 163 is not according to the standard. Encountered unexpected character 's'
+			Indentation on line 164 is not according to the standard. Encountered unexpected character 'l'
+			Indentation on line 165 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 166 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 167 is not according to the standard. Encountered unexpected character '"'
+			Indentation on line 168 is not according to the standard. Encountered unexpected character ';'
+			Indentation on line 170 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 171 is not according to the standard. Encountered unexpected character 'l'
+			Indentation on line 172 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 173 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 176 is not according to the standard. Encountered unexpected character 'L'
+			Indentation on line 178 is not according to the standard. Encountered unexpected character 'a'
+			Indentation on line 179 is not according to the standard. Encountered unexpected character 'L'
+			Indentation on line 180 is not according to the standard. Encountered unexpected character 'c'
+			Indentation on line 181 is not according to the standard. Encountered unexpected character 'l'
+			Indentation on line 182 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 183 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 185 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 186 is not according to the standard. Encountered unexpected character ';'
+			Indentation on line 187 is not according to the standard. Encountered unexpected character 'x'
+			Indentation on line 188 is not according to the standard. Encountered unexpected character 'y'
+			Indentation on line 189 is not according to the standard. Encountered unexpected character 'z'
+			Indentation on line 191 is not according to the standard. Encountered unexpected character 'i'
+			Indentation on line 192 is not according to the standard. Encountered unexpected character 't'
+			Indentation on line 193 is not according to the standard. Encountered unexpected character '"'
+			Indentation on line 194 is not according to the standard. Encountered unexpected character ';'
+			Indentation on line 196 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 197 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 198 is not according to the standard. Encountered unexpected character 'r'
+			Indentation on line 199 is not according to the standard. Encountered unexpected character 'r'
+		</Indentation>
+		<linelength errors="8">
+			line= 19 length= 81
+			line= 20 length= 81
+			line= 29 length= 81
+			line= 31 length= 81
+			line= 36 length= 81
+			line= 68 length= 84
+			line= 158 length= 84
+			line= 193 length= 84
+		</linelength>
+	</file>
+</root>
