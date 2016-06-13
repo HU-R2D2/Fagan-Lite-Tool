@@ -6,7 +6,6 @@
 //! \file   DoxygenCheck.hpp
 //! \author Matthijs Mud 1657223
 //! \date   22-04-16
-//! \date   22-04-16
 //! \brief  Performs various checks on the doxygen comments in any specified file.
 //!
 //! The various checks include:
@@ -64,9 +63,15 @@ namespace r2d2 {
     bool DoxygenCheck::check_author(const std::string &file) const {
         bool result = true;
         int number_of_authors = 0;
+        // Get all relevant blocks which can contain an author.
+        // Searching elsewhere can be quite pointless.
         for (const std::string &comment : tool.get_blocks(file)) {
             const std::vector<std::string> authors = tool.get_authors(comment);
+            // Keep track of the number of (paragraphs naming) authors.
+            // This is used in the end to determine whether at least one author
+            // was specified in the file.
             number_of_authors += authors.size();
+            // Make sure the found authors adhere the standard.
             result = result && test_invalid_tag("author", authors, file);
         }
         if (!number_of_authors) {
@@ -80,7 +85,12 @@ namespace r2d2 {
         bool result = true;
 
         for (const std::string &comment : tool.get_blocks(file)) {
+            // Get the paragraph following a brief tag. The size indicates
+            // whether something is written in it. A brief description is quite
+            // pointless if it contains no text.
             if (!tool.get_annotated(comment, "brief").size()) {
+                // Determine which lines are affected by the comment.
+                // Used to give a more descriptive error message.
                 auto comment_line = get_line_number(comment, file);
                 auto comment_size = std::count(comment.begin(), comment.end(),
                                                '\n') - 1;
@@ -95,9 +105,12 @@ namespace r2d2 {
     }
 
     bool DoxygenCheck::check_version(const std::string &file) const {
+        // Keep track of all version tags which get encountered.
         std::vector<std::string> versions{};
         for (const std::string &comment : tool.get_blocks(file)) {
             const std::string version = tool.get_version(comment);
+            // A version which does not contain any text might as well be
+            // considered not to be there.
             if (version != "") {
                 versions.push_back(version);
             }
@@ -106,6 +119,7 @@ namespace r2d2 {
             std::cerr <<
             "A file should have 1 version specified; no more no less." <<
             std::endl;
+            // Give all lines containing a version if multiple are specified.
             for (auto const &i : versions) {
                 std::cerr << "Version on line: " << get_line_number(i, file) <<
                 std::endl;
@@ -119,12 +133,13 @@ namespace r2d2 {
                                          const std::string &file) const {
         const auto index = file.find(text);
         // Line count starts at 1 by default.
+        // Count all line breaks representing the start of a new lines.
         return ((file.begin() + index) != file.end())
                ? static_cast<size_t>(1 + std::count(file.begin(), file.begin() +
                                                                   file.find(
                                                                           text),
                                                     '\n'))
-               : static_cast<size_t>(-1);
+               : static_cast<size_t>(0);
     }
 
     void DoxygenCheck::add_invalid_tag_value(const std::string &tagname,
@@ -135,17 +150,23 @@ namespace r2d2 {
     bool DoxygenCheck::test_invalid_tag(const std::string &tagname,
                                         const std::vector<std::string> &values,
                                         const std::string &file) const {
+        // Value to keep track of issues that might occur halfway.
+        // Why not return that specific moment you ask?
+        // There might me more errors, this way all can get checked.
         bool result = true;
-        for (const std::string &value : values) {
-            if (invalid_tag_values.find("value") !=
-                invalid_tag_values.end()) {
-                for (const auto &invalid_tag :invalid_tag_values.at(
-                        "value")) {
-                    if (value == invalid_tag) {
+        if (invalid_tag_values.find(tagname) !=
+            invalid_tag_values.end()) {
+            // Due to no intentions of modification const can be used.
+            // This however needs different access to maps.
+            for (const auto &invalid_tag :invalid_tag_values.at(
+                    tagname)) {
+                for (const std::string &value : values) {
+                    if (value.find(invalid_tag) != std::string::npos) {
                         std::cerr << tagname << " on line " <<
                         get_line_number(value, file) << " is specified as \"" <<
                         value << "\" which is not allowed." << std::endl;
                         result = false;
+                        // Continue searching for possible other issues.
                     }
                 }
             }
@@ -155,6 +176,7 @@ namespace r2d2 {
 
     bool DoxygenCheck::inspect(const std::string &file_contents) {
         // Data driven development. Easily add/disable a doxygen related test.
+        // The name is there to group the output in a more descriptive tag.
         struct {
             std::function<bool(DoxygenCheck *, const std::string &)> function;
             std::string label;
@@ -164,9 +186,12 @@ namespace r2d2 {
                 {&DoxygenCheck::check_version, "version"},
         };
         bool result = true;
-        int total_errors_in_file=0;
+        // Keep track of the total number of errors to determine whether this
+        // test warrants a tag in the end result.
+        int total_errors_in_file = 0;
         auto node = std::shared_ptr<XmlNode>(new XmlNode("doxygen"));
 
+        // Perform the various checks creating a new sub-tag for each.
         for (auto &check : checks) {
             auto issue_node = std::shared_ptr<XmlNode>(
                     new XmlNode(check.label));
@@ -174,9 +199,13 @@ namespace r2d2 {
 
             std::stringstream output;
             // Used to restore the default error stream in case of exceptions.
+            // The individual tests write to std::cerr. This makes it possible
+            // to catch the output written to said stream.
             OStreamRedirector osr{std::cerr, output};
             if (!check.function(this, file_contents)) {
                 std::string line;
+                // Though not quite accurate, count the number of errors based
+                // on the number of lines.
                 while (std::getline(output, line)) {
                     ++errors;
                     issue_node->add_node_text(line + "\n");
@@ -184,12 +213,14 @@ namespace r2d2 {
                 result = false;
                 issue_node->add_attribute("errors", std::to_string(errors));
             }
+            // Only add the node if enough errors were encountered to warrant
+            // usage of space, otherwise this gets quite space consuming.
             if (errors) {
                 node->add_child_node(issue_node);
                 total_errors_in_file += errors;
             }
         }
-        if(total_errors_in_file) {
+        if (total_errors_in_file) {
             current_xml.base_node->add_child_node(node);
         }
 
