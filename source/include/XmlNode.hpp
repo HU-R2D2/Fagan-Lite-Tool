@@ -43,6 +43,8 @@
 #include <vector>
 #include <memory>
 #include <iostream>
+
+//! \brief Simple XmlData struct, that contains the raw data within an xml node.
 struct XmlData{
     std::string node_indentation;
     std::string begin, end;
