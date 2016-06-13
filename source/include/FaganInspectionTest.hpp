@@ -6,7 +6,7 @@
 //! \brief  Performs the various specified tests on all code files found in the
 //! specified folder structure.
 //!
-//! \copyright Copyright © 2016, HU University of Applied Sciences Utrecht.
+//! \copyright Copyright ï¿½ 2016, HU University of Applied Sciences Utrecht.
 //! All rights reserved.
 //!
 //! License: newBSD
@@ -42,17 +42,19 @@
 
 #include <vector>
 #include <string>
-
+//! \brief Contains the main code, that is executed to run the inspections.
 class FaganInspectionTest {
 public:
+    //! \brief By calling the ctor, the main program starts.
+    //! \param fileLocations A vector that contains all files that need to be inspected.
     FaganInspectionTest(std::vector<std::string> fileLocations);
 
 private:
+    //  Will run all the inspections
     void run_all_inspections(std::vector<std::string> fileLocations);
 
+    //  Retrieves the file contents of the given file location
     std::string get_file_contents(const char *filename);
-
-    std::vector<std::string> get_file_data(std::string file_path);
 };
 
 
