@@ -54,6 +54,7 @@
 enum class Commands : uint16_t {
     INSPECTIONS,
     DIRECTORY,
+    CONFIG_FILE,
 };
 //! \brief This class contains all of the valid command line options,
 //!         that are passed through its ctor as an argument list.
@@ -81,6 +82,8 @@ private:
 
     bool checkDirectory();      //  Check in the cmds argument list,
                                 //  for arguments that are linked to the directories.
+
+    bool checkConfigFile();
     std::vector<std::string> cmds;
 
 };
