@@ -89,19 +89,25 @@ bool CommentStyle::inspect_and_fix(std::string &file_contents)    {
     int starterLine = 0;
     // (\w+\s*[\*\&]*(::)?([=+-><]?){0,2}\s*){1,3}[(](\w*(::)?\w+\s*[\*\&]*\s*\w*(\s*([,]\s*\w*(::)?\w+\s*[\*\&]*\s*\w+)*))?[)]
     int error_counter = 0;
-    std::regex test_regex("(\\w+\\s*[\\*\\&]*(::)?([=+-><]?){0,2}\\s*){1,3}[(](\\w*(::)?\\w+\\s*[\\*\\&]*\\s*\\w*(\\s*([,]\\s*\\w*(::)?\\w+\\s*[\\*\\&]*\\s*\\w+)*))?[)]");
+    std::regex test_regex("(\\w+\\s*[\\*\\&]*(::)?([=+-><]?){0,2}\\s*){1,3}[(]((\\w*(::)?)+\\w+\\s*[\\*\\&]*\\s*\\w*(\\s*([,]\\s*(\\w*(::))+?\\w+\\s*[\\*\\&]*\\s*\\w+)*))?[)]");
     std::smatch test_smatch;
+
+    //ToDo Refactor old version
+    // New Version:
+
+    // Old Version:
     bool has_been_fixed = false;
     for (uint16_t i = 0; i < f_contents.size(); ++i) {
-
-        if(std::regex_search(f_contents[i], test_smatch, test_regex)) {
-            cout << "found method" << endl;
-        }
-        if(f_contents[i].find("\"") != f_contents[i].npos)  {
-            can_check = toggle(f_contents[i], 0);
+        uint32_t pos_next, pos_prev = 0;
+        pos_next = f_contents[i].find("\"");
+        while(pos_next != f_contents[i].npos)  {
+            can_check = !can_check;
+            pos_prev = pos_next;
+            pos_next = f_contents[i].find("\"", pos_next + 1);
+            //can_check = toggle(f_contents[i], 0);
         }
         if(can_check)    {
-            if(std::regex_search(f_contents[i], test_smatch, test_regex)) {
+            if(std::regex_search(f_contents[i].substr(pos_prev), test_smatch, test_regex)) {
                 cout << "found method" << endl;
                 if(!has_been_fixed) {
                     for(int to_fix = starterLine; to_fix < i; to_fix++)    {
@@ -113,7 +119,9 @@ bool CommentStyle::inspect_and_fix(std::string &file_contents)    {
                 }
             }
             // If /* has been found, set line it is found on as start of wrong comment block
-            if(f_contents[i].find("/*") != f_contents[i].npos)   {
+            uint32_t removeable = 0;
+            if((removeable = f_contents[i].find("/*", pos_prev)) != f_contents[i].npos)   {
+                f_contents[i].replace(removeable, 2, "");
                 starterLine = i;
                 has_been_fixed = false;
                 ++error_counter;
@@ -122,7 +130,8 @@ bool CommentStyle::inspect_and_fix(std::string &file_contents)    {
                 node->add_node_text("Wrong comment style found, started at line = " + to_string(i + 1) + "\n");
             }
                 // Else if */ has been found, set line it is found on as end of comment block
-            else if(isWrongCommentBlock && f_contents[i].find("*/") != f_contents[i].npos) {
+            else if(isWrongCommentBlock && (removeable = f_contents[i].find("*/", pos_prev)) != f_contents[i].npos) {
+                f_contents[i].replace(removeable, 2, "");
                 node->add_node_text("Wrong comment style ended at line =  " + to_string(i + 1) + "\n");
                 errors += "\tWrong comment style ended at line =  " + to_string(i + 1) + "\n";
             }
@@ -150,8 +159,9 @@ bool CommentStyle::inspect_and_fix(std::string &file_contents)    {
     //current_xml.add_xml_data(xml_output);
     return test_ran_successful;
 }
-bool CommentStyle::toggle(string str, int pos) {
-    if(int pos_next = str.find("\"", pos) != str.npos)  {
+bool CommentStyle::toggle(string str, uint32_t pos) {
+    uint32_t pos_next = str.find("\"", pos);
+    if(pos_next != str.npos)  {
         pos_next += 2;
         return !toggle(str, pos_next);
     }

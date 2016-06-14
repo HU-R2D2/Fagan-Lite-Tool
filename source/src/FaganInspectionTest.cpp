@@ -116,6 +116,8 @@ void FaganInspectionTest::run_all_inspections_and_fix(vector<string> fileLocatio
             IG.inspect(f_content);
         }
         //std::remove(fpath.c_str());
+        cout << "arrived at the end" << endl;
+        std::remove((fpath + "test").c_str());
         fstream fs2((fpath + "test").c_str(), ios_base::out);
         fs2 << f_content;
         fs2.close();

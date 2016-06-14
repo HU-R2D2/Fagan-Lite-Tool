@@ -77,7 +77,7 @@ public:
     //! @warning No meaningful implementation is given as of now.
     bool inspect_and_fix(std::string &file_contents);
 
-    bool toggle(std::string, int);
+    bool toggle(std::string, uint32_t);
 private:
 };
 
