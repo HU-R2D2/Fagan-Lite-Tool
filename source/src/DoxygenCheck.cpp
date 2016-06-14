@@ -16,7 +16,7 @@
 //!   author is practically impossible.)
 //! -
 //!
-//! \copyright Copyright © 2016, HU University of Applied Sciences Utrecht.
+//! \copyright Copyright Â© 2016, HU University of Applied Sciences Utrecht.
 //! All rights reserved.
 //!
 //! License: newBSD
@@ -154,21 +154,43 @@ namespace r2d2 {
     }
 
     bool DoxygenCheck::inspect(const std::string &file_contents) {
-        std::function<bool(DoxygenCheck *, const std::string &)> checks[] = {
-                //bool (*checks[])(r2d2::DoxygenCheck *, const std::string &) const ={
-                &check_author,
-                &check_brief,
-                &check_version,
+        // Data driven development. Easily add/disable a doxygen related test.
+        struct {
+            std::function<bool(DoxygenCheck *, const std::string &)> function;
+            std::string label;
+        } checks[] = {
+                {&DoxygenCheck::check_author,  "author"},
+                {&DoxygenCheck::check_brief,   "brief"},
+                {&DoxygenCheck::check_version, "version"},
         };
         bool result = true;
+        int total_errors_in_file=0;
+        auto node = std::shared_ptr<XmlNode>(new XmlNode("doxygen"));
+
         for (auto &check : checks) {
+            auto issue_node = std::shared_ptr<XmlNode>(
+                    new XmlNode(check.label));
+            int errors = 0;
+
             std::stringstream output;
             // Used to restore the default error stream in case of exceptions.
             OStreamRedirector osr{std::cerr, output};
-            if (!check(this, file_contents)) {
-                current_xml.add_xml_data(XML_DATA::DOXYGEN, output.str());
+            if (!check.function(this, file_contents)) {
+                std::string line;
+                while (std::getline(output, line)) {
+                    ++errors;
+                    issue_node->add_node_text(line + "\n");
+                }
                 result = false;
+                issue_node->add_attribute("errors", std::to_string(errors));
             }
+            if (errors) {
+                node->add_child_node(issue_node);
+                total_errors_in_file += errors;
+            }
+        }
+        if(total_errors_in_file) {
+            current_xml.base_node->add_child_node(node);
         }
 
         return result;

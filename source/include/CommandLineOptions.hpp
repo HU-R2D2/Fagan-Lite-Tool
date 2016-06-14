@@ -9,7 +9,7 @@
 //! \brief  Holds the commandline options, while also giving the option to easily
 //! extract their value.
 //!
-//! \copyright Copyright © 2016, HU University of Applied Sciences Utrecht.
+//! \copyright Copyright ï¿½ 2016, HU University of Applied Sciences Utrecht.
 //! All rights reserved.
 //!
 //! License: newBSD
@@ -55,10 +55,9 @@ enum class Commands : uint16_t {
 
 class CommandLineOptions {
 public:
-    CommandLineOptions(int argc, char *argv[]);
 
-    CommandLineOptions();
-
+    CommandLineOptions(int argc, char* argv[]);
+    CommandLineOptions()= default;
     std::string getCommand(unsigned int i);
 
     std::map<Commands, std::string> cmdOptions; // development only

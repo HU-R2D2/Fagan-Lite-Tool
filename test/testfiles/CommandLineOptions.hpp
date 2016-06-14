@@ -18,4 +18,3 @@ private:
 };
 
 
-#endif //FAGAN_COMMANDLINEOPTIONS_HPP

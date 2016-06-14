@@ -19,7 +19,11 @@ LineLength::LineLength(XmlFileFormat &current_xml) : BaseTest{current_xml} {
 bool LineLength::inspect(const std::string &file_contents) {
     //ToDo run the linelength test in here. For each line in the file, check the linelength.
     //ToDo if the linelength is greater than allowed, save linenumber and linelength.
+    //string xml_output = "<linelength";
+    std::shared_ptr<XmlNode> node = std::shared_ptr<XmlNode>(new XmlNode("linelength"));
 
+
+    string xml_output;
     string line;
     stringstream sstream1;
     sstream1.str(file_contents);
@@ -29,21 +33,32 @@ bool LineLength::inspect(const std::string &file_contents) {
 
     string linelength_errors;
     bool test_ran_successful = true;
+
+    int error_counter = 0;
     for (uint16_t i = 0; i < f_contents.size(); ++i) {
         if (f_contents[i].length() > max_line_length) {
+            ++error_counter;
             //PROBLEM WITH COUNTING LENGTH, TAB IS CONVERTED TO SPACE IN MOST IDE'S. NOT IN string.length()
             test_ran_successful = false;
-            linelength_errors += "\tline= " + to_string(i + 1) + " length= " +
-                                 to_string(f_contents[i].length()) + "\n";
+            node->add_node_text("line= " + to_string(i + 1) + " length= " +
+                                to_string(f_contents[i].length()) + "\n");
         }
     }
+
+
+    node->add_attribute("errors", to_string(error_counter));
+    xml_output +=  " errors = \"" + to_string(error_counter) + "\">\n";
     if (test_ran_successful) {
-        string no_errors = "No linelength errors found in file\n";
-        current_xml.add_xml_data(XML_DATA::LINE_LENGTH, no_errors);
+        xml_output += "No linelength errors found in file\n";
+        //ToDo test_is_valid has to be removed, old code
         test_is_valid = true; // default is false
     }
-    else {
-        current_xml.add_xml_data(XML_DATA::LINE_LENGTH, linelength_errors);
+
+    if(error_counter > 0)  {
+        current_xml.base_node->add_child_node(node);
     }
+    current_xml.add_xml_data(xml_output);
     return false;
 }
+
+

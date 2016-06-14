@@ -27,5 +27,6 @@ add_executable(fagan_test ${GTEST} ${SOURCES_GTEST})
 target_link_libraries(fagan_test gtest gtest_main ${CMAKE_THREAD_LIBS_INIT})
 
 set(BUILD_2 main_2)
+set(SOURCE_FILES_2 source/src/XmlNode.cpp) #this file has to be added manually, dont know why
 set(SOURCE_FILES_2 source/src/main.cpp) #where main_2.cc is your second main/program
 add_executable(${BUILD_2} ${SOURCES})
