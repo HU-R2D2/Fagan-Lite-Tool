@@ -52,7 +52,7 @@ public:
 private:
     //  Will run all the inspections
     void run_all_inspections(std::vector<std::string> fileLocations);
-
+    void run_all_inspections_and_fix(std::vector<std::string> fileLocations);
     //  Retrieves the file contents of the given file location
     std::string get_file_contents(const char *filename);
 };

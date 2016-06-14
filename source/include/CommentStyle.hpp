@@ -75,10 +75,9 @@ public:
     //! in other words does not contain comment blocks.
     //!
     //! @warning No meaningful implementation is given as of now.
-    bool inspect_and_fix(std::string &file_contents) {
-        return inspect(file_contents);
-    }
+    bool inspect_and_fix(std::string &file_contents);
 
+    bool toggle(std::string, int);
 private:
 };
 
