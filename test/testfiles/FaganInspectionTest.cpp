@@ -4,7 +4,10 @@
 //sadfffffffffffsadfffffffffffsadfffffffffffsadfffffffffffsadfffffffffffsadfffffffffffsadfffffffffffsadfffffffffffsadfffffffffffsadfffffffffffsadfffffffffffsadfffffffffffsadfffffffffffsadfffffffffffsadfffffffffffsadfffffffffff
 #include "../include/FaganInspectionTest.hpp"
 #include "../include/FileSearcher.hpp"
-
+/*
+   This should result in an error
+*/
+"/**/"
 FaganInspectionTest::FaganInspectionTest()  {
     //ToDo Insert all inspections to run
     run_all_inspections();

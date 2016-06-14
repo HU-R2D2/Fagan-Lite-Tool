@@ -11,7 +11,7 @@ wrong comment
 
 */
 using namespace std;
-
+"/*"
 TEST(FaganFeature, LineLength) {
     XmlFileFormat xmlf;
     vector<string> fileformat;
