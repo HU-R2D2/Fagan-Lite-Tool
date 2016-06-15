@@ -66,37 +66,41 @@ namespace r2d2 {
 
     bool HeaderCheck::inspect(const std::string &file_contents) {
 
-        auto node = std::shared_ptr<XmlNode>(new XmlNode{"header"});
+        if (default_header.size()) {
+            auto node = std::shared_ptr<XmlNode>(new XmlNode{"header"});
 
-        // Match the last line of the header to figure out whether a header is
-        // present. This however assumes the author did not include a line
-        // in the same format (quite unlikely someone would).
-        std::regex regex{
-                "<\\s* HEADER_VERSION "
-                        "(\\d\\d\\d\\d)\\s*"    // Capture year.
-                        "-?\\s*(\\d\\d)\\s*"    // Capture month.
-                        "-?\\s*(\\d\\d)\\s*>"}; // Capture day.
-        std::smatch match_file{};
-        std::smatch match_header{};
-        // Both the templated header and that of the file should include the
-        // line, as a newer version missing this possibly ivalidates this step.
-        if (std::regex_search(file_contents, match_file, regex) &&
-            std::regex_search(default_header, match_header, regex)) {
-            // Make sure the entire date matches.
-            if ((match_file[1] == match_header[1]) &&
-                (match_file[2] == match_header[2]) &&
-                (match_file[3] == match_header[3])) {
-                return true;
-            } else {
-                node->add_node_text("Version of the header is incorrect.");
-                current_xml.base_node->add_child_node(node);
-                return false;
+            // Match the last line of the header to figure out whether a header is
+            // present. This however assumes the author did not include a line
+            // in the same format (quite unlikely someone would).
+            std::regex regex{
+                    "<\\s* HEADER_VERSION "
+                            "(\\d\\d\\d\\d)\\s*"    // Capture year.
+                            "-?\\s*(\\d\\d)\\s*"    // Capture month.
+                            "-?\\s*(\\d\\d)\\s*>"}; // Capture day.
+            std::smatch match_file{};
+            std::smatch match_header{};
+            // Both the templated header and that of the file should include the
+            // line, as a newer version missing this possibly ivalidates this step.
+            if (std::regex_search(file_contents, match_file, regex) &&
+                std::regex_search(default_header, match_header, regex)) {
+                // Make sure the entire date matches.
+                if ((match_file[1] == match_header[1]) &&
+                    (match_file[2] == match_header[2]) &&
+                    (match_file[3] == match_header[3])) {
+                    return true;
+                } else {
+                    node->add_node_text("Version of the header is incorrect.");
+                    current_xml.base_node->add_child_node(node);
+                    return false;
+                }
             }
-        }
 
-        // This
-        node->add_node_text("No header was found.");
-        current_xml.base_node->add_child_node(node);
+            // This
+            node->add_node_text("No header was found.");
+            current_xml.base_node->add_child_node(node);
+        } else {
+            throw std::runtime_error{"No header template was specified."};
+        }
         return false;
     }
 
@@ -104,6 +108,7 @@ namespace r2d2 {
         // Only insert the "correct" version of the header when the one present
         // (if any), is not the most up to date version.
         if (!inspect(file_contents)) {
+
             std::stringstream stream{""};
 
             // Get some known fields which typically are always present in
@@ -128,7 +133,8 @@ namespace r2d2 {
             // current date as someone probably won't update fossilized code
             // missing a date using this tool.
             const auto date = tool.get_date(file_contents);
-            stream << "//! \\date " << (date.size() ? date : now_date()) << std::endl;
+            stream << "//! \\date " << (date.size() ? date : now_date()) <<
+                    std::endl;
 
             file_contents.insert(0, (stream.str() + default_header));
         }
