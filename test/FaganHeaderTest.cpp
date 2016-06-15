@@ -10,8 +10,9 @@ TEST(HeaderCheck, Inpect) {
     XmlFileFormat xml{};
     HeaderCheck hc{xml};
     hc.set_current_file("Test.hpp");
-    hc.open_header("C:\\Users\\Matthijs\\Desktop\\Temp.txt");
-    std::string temp = "//! @author Sierra Tango";
+    hc.open_header("../Temp.txt");
+    std::string temp = "//! <HEADER_VERSION 1993 03 25>";
     hc.inspect_and_fix(temp);
-    std::cout << temp << std::endl;
+    std::cout << xml.data();
+    //std::cout << temp << std::endl;
 }
