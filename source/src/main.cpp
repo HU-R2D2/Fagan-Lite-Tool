@@ -60,7 +60,7 @@ int main(int argc, char *argv[]) {
 
     FileSearcher fs(CLO.cmdOptions[Commands::DIRECTORY]);
 
-    FaganInspectionTest FIT(fs.get_files());
+    FaganInspectionTest FIT(fs.get_files(), CLO);
 
     string t_file;
 

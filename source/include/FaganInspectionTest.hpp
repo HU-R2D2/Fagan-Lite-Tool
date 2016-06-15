@@ -42,12 +42,15 @@
 
 #include <vector>
 #include <string>
+#include "CommandLineOptions.hpp"
+
 //! \brief Contains the main code, that is executed to run the inspections.
 class FaganInspectionTest {
 public:
     //! \brief By calling the ctor, the main program starts.
     //! \param fileLocations A vector that contains all files that need to be inspected.
-    FaganInspectionTest(std::vector<std::string> fileLocations);
+    //! \param CLO Command Line Options, containing information about the program options.
+    FaganInspectionTest(std::vector<std::string> fileLocations, CommandLineOptions& CLO);
 
 private:
     //  Will run all the inspections
@@ -55,6 +58,8 @@ private:
     void run_all_inspections_and_fix(std::vector<std::string> fileLocations);
     //  Retrieves the file contents of the given file location
     std::string get_file_contents(const char *filename);
+
+    CommandLineOptions& CLO;
 };
 
 

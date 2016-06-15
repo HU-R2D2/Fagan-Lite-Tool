@@ -75,7 +75,7 @@ public:
     //          that are past in as program arguments.
     //!         By passing in a command, a cmd option can be retrieved (if one is available).
     //! @warning WILL BE CHANGED TO PRIVATE, AND METHOD WILL BE AVAILABLE.
-    static std::map<Commands, std::string> cmdOptions; // development only
+    std::map<Commands, std::string> cmdOptions; // development only
 private:
 
     void checkInspections();    // Check in the cmds argument list,
@@ -85,6 +85,8 @@ private:
                                 //  for arguments that are linked to the directories.
 
     bool checkConfigFile();
+
+    bool check_output_file();
     std::vector<std::string> cmds;
 
 };
