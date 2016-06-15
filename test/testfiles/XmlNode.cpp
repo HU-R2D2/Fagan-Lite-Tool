@@ -1,5 +1,6 @@
 
-"/**/"  
+"/*"
+"*/"  
 #include "..."
 /**
     @Author Ferdi Stoeltie
@@ -7,9 +8,10 @@
 
 
 */
+    /**@test*/
 XmlNode::XmlNode(std::string xml_node_name, std::string node_value)  {
 
-
+    /*test*/
     /*
         test
     */

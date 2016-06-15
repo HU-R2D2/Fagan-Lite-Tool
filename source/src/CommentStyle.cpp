@@ -197,7 +197,7 @@ bool CommentStyle::inspect_and_fix(std::string &file_contents)    {
                 node->add_node_text("Wrong comment style found, started at line = " + to_string(i + 1) + "\n");
             }
                 // Else if */ has been found, set line it is found on as end of comment block
-            else if(/*(isWrongCommentBlock || isWrongDoxygenBlock) &&*/ (removeable = f_contents[i].find("*/", pos_prev)) != f_contents[i].npos) {
+            if(/*(isWrongCommentBlock || isWrongDoxygenBlock) &&*/ (removeable = f_contents[i].find("*/", 0)) != f_contents[i].npos) {
                 has_been_fixed = false;
                 cout << "AWAITING THE FIX..." << endl;
                 f_contents[i].replace(removeable, 2, "");
