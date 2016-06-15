@@ -59,11 +59,16 @@ namespace r2d2 {
         std::string default_header;
         std::string current_file;
         DoxygenTool tool;
+
+        //! @brief Gets the current date as a string in the format DD-MM-YYYY.
+        //! @return
+        std::string now_date() const;
         
     public:
-        //! @brief
+        //! @brief Constructs a utility to test whether a file contains a
+        //! specific header.
         //!
-        //! @param xml
+        //! @param xml Target file to write found errors to.
         explicit HeaderCheck(XmlFileFormat & xml);
 
         //! @brief Sets the default header to test for by reading it from the
@@ -75,6 +80,8 @@ namespace r2d2 {
         //! @brief Specifies the filename to insert when fixing a missing or
         //! incomplete header.
         //!
+        //! It should be noted that if this method is not performed,
+        //!
         //! @param file_name Name of the file to insert.
         void set_current_file(const std::string & file_name);
 
@@ -85,6 +92,10 @@ namespace r2d2 {
         bool inspect(const std::string & file_contents) override;
 
         //! @brief Inserts a header and fills all fields it knows.
+        //!
+        //! It is advised to specify the name of the file which is being
+        //! inspected using the method "set_current_file" before fixing said
+        //! file. Incorrect file tags are inserted in the file otherwise.
         //!
         //! @param String representing the contents of the file.
         //! Changes are made on it in order to fix it.
