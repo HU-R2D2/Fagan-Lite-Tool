@@ -9,6 +9,7 @@
 #include "../include/InclusionGuards.hpp"
 #include "../include/DoxygenCheck.hpp"
 #include "../include/IndentCheck.hpp"
+#include "../include/CommandLineOptions.hpp"
 #include <fstream>
 #include <bits/unique_ptr.h>
 
@@ -26,7 +27,8 @@ void FaganInspectionTest::run_all_inspections(vector<string> fileLocations) {
     auto root = std::shared_ptr<XmlNode>(new XmlNode("root"));
     root->add_attribute("xml:space", "preserve");
     std::vector<BaseTest *> tests;
-    fstream fs("E:\\Development\\HBO\\Year2\\BlokC\\ThemaOpdracht7-8\\Fagan-Lite-Tool\\testfile.xml", ios_base::out);
+
+    fstream fs(CommandLineOptions::cmdOptions[Commands::OUTPUT_FILE], ios_base::out);
     fs << "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
     for (std::string fpath : fileLocations) {
         cout << "Running inspections on file: " << fpath << endl;
@@ -77,6 +79,7 @@ void FaganInspectionTest::run_all_inspections_and_fix(vector<string> fileLocatio
     auto root = std::shared_ptr<XmlNode>(new XmlNode("root"));
     root->add_attribute("xml:space", "preserve");
     std::vector<BaseTest *> tests;
+
     fstream fs("E:\\Development\\HBO\\Year2\\BlokC\\ThemaOpdracht7-8\\Fagan-Lite-Tool\\testfile.xml", ios_base::out);
     fs << "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
     for (std::string fpath : fileLocations) {

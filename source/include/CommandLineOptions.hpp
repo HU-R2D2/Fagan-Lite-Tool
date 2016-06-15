@@ -55,6 +55,7 @@ enum class Commands : uint16_t {
     INSPECTIONS,
     DIRECTORY,
     CONFIG_FILE,
+    OUTPUT_FILE,
 };
 //! \brief This class contains all of the valid command line options,
 //!         that are passed through its ctor as an argument list.
@@ -74,7 +75,7 @@ public:
     //          that are past in as program arguments.
     //!         By passing in a command, a cmd option can be retrieved (if one is available).
     //! @warning WILL BE CHANGED TO PRIVATE, AND METHOD WILL BE AVAILABLE.
-    std::map<Commands, std::string> cmdOptions; // development only
+    static std::map<Commands, std::string> cmdOptions; // development only
 private:
 
     void checkInspections();    // Check in the cmds argument list,
