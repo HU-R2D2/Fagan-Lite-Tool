@@ -52,19 +52,37 @@
 #include <regex>
 
 namespace r2d2 {
+    std::string HeaderCheck::now_date() const{
+        //http://stackoverflow.com/questions/16357999/current-date-and-time-as-string
+        time_t rawtime;
+        struct tm * timeinfo;
+        // DD-MM-YYYY, with a slight margin.
+        char buffer[16];
+        time (&rawtime);
+        timeinfo = localtime(&rawtime);
+        strftime(buffer, sizeof(buffer), "%d-%m-%Y", timeinfo);
+        return std::string(buffer);
+    }
+
     bool HeaderCheck::inspect(const std::string &file_contents) {
 
         auto node = std::shared_ptr<XmlNode>(new XmlNode{"header"});
 
+        // Match the last line of the header to figure out whether a header is
+        // present. This however assumes the author did not include a line
+        // in the same format (quite unlikely someone would).
         std::regex regex{
                 "<\\s* HEADER_VERSION "
-                        "(\\d\\d\\d\\d)\\s*" // Capture year.
-                        "(\\d\\d)\\s*"       // Capture month.
-                        "(\\d\\d)\\s*>"};   // Capture day.
+                        "(\\d\\d\\d\\d)\\s*"    // Capture year.
+                        "-?\\s*(\\d\\d)\\s*"    // Capture month.
+                        "-?\\s*(\\d\\d)\\s*>"}; // Capture day.
         std::smatch match_file{};
         std::smatch match_header{};
+        // Both the templated header and that of the file should include the
+        // line, as a newer version missing this possibly ivalidates this step.
         if (std::regex_search(file_contents, match_file, regex) &&
             std::regex_search(default_header, match_header, regex)) {
+            // Make sure the entire date matches.
             if ((match_file[1] == match_header[1]) &&
                 (match_file[2] == match_header[2]) &&
                 (match_file[3] == match_header[3])) {
@@ -76,25 +94,45 @@ namespace r2d2 {
             }
         }
 
+        // This
         node->add_node_text("No header was found.");
         current_xml.base_node->add_child_node(node);
         return false;
     }
 
     bool HeaderCheck::inspect_and_fix(std::string &file_contents) {
-        //TODO: Fix the issue with the header.
+        // Only insert the "correct" version of the header when the one present
+        // (if any), is not the most up to date version.
         if (!inspect(file_contents)) {
             std::stringstream stream{""};
 
+            // Get some known fields which typically are always present in
+            // a header. This way the author does not need to assign them.
+
+            // The object calling this function should first set the value
+            // by calling set_current_file.
             stream << "//! \\file \"" << current_file << "\"" << std::endl;
             for (const auto & author : tool.get_authors(file_contents)) {
                 stream << "//! \\author " << author << std::endl;
             }
-            stream << "//! \\version " << tool.get_version(file_contents) << std::endl;
-            stream << "//! \\date " << tool.get_date(file_contents) << std::endl;
+            // Insert the found version, which could mean nothing.
+            // If it is missing in the existing file insert nothing,
+            // as there is no way to give it a meaningful version otherwise.
+            const auto version = tool.get_version(file_contents);
+            if (version.size()) {
+                stream << "//! \\version " << tool.get_version(file_contents) <<
+                std::endl;
+            }
+
+            // If a date was specified in the file use it. Otherwise use the
+            // current date as someone probably won't update fossilized code
+            // missing a date using this tool.
+            const auto date = tool.get_date(file_contents);
+            stream << "//! \\date " << (date.size() ? date : now_date()) << std::endl;
+
             file_contents.insert(0, (stream.str() + default_header));
         }
-        return inspect(file_contents);
+        return true;
 
 
     }
@@ -109,11 +147,14 @@ namespace r2d2 {
     }
 
     void HeaderCheck::open_header(const std::string &path) {
+        // Open the file at the end of the file to determine its size.
         std::fstream file{path, std::ios_base::in | std::ios_base::ate};
         if (file.is_open()) {
+            // Reserve space to avoid unnecessary memory allocations.
             default_header.reserve(static_cast<unsigned int>(file.tellg()));
-            file.seekg(0, std::ios_base::beg);
 
+            // Keep the contents of the file in memory to assign them later.
+            file.seekg(0, std::ios_base::beg);
             default_header.assign(std::istreambuf_iterator<char>(file),
                                   std::istreambuf_iterator<char>());
             file.close();
