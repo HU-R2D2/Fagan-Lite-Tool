@@ -7,22 +7,14 @@
 using namespace std;
 
 CommandLineOptions::CommandLineOptions(int argc, char *argv[]) {
+    // Populate the vector cmds, with the given argv
     for (int i = 0; i < argc; i++) {
         cmds.push_back(argv[i]);
     }
-
-
     if(!checkDirectory())    {
         //ToDo close program, directory is required!
-
     }
-    checkInspections();
-    // if all inspections have to be run
-}
-
-string CommandLineOptions::getCommand(unsigned int index) {
-    if (index > cmds.size()); // Throw exception in the future
-    return cmds[index];
+    checkInspections(); // if all inspections have to be run
 }
 
 void CommandLineOptions::checkInspections() {
@@ -36,7 +28,6 @@ void CommandLineOptions::checkInspections() {
 }
 
 bool CommandLineOptions::checkDirectory() {
-    //vector::iterator removable;
     string cmd_string("base_directory=");
     for (vector<string>::iterator i = cmds.begin(); i < cmds.end(); i++) {
         if ((*i).find("base_directory=") != (*i).npos) {

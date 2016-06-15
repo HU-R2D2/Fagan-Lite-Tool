@@ -20,8 +20,7 @@ FaganInspectionTest::FaganInspectionTest(vector<string> fileLocations) {
 }
 
 void FaganInspectionTest::run_all_inspections(vector<string> fileLocations) {
-    //ToDo get all files and run all inspections on each file
-
+    //ToDo Clean up the code within this method
     XmlFileFormat xmlff{};
     auto root = std::shared_ptr<XmlNode>(new XmlNode("root"));
     root->add_attribute("xml:space", "preserve");
@@ -69,18 +68,6 @@ void FaganInspectionTest::run_all_inspections(vector<string> fileLocations) {
     xmlff.base_node = root;
     std::cout << xmlff.data();
     fs << xmlff.data();
-}
-
-std::vector<std::string> FaganInspectionTest::get_file_data(string file_path) {
-    ifstream iFile(file_path);
-    // get file contents and store in string vector
-    vector<string> file_contents;
-    while (!iFile.eof()) {
-        string s;
-        getline(iFile, s);
-        file_contents.push_back(s);
-    }
-    return file_contents;
 }
 
 // http://insanecoding.blogspot.nl/2011/11/how-to-read-in-file-in-c.html

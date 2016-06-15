@@ -61,6 +61,15 @@ namespace r2d2 {
         size_t get_line_number(const std::string &text,
                                const std::string &file) const;
 
+        //! @brief Tests whether an element in a set of values match an invalid
+        //! value.
+        //!
+        //! @param tagname Name of the tag used to determine whether it is invalid.
+        //! @param values Set of values which might or might not match any
+        //! invalid tag values.
+        //! @param file Contents of file used to determine line number.
+        //! @return Whether all values in the set do not contain the invalid
+        //! value for the specific tag.
         bool test_invalid_tag(const std::string &tagname,
                               const std::vector<std::string> &values,
                               const std::string &file) const;

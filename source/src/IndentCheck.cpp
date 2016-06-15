@@ -68,6 +68,7 @@ namespace r2d2 {
             switch (c) {
                 case '\n':
                     ++line;
+                    // Test whether the new line's indent is sufficient.
                     if (!is_indented_correctly(i, scope_level, i)) {
                         std::stringstream stream{""};
                         stream << "Indentation on line " << line <<
@@ -128,12 +129,9 @@ namespace r2d2 {
                     // Empty lines are allowed between code lines.
                     // Don't complain about a wrong indent in that case.
                     case '\n':
-                    case '\0':
+                    case '\0': // TODO: should not be encountered in a scope.
+                    case '\r': // Older apples' line break.
                         return true;
-                    case '\r':
-                        // Carriage return could be followed by line feed.
-                        // Therefore let the decision be based on the next char.
-                        break;
                     case '}':
                         if (i == ((scope_level - 1) * style.size())) {
                             return true;
