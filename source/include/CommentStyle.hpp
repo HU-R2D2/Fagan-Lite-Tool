@@ -50,7 +50,6 @@
 #ifndef FAGAN_CORRECTCOMMENTSTEST_HPP
 #define FAGAN_CORRECTCOMMENTSTEST_HPP
 
-
 #include "BaseTest.hpp"
 
 class CommentStyle : public BaseTest {
@@ -78,6 +77,36 @@ public:
     bool inspect_and_fix(std::string &file_contents);
 
     bool toggle(std::string, uint32_t);
+
+    void check_methods()    {
+        /*std::string test1("functie_declaratie();");
+        uint32_t pos;
+        int brackets_counter = 0;
+        bool is_in_method = false; // start counting brackets
+        if(pos = test1.find("(") != test1.npos)   { // opening for arguments
+            if(pos = test1.find(")", pos + 1) != test1.npos)    { // closing for arguments, if not found search on next line
+                if(test1.find(";", pos) != test1.npos) {// if it cannot find, keep searching on following lines
+
+                }
+                else if(test1.find("{", pos) != test1.npos) {
+                    is_in_method = true;
+                    brackets_counter++;
+                }
+                else if(test1.find("}", pos) != test1.npos) {
+                    brackets_counter--;
+                    if(brackets_counter == 0)   {
+                        is_in_method = false;
+                    }
+                }
+            }
+        }
+
+        while(is_in_method) {
+            // for every new line, check for opening or closing bracket
+            // if finds *//*, *//* <-- change these to //
+
+        }*/
+    }
 private:
 };
 

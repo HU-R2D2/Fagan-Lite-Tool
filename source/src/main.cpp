@@ -2,7 +2,7 @@
 // @file <main.cpp>          
 // @date Created: <07-04-16>
 // @version <1.0>       
-// @author <Bob Dillen>           
+// @author <Ferdi Stoeltie>
 //
 // @section LICENSE
 // License: newBSD
