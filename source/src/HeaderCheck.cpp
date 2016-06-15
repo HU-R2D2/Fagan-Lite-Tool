@@ -73,7 +73,7 @@ namespace r2d2 {
             // present. This however assumes the author did not include a line
             // in the same format (quite unlikely someone would).
             std::regex regex{
-                    "<\\s* HEADER_VERSION "
+                    "<\\s*HEADER_VERSION\\s*"
                             "(\\d\\d\\d\\d)\\s*"    // Capture year.
                             "-?\\s*(\\d\\d)\\s*"    // Capture month.
                             "-?\\s*(\\d\\d)\\s*>"}; // Capture day.
@@ -89,14 +89,21 @@ namespace r2d2 {
                     (match_file[3] == match_header[3])) {
                     return true;
                 } else {
-                    node->add_node_text("Version of the header is incorrect.");
+                    std::stringstream stream{};
+                    stream << "Specified version [" <<
+                            match_file[1] << "-" <<
+                            match_file[2] << "-" <<
+                            match_file[3] << "] does not match [" <<
+                            match_header[1] << "-" <<
+                            match_header[2] << "-" <<
+                            match_header[3] << "] as in the templated header" <<
+                            std::endl;
+                    node->add_node_text(stream.str());
                     current_xml.base_node->add_child_node(node);
                     return false;
                 }
             }
 
-            // This
-            node->add_node_text("No header was found.");
             current_xml.base_node->add_child_node(node);
         } else {
             throw std::runtime_error{"No header template was specified."};
