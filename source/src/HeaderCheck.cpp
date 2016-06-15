@@ -104,6 +104,8 @@ namespace r2d2 {
                 }
             }
 
+            node->add_node_text("No HEADER_VERSION tag was found in either the "
+                                        "template header or specified file.\n");
             current_xml.base_node->add_child_node(node);
         } else {
             throw std::runtime_error{"No header template was specified."};
