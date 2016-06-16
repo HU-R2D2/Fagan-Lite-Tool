@@ -75,6 +75,7 @@ void FaganInspectionTest::run_all_inspections_and_fix(vector<string> fileLocatio
         file_node->add_attribute("file_name", fpath);
         root->add_child_node(file_node);
 
+        hc.set_current_file(fpath);
         xmlff.base_node = file_node;
 
         xmlff.add_xml_data(fpath);
@@ -84,7 +85,8 @@ void FaganInspectionTest::run_all_inspections_and_fix(vector<string> fileLocatio
 
         for(const auto & test : tests) {
             try {
-                test->inspect(f_content);
+                //test->inspect(f_content);
+                test->inspect_and_fix(f_content);
             } catch (...) {
                 std::cerr << "Exception during test." << std::endl;
             }
@@ -97,7 +99,7 @@ void FaganInspectionTest::run_all_inspections_and_fix(vector<string> fileLocatio
         //std::remove(fpath.c_str());
         cout << "arrived at the end" << endl;
         std::remove((fpath + "test").c_str());
-        fstream fs2((fpath + "test").c_str(), ios_base::out);
+        ofstream fs2{fpath + "test"};
         fs2 << f_content;
         fs2.close();
         xmlff.add_xml_data("</file>\n");

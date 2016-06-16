@@ -135,7 +135,7 @@ namespace r2d2 {
             const auto version = tool.get_version(file_contents);
             if (version.size()) {
                 stream << "//! \\version " << tool.get_version(file_contents) <<
-                std::endl;
+                        std::endl;
             }
 
             // If a date was specified in the file use it. Otherwise use the
