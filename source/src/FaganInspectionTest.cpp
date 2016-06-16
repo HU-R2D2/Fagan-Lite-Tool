@@ -8,14 +8,21 @@
 #include "../include/InclusionGuards.hpp"
 #include "../include/DoxygenCheck.hpp"
 #include "../include/IndentCheck.hpp"
-#include "../include/HeaderCheck.hpp"
-#include <fstream>
-FaganInspectionTest::FaganInspectionTest(std::vector<std::string> fileLocations,
-                                         CommandLineOptions& CLO) : CLO{CLO} {
 
+#include "../include/HeaderCheck.hpp"
+#include "../include/CommandLineOptions.hpp"
+#include <fstream>
+#include <regex>
+#include <bits/unique_ptr.h>
+
+using namespace std;
+
+FaganInspectionTest::FaganInspectionTest(vector<string> fileLocations,
+                                         CommandLineOptions& CLO) : CLO{CLO} {
     //run_all_inspections(fileLocations);
     run_all_inspections_and_fix(fileLocations);
 }
+
 
 void FaganInspectionTest::run_all_inspections(std::vector<std::string>
                                               fileLocations) {
@@ -23,10 +30,13 @@ void FaganInspectionTest::run_all_inspections(std::vector<std::string>
     XmlFileFormat xmlff{};
     auto root = std::shared_ptr<XmlNode>(new XmlNode("root"));
     root->add_attribute("xml:space", "preserve");
-    std::vector<BaseTest *> tests;
+
+    // TODO: Replace by reading from a file.
+    std::string config = "header=./template.txt";
 
     std::fstream fs(CLO.cmdOptions[Commands::OUTPUT_FILE], std::ios_base::out);
     fs << "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
+
     for (std::string fpath : fileLocations) {
         std::cout << "Running inspections on file: " << fpath << std::endl;
         XmlFileFormat xmlff;
@@ -52,21 +62,45 @@ void FaganInspectionTest::run_all_inspections(std::vector<std::string>
 
         std::string f_content = get_file_contents(fpath.c_str());
 
-        for(const auto & test : tests) {
+        for (const auto &test : tests) {
             test->inspect(f_content);
         }
 
-        if (fpath.find(".hpp") != fpath.npos) {
-            InclusionGuards IG(xmlff);
-            IG.inspect(f_content);
+        /*std::vector<BaseTest *> tests;
+        r2d2::DoxygenCheck dc{xmlff};
+        tests.push_back(&dc);
+
+        r2d2::IndentCheck ic{xmlff};
+        tests.push_back(&ic);*/
+
+
+        r2d2::HeaderCheck hc{xmlff};
+        try {
+            std::regex regex{"header=(.+)(\n|$)"};
+            std::smatch match{};
+            if (std::regex_search(config, match, regex)) {
+                std::cout << "Header file: \"" << match[1] << "\"" << std::endl;
+                hc.open_header(match[1]);
+                tests.push_back(&hc);
+            } else {
+                std::cerr << "Header is not specified in config file." <<
+                std::endl;
+            }
+        } catch (...) {
+            // Skip this test if it failed to open the header.
+            // The error should be thrown from "open_header" which, as a result,
+            // does not add it to the test set. Catch being mandatory for the try.
+            std::cerr << "Failed to open header file." << std::endl;
         }
+
+        /*LineLength ll(xmlff);
+        tests.push_back(&ll);
+
+        CommentStyle cs(xmlff);
+        tests.push_back(&cs);*/
+
     }
-
-    xmlff.base_node = root;
-    std::cout << xmlff.data();
-    fs << xmlff.data();
 }
-
 void FaganInspectionTest::run_all_inspections_and_fix(std::vector<std::string>
                                                       fileLocations) {
     //ToDo Clean up the code within this method
@@ -85,7 +119,11 @@ void FaganInspectionTest::run_all_inspections_and_fix(std::vector<std::string>
         file_node->add_attribute("file_name", fpath);
         root->add_child_node(file_node);
 
+        r2d2::HeaderCheck hc(xmlff);
+        tests.push_back(&hc);
+        hc.set_current_file(fpath);
         xmlff.base_node = file_node;
+
         std::vector<BaseTest *> tests;
         r2d2::DoxygenCheck dc{xmlff};
         tests.push_back(&dc);
@@ -108,8 +146,8 @@ void FaganInspectionTest::run_all_inspections_and_fix(std::vector<std::string>
         cs.inspect_and_fix(f_content);
 
         for(const auto & test : tests) {
-
             try {
+                //test->inspect(f_content);
                 test->inspect_and_fix(f_content);
             } catch (...) {
                 std::cerr << "Exception during test." << std::endl;
@@ -122,9 +160,7 @@ void FaganInspectionTest::run_all_inspections_and_fix(std::vector<std::string>
         }
         std::cout << "arrived at the end" << std::endl;
         std::remove((fpath + "test").c_str());
-
         std::fstream fs2((fpath + "test").c_str(), std::ios_base::out);
-
         fs2 << f_content;
         fs2.close();
         //xmlff.add_xml_data("</file>\n");

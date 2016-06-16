@@ -83,9 +83,12 @@ public:
     std::map<Commands, std::string> cmdOptions; // development only
 private:
 
-    void checkInspections();    // Check in the cmds argument list,
+
     bool check_program_argument(std::string find_keyword,
                                              Commands type);
+
+                                // for arguments that are linked to inspections.
+
     std::vector<std::string> cmds;
 
 };

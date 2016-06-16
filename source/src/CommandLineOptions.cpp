@@ -45,6 +45,7 @@ bool CommandLineOptions::check_program_argument(std::string find_keyword,
     }
     return false;
 }
+/*<<<<<<< HEAD
 
 void CommandLineOptions::checkInspections() {
     for (std::vector<std::string>::iterator i = cmds.begin(); i < cmds.end();
@@ -52,6 +53,15 @@ void CommandLineOptions::checkInspections() {
         if ((*i).find("inspect-all") != (*i).npos) {
             CommandLineOptions::cmdOptions[Commands::INSPECTIONS] =
                     "inspect-all";
+=======
+bool CommandLineOptions::check_config_file()  {
+    string cmd_string("config_file=");
+    for (vector<string>::iterator i = cmds.begin(); i < cmds.end(); i++) {
+        if ((*i).find("config_file=") != (*i).npos) {
+            CommandLineOptions::cmdOptions[Commands::CONFIG_FILE] = (*i).erase(0, cmd_string.size());
+            cmds.erase(i);
+            return true;
+>>>>>>> 6a4385d61edf292162a91206cbd6f9e4cf04d6ef
         }
     }
-}
+}*/

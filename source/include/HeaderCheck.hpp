@@ -65,7 +65,6 @@ namespace r2d2 {
         //! @brief Gets the current date as a string in the format YYYY-MM-DD.
         //! @return
         std::string now_date() const;
-
     public:
         //! @brief Constructs a utility to test whether a file contains a
         //! specific header.
@@ -108,5 +107,4 @@ namespace r2d2 {
         bool inspect_and_fix(std::string & file_contents) override;
     };
 }
-
 #endif //FAGAN_HEADERCHECK_HPP

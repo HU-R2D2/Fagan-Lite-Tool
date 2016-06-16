@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?><root xml:space="preserve">
+	<file file_name="C:\\Users\\Matthijs\\Documents\\HU\\Technische Informatica\\Jaar 2\\Periode 3\\Themaopdracht 7 8\\Fagan Tool\\test/testfiles/XmlNode.cpp">
+		<comment-style errors="4">
+			Wrong comment style ended at line =  3
+			Wrong doxygen comment style found, started at line = 5
+			Wrong comment style ended at line =  10
+			Wrong doxygen comment style found, started at line = 11
+			Wrong comment style ended at line =  11
+			Wrong comment style found, started at line = 14
+			Wrong comment style ended at line =  14
+			Wrong comment style found, started at line = 15
+			Wrong comment style ended at line =  17
+		</comment-style>
+		<doxygen>
+			<author errors="1">
+				No authors are specified in the file.
+			</author>
+			<version errors="1">
+				A file should have 1 version specified; no more no less.
+			</version>
+		</doxygen>
+		<header>
+			No HEADER_VERSION tag was found in either the template header or specified file.
+		</header>
+		<linelength errors="1">
+			line= 1 length= 2646
+		</linelength>
+	</file>
+	<file file_name="C:\\Users\\Matthijs\\Documents\\HU\\Technische Informatica\\Jaar 2\\Periode 3\\Themaopdracht 7 8\\Fagan Tool\\test/testfiles/XmlNode.hpp">
+		<doxygen>
+			<author errors="1">
+				No authors are specified in the file.
+			</author>
+			<version errors="1">
+				A file should have 1 version specified; no more no less.
+			</version>
+		</doxygen>
+		<linelength errors="1">
+			line= 1 length= 4090
+		</linelength>
+		<inclusion-guards errors="1">
+			Invalid define found for Inclusion Guard!
+		</inclusion-guards>
+	</file>
+</root>

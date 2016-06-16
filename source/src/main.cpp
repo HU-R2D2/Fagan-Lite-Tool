@@ -47,8 +47,6 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
 
-    cout << "test everywhere" << endl;
-
     CommandLineOptions CLO(argc, argv);
 
     cout << "CLO.cmdOptions[Commands::DIRECTORY] " <<
@@ -61,8 +59,8 @@ int main(int argc, char *argv[]) {
 
     // Read template file
 
-/*    char c;
-    std::cin >> c;*/
+    char c;
+    std::cin >> c;
 
     return 0;
 }
