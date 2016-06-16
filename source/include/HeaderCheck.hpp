@@ -56,11 +56,13 @@
 namespace r2d2 {
     class HeaderCheck : public BaseTest {
     private:
+        // Header to look for and insert in files.
         std::string default_header;
+        // Name of the file we are supposedly currently inspecting.
         std::string current_file;
         DoxygenTool tool;
 
-        //! @brief Gets the current date as a string in the format DD-MM-YYYY.
+        //! @brief Gets the current date as a string in the format YYYY-MM-DD.
         //! @return
         std::string now_date() const;
         
@@ -80,7 +82,9 @@ namespace r2d2 {
         //! @brief Specifies the filename to insert when fixing a missing or
         //! incomplete header.
         //!
-        //! It should be noted that if this method is not performed,
+        //! It should be noted that if this method is not performed, calls to
+        //! "inspect_and_fix" might end up getting weird results in that the
+        //! inserted filename does not actually match that of the file.
         //!
         //! @param file_name Name of the file to insert.
         void set_current_file(const std::string & file_name);
@@ -96,6 +100,7 @@ namespace r2d2 {
         //! It is advised to specify the name of the file which is being
         //! inspected using the method "set_current_file" before fixing said
         //! file. Incorrect file tags are inserted in the file otherwise.
+        //! Also make sure the supposed header file was inserted
         //!
         //! @param String representing the contents of the file.
         //! Changes are made on it in order to fix it.
