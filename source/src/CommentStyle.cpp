@@ -1,8 +1,29 @@
 #include <sstream>
 #include "../include/CommentStyle.hpp"
 #include <regex>
-CommentStyle::CommentStyle(XmlFileFormat& current_xml)  : BaseTest{current_xml} {
+CommentStyle::CommentStyle(XmlFileFormat& current_xml)  :
+        BaseTest{current_xml} {
 
+}
+std::vector<std::string> CommentStyle::f_contents_to_vector(const std::string & file_contents)    {
+    std::string line;
+    std::stringstream sstream1;
+    sstream1.str(file_contents);
+    std::vector<std::string> f_contents;
+    while(std::getline(sstream1, line))
+        f_contents.push_back(line);
+    return f_contents;
+}
+void CommentStyle::replace_comment_type_in_range(int i, int y,  std::vector<std::string>& f_contents)    {
+    for(int to_fix = i; to_fix < y; to_fix++)    {
+        if(isWrongCommentBlock) {
+            f_contents[to_fix].insert(0, "//");
+        }
+        else if(isWrongDoxygenBlock)    {
+            f_contents[to_fix].insert(0, "//!");
+        }
+    }
+    isWrongCommentBlock = isWrongDoxygenBlock = false;
 }
 bool CommentStyle::inspect(const std::string & file_contents)  {
     //ToDo test has been rewritten and should be tested again!
@@ -12,17 +33,10 @@ bool CommentStyle::inspect(const std::string & file_contents)  {
     std::shared_ptr<XmlNode> node = std::shared_ptr<XmlNode>
             (new XmlNode("comment-style"));
 
-    std::string errors;
-    std::string line;
-    std::stringstream sstream1;
-    sstream1.str(file_contents);
-    std::vector<std::string> f_contents;
     bool can_check = true;
-    bool isWrongCommentBlock = false;
+    //bool isWrongCommentBlock = false;
 
-    while(std::getline(sstream1, line))
-        f_contents.push_back(line);
-
+    std::vector<std::string> f_contents = f_contents_to_vector(file_contents);
     bool test_ran_successful = true;
     int error_counter = 0;
     for (uint16_t i = 0; i < f_contents.size(); ++i) {
@@ -30,7 +44,6 @@ bool CommentStyle::inspect(const std::string & file_contents)  {
             can_check = !can_check;
         }
         if(can_check)    {
-
             if(f_contents[i].find("/*") != f_contents[i].npos)   {
                 ++error_counter;
                 test_ran_successful = false;
@@ -39,16 +52,12 @@ bool CommentStyle::inspect(const std::string & file_contents)  {
                                             "started at line = " +
                                             std::to_string(i + 1) + "\n");
             }
-
             else if(isWrongCommentBlock &&
                     f_contents[i].find("*/") != f_contents[i].npos) {
                 node->add_node_text("Wrong comment style ended at line =  " +
                                             std::to_string(i + 1) + "\n");
-                /*errors += "\tWrong comment style ended at line =  " +
-                        std::to_string(i + 1) + "\n";*/
             }
         }
-
     }
     node->add_attribute("errors", std::to_string(error_counter));
     if(test_ran_successful) {
@@ -65,24 +74,12 @@ bool CommentStyle::inspect_and_fix(std::string &file_contents)    {
     //ToDo such as xml output and inspection name, also logic etc.
     //ToDo Much of the code is the same as in the inspect,
     //ToDo redundant code is bad (fix)!
-    std::shared_ptr<XmlNode> node = std::shared_ptr<XmlNode>
-            (new XmlNode("comment-style"));
 
-    std::string errors;
-    std::string line;
-    std::stringstream sstream1;
-    sstream1.str(file_contents);
-    std::vector<std::string> f_contents;
     bool can_check = true;
-    bool isWrongCommentBlock = false;
-    bool isWrongDoxygenBlock = false;
-    while(std::getline(sstream1, line))
-        f_contents.push_back(line);
+/*    bool isWrongCommentBlock = false;
+    bool isWrongDoxygenBlock = false;*/
 
-    bool test_ran_successful = true;
-
-    int starterLine = 0;
-    int error_counter = 0;
+    std::vector<std::string> f_contents = f_contents_to_vector(file_contents);
 
     //ToDo Refactor old version
     bool has_been_fixed = false;
@@ -93,25 +90,15 @@ bool CommentStyle::inspect_and_fix(std::string &file_contents)    {
             can_check = !can_check;
             pos_prev = pos_next;
             pos_next = f_contents[i].find("\"", pos_next + 1);
-            //can_check = toggle(f_contents[i], 0);
         }
         if(can_check)    {
             uint32_t removeable = 0;
             if(!has_been_fixed) {
-                for(int to_fix = starterLine; to_fix < i; to_fix++)    {
-                    if(isWrongCommentBlock) {
-                        f_contents[to_fix].insert(0, "//");
-                    }
-                    else if(isWrongDoxygenBlock)    {
-                        f_contents[to_fix].insert(0, "//!");
-                    }
-                }
-                isWrongCommentBlock = isWrongDoxygenBlock = false;
+                replace_comment_type_in_range(starterLine, i, f_contents);
                 has_been_fixed = true;
             }
-
             if((removeable = f_contents[i].find("/**", pos_prev))
-               != f_contents[i].npos)    {
+                != f_contents[i].npos)    {
                 f_contents[i].replace(removeable, 3, "");
                 starterLine = i;
                 //has_been_fixed = false;
@@ -126,7 +113,6 @@ bool CommentStyle::inspect_and_fix(std::string &file_contents)    {
                     != f_contents[i].npos)   {
                 f_contents[i].replace(removeable, 2, "");
                 starterLine = i;
-                //has_been_fixed = false;
                 ++error_counter;
                 test_ran_successful = false;
                 isWrongCommentBlock = true;
@@ -134,13 +120,12 @@ bool CommentStyle::inspect_and_fix(std::string &file_contents)    {
                                             "started at line = " +
                                             std::to_string(i + 1) + "\n");
             }
-            if((removeable = f_contents[i].find("*/", 0)) != f_contents[i].npos) {
+            if((removeable = f_contents[i].find("*/", pos_prev)) != f_contents[i].npos)
+            {
                 has_been_fixed = false;
                 f_contents[i].replace(removeable, 2, "");
                 node->add_node_text("Wrong comment style ended at line =  " +
                                             std::to_string(i + 1) + "\n");
-                errors += "\tWrong comment style ended at line =  " +
-                        std::to_string(i + 1) + "\n";
             }
         }
     }

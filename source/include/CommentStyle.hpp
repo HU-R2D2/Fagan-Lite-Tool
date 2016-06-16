@@ -54,6 +54,8 @@
 
 class CommentStyle : public BaseTest {
 public:
+    std::vector<std::string> f_contents_to_vector(const std::string & file_contents);
+
     //! @brief Constructs an object which looks for comments which violate the
     //! coding standard.
     //!
@@ -78,6 +80,16 @@ public:
 
     bool toggle(std::string, uint32_t);
 private:
+    void replace_comment_type_in_range(int i, int y,
+                                       std::vector<std::string>& f_contents);
+    bool isWrongCommentBlock = false;
+    bool isWrongDoxygenBlock = false;
+    bool test_ran_successful = true;
+    int error_counter = 0;
+    int starterLine = 0;
+    std::shared_ptr<XmlNode> node = std::shared_ptr<XmlNode>
+            (new XmlNode("comment-style"));
+
 };
 
 

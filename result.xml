@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><root xml:space="preserve">
 	<file file_name="C:\Development\HBO\Year2\BlokC\ThemaOpdracht78\Fagan-Lite-Tool\test\testfiles/XmlNode.cpp">
 		<comment-style errors="4">
-			Wrong comment style ended at line =  3
 			Wrong doxygen comment style found, started at line = 5
 			Wrong comment style ended at line =  10
 			Wrong doxygen comment style found, started at line = 11
@@ -20,7 +19,7 @@
 			</version>
 		</doxygen>
 		<linelength errors="1">
-			line= 1 length= 2646
+			line= 1 length= 2648
 		</linelength>
 	</file>
 	<file file_name="C:\Development\HBO\Year2\BlokC\ThemaOpdracht78\Fagan-Lite-Tool\test\testfiles/XmlNode.hpp">

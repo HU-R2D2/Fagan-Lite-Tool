@@ -98,7 +98,6 @@ void FaganInspectionTest::run_all_inspections_and_fix(std::vector<std::string>
         CommentStyle cs(xmlff);
         tests.push_back(&cs);
 
-
         //xmlff.add_xml_data(fpath);
 
         std::string f_content = get_file_contents(fpath.c_str());

@@ -31,8 +31,10 @@ CommandLineOptions::CommandLineOptions(int argc, char *argv[]) {
     }
 
 }
-bool CommandLineOptions::checkInspection(std::string find_keyword, Commands type)   {
-    for (std::vector<std::string>::iterator i = cmds.begin(); i < cmds.end(); i++) {
+bool CommandLineOptions::checkInspection(std::string find_keyword,
+                                         Commands type)   {
+    for (std::vector<std::string>::iterator i = cmds.begin(); i < cmds.end();
+         i++) {
         if ((*i).find(find_keyword) != (*i).npos) {
             CommandLineOptions::cmdOptions[type] = (*i).
                     erase(0, find_keyword.size());
@@ -43,7 +45,8 @@ bool CommandLineOptions::checkInspection(std::string find_keyword, Commands type
     return false;
 }
 void CommandLineOptions::checkInspections() {
-    for (std::vector<std::string>::iterator i = cmds.begin(); i < cmds.end(); i++) {
+    for (std::vector<std::string>::iterator i = cmds.begin(); i < cmds.end();
+         i++) {
         if ((*i).find("inspect-all") != (*i).npos) {
             CommandLineOptions::cmdOptions[Commands::INSPECTIONS] =
                     "inspect-all";
