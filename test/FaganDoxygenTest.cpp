@@ -11,7 +11,7 @@
 // \section LICENSE
 // License: newBSD
 //
-// Copyright © 2016, HU University of Applied Sciences Utrecht.
+// Copyright ï¿½ 2016, HU University of Applied Sciences Utrecht.
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms,
@@ -137,9 +137,9 @@ TEST(DoxygenCheck, all) {
     dc.inspect(file);
 #ifdef SHOW_RESULTS
     std::cout << "== Start of file ==" << std::endl;
-    for (const auto & i : xml.get_xml_data()) {
+/*    for (const auto & i : xml.get_xml_data()) {
         std::cout << i << std::endl;
-    }
+    }*/
     std::cout << "== End of file ==" << std::endl;
 #endif // SHOW_RESULTS
 }
