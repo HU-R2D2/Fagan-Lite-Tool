@@ -49,7 +49,8 @@
 #include <map>
 //! \brief Contains Commands as an enum for easy and readable access.
 //!         The values that are linked to the enums,
-//!         can be obtained by calling the getCommand method from CommandLineOptions.
+//!         can be obtained by calling the getCommand method
+//!             from CommandLineOptions.
 //!
 enum class Commands : uint16_t {
     INSPECTIONS,
@@ -63,17 +64,21 @@ enum class Commands : uint16_t {
 class CommandLineOptions {
 public:
     //! \brief The constructor call is required,
-    //!         because it validates all the program arguments that are passed in
-    //!         by its second argument.
+    //!         because it validates all the program arguments that are passed
+    //!             in by its second argument.
     //!         These cmd line options can then be used by other classes.
-    //! \param argc The amount of command arguments that are passed in by its second argument.
-    //! \param argv The array, containing all of the arguments that are to be validated and,
+    //! \param argc The amount of command arguments,
+    //!             that are passed in by its second argument.
+    //! \param argv The array containing all of the arguments,
+    //!             that are to be validated and,
     //!             if validated correctly also added as a valid option.
     CommandLineOptions(int argc, char* argv[]);
 
-    //! \brief Contains a link between the Commands and their respective string values,
-    //          that are past in as program arguments.
-    //!         By passing in a command, a cmd option can be retrieved (if one is available).
+    //! \brief Contains a link between the Commands and
+    //!         their respective string values,
+    //!         that are past in as program arguments.
+    //!         By passing in a command,
+    //!         a cmd option can be retrieved (if one is available).
     //! @warning WILL BE CHANGED TO PRIVATE, AND METHOD WILL BE AVAILABLE.
     std::map<Commands, std::string> cmdOptions; // development only
 private:
@@ -82,7 +87,8 @@ private:
                                 // for arguments that are linked to inspections.
 
     bool checkDirectory();      //  Check in the cmds argument list,
-                                //  for arguments that are linked to the directories.
+                                //  for arguments,
+                                // that are linked to the directories.
 
     bool checkConfigFile();
 

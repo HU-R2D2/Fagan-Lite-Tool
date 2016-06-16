@@ -5,7 +5,7 @@
 //! \date   06-06-16
 //! \brief  Supplies an interface for a generic test to perform on each file.
 //!
-//! \copyright Copyright © 2016, HU University of Applied Sciences Utrecht.
+//! \copyright Copyright ï¿½ 2016, HU University of Applied Sciences Utrecht.
 //! All rights reserved.
 //!
 //! License: newBSD
@@ -69,7 +69,8 @@ public:
     //! inspection tests,
     //! and fix the issues wherever possible.
     //!
-    //! @param file_contents Contents of the file to inspect and possibly change.
+    //! @param file_contents Contents of the file,
+    //                          to inspect and possibly change.
     //! @return True indicates found deviations from standard do not exist
     //! after performing possible fixes.
     //! @warning Pure method!
@@ -86,7 +87,7 @@ public:
     const bool is_valid() { return test_is_valid; }
 
 protected:
-    XmlFileFormat &current_xml; // Reference to the XMlFileFormat object, to write to.
+    XmlFileFormat &current_xml; // Reference to the XMlFileFormat object.
     bool test_is_valid = false; // Boolean containing test resulsts.
 };
 

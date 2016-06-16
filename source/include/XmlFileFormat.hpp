@@ -57,27 +57,15 @@ enum class XML_DATA {
 //! @brief Utility for "easily" creating xml files.
 class XmlFileFormat {
 public:
-    //! @brief Adds a tag to the xml document with a specific tag.
-    //! @param xml_data_type
-    //! @param data
-    void add_xml_data(std::string data = "", XML_DATA xml_data_type = XML_DATA::DEFAULT);
-
-    //void add_base_node(std::string xml_node_name, std::string type_name);
-    void inspection_data(std::shared_ptr<XmlNode> node,std::string inspection_name, int errors_in_inspection);
-    void inspection_data(std::shared_ptr<XmlNode> node,std::string inspection_name, int errors_in_inspection, std::string);
-    void add_xml_node(std::shared_ptr<XmlNode> node);
-    void add_text_to_node(std::shared_ptr<XmlNode> node, std::string text);
-    const std::string data();
-    //! @brief Gets all lines which make up the output of the ml data.
-    //!
-    //! @return The lines making up the xml file.
-    const std::vector<std::string> &get_xml_data();
-
+    //! @brief Needs to be called, because it sets the default root xml node.
     XmlFileFormat();
+
+    //! @brief Returns all the data contained within XMlFileFormat.
+    //! @return std::string Xml data that is contained in XmlFileFormat.
+    const std::string data();
 
     std::shared_ptr<XmlNode> base_node;
 private:
-
     std::vector<std::string> xml_data;
 };
 

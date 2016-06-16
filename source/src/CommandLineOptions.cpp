@@ -5,8 +5,6 @@
 #include <fstream>
 #include "../include/CommandLineOptions.hpp"
 
-using namespace std;
-
 CommandLineOptions::CommandLineOptions(int argc, char *argv[]) {
     // Populate the vector cmds, with the given argv
     for (int i = 0; i < argc; i++) {
@@ -15,10 +13,11 @@ CommandLineOptions::CommandLineOptions(int argc, char *argv[]) {
     // validate config file first
     if(checkConfigFile())   {
 
-        fstream fs(CommandLineOptions::cmdOptions[Commands::CONFIG_FILE], ios_base::in);
+        std::fstream fs(CommandLineOptions::cmdOptions[Commands::CONFIG_FILE],
+                        std::ios_base::in);
         // get config file contents
         while(!fs.eof())    {
-            string s;
+            std::string s;
             fs >> s;
             cmds.push_back(s);
         }
@@ -33,19 +32,21 @@ CommandLineOptions::CommandLineOptions(int argc, char *argv[]) {
 }
 
 void CommandLineOptions::checkInspections() {
-    for (vector<string>::iterator i = cmds.begin(); i < cmds.end(); i++) {
+    for (std::vector<std::string>::iterator i = cmds.begin(); i < cmds.end(); i++) {
         if ((*i).find("inspect-all") != (*i).npos) {
-            CommandLineOptions::cmdOptions[Commands::INSPECTIONS] = "inspect-all";
+            CommandLineOptions::cmdOptions[Commands::INSPECTIONS] =
+                    "inspect-all";
             cmds.erase(i);
         }
     }
 }
 
 bool CommandLineOptions::checkDirectory() {
-    string cmd_string("base_directory=");
-    for (vector<string>::iterator i = cmds.begin(); i < cmds.end(); i++) {
+    std::string cmd_string("base_directory=");
+    for (std::vector<std::string>::iterator i = cmds.begin(); i < cmds.end(); i++) {
         if ((*i).find("base_directory=") != (*i).npos) {
-            CommandLineOptions::cmdOptions[Commands::DIRECTORY] = (*i).erase(0, cmd_string.size());
+            CommandLineOptions::cmdOptions[Commands::DIRECTORY] = (*i).
+                    erase(0, cmd_string.size());
             cmds.erase(i);
             return true;
         }
@@ -53,10 +54,11 @@ bool CommandLineOptions::checkDirectory() {
     return false;
 }
 bool CommandLineOptions::checkConfigFile()  {
-    string cmd_string("config_file=");
-    for (vector<string>::iterator i = cmds.begin(); i < cmds.end(); i++) {
+    std::string cmd_string("config_file=");
+    for (std::vector<std::string>::iterator i = cmds.begin(); i < cmds.end(); i++) {
         if ((*i).find("config_file=") != (*i).npos) {
-            CommandLineOptions::cmdOptions[Commands::CONFIG_FILE] = (*i).erase(0, cmd_string.size());
+            CommandLineOptions::cmdOptions[Commands::CONFIG_FILE] = (*i).
+                    erase(0, cmd_string.size());
             cmds.erase(i);
             return true;
         }
@@ -64,11 +66,14 @@ bool CommandLineOptions::checkConfigFile()  {
     return false;
 }
 bool CommandLineOptions::check_output_file()  {
-    string cmd_string("output_file=");
-    for (vector<string>::iterator i = cmds.begin(); i < cmds.end(); i++) {
+    std::string cmd_string("output_file=");
+    for (std::vector<std::string>::iterator i = cmds.begin(); i < cmds.end(); i++) {
         if ((*i).find("output_file=") != (*i).npos) {
-            CommandLineOptions::cmdOptions[Commands::OUTPUT_FILE] = (*i).erase(0, cmd_string.size());
-            cout << "OUTPUT FILE:\t" << CommandLineOptions::cmdOptions[Commands::OUTPUT_FILE] << endl;
+            CommandLineOptions::cmdOptions[Commands::OUTPUT_FILE] = (*i).
+                    erase(0, cmd_string.size());
+            std::cout << "OUTPUT FILE:\t" <<
+                    CommandLineOptions::cmdOptions[Commands::OUTPUT_FILE] <<
+                    std::endl;
             cmds.erase(i);
             return true;
         }

@@ -1,25 +1,22 @@
-//
-// Created by Ferdi on 10-May-16.
-//
-
 #include <sstream>
 #include "../include/CommentStyle.hpp"
 #include <regex>
-using namespace std;
 CommentStyle::CommentStyle(XmlFileFormat& current_xml)  : BaseTest{current_xml} {
 
 }
 bool CommentStyle::inspect(const std::string & file_contents)  {
     //ToDo test has been rewritten and should be tested again!
-    //ToDo change stuff to base inspector class, such as xml output and inspection name, also logic etc.
+    //ToDo change stuff to base inspector class,
+    //ToDO such as xml output and inspection name, also logic etc.
 
-    std::shared_ptr<XmlNode> node = std::shared_ptr<XmlNode>(new XmlNode("comment-style"));
+    std::shared_ptr<XmlNode> node = std::shared_ptr<XmlNode>
+            (new XmlNode("comment-style"));
 
-    string errors;
-    string line;
-    stringstream sstream1;
+    std::string errors;
+    std::string line;
+    std::stringstream sstream1;
     sstream1.str(file_contents);
-    vector<string> f_contents;
+    std::vector<std::string> f_contents;
     bool can_check = true;
     bool isWrongCommentBlock = false;
 
@@ -33,22 +30,27 @@ bool CommentStyle::inspect(const std::string & file_contents)  {
             can_check = !can_check;
         }
         if(can_check)    {
-            // If /* has been found, set line it is found on as start of wrong comment block
+
             if(f_contents[i].find("/*") != f_contents[i].npos)   {
                 ++error_counter;
-                test_ran_successful = false;    // Current inspection ran with failures
-                isWrongCommentBlock = true;     // Wrong comment block detected, set bool to true to also search for endline
-                node->add_node_text("Wrong comment style found, started at line = " + to_string(i + 1) + "\n");
+                test_ran_successful = false;
+                isWrongCommentBlock = true;
+                node->add_node_text("Wrong comment style found, "
+                                            "started at line = " +
+                                            std::to_string(i + 1) + "\n");
             }
-            // Else if */ has been found, set line it is found on as end of comment block
-            else if(isWrongCommentBlock && f_contents[i].find("*/") != f_contents[i].npos) {
-                node->add_node_text("Wrong comment style ended at line =  " + to_string(i + 1) + "\n");
-                errors += "\tWrong comment style ended at line =  " + to_string(i + 1) + "\n";
+
+            else if(isWrongCommentBlock &&
+                    f_contents[i].find("*/") != f_contents[i].npos) {
+                node->add_node_text("Wrong comment style ended at line =  " +
+                                            std::to_string(i + 1) + "\n");
+                /*errors += "\tWrong comment style ended at line =  " +
+                        std::to_string(i + 1) + "\n";*/
             }
         }
 
     }
-    node->add_attribute("errors", to_string(error_counter));
+    node->add_attribute("errors", std::to_string(error_counter));
     if(test_ran_successful) {
         test_is_valid = true; // default is false
     }
@@ -59,15 +61,18 @@ bool CommentStyle::inspect(const std::string & file_contents)  {
 }
 bool CommentStyle::inspect_and_fix(std::string &file_contents)    {
     //ToDo test has been rewritten and should be tested again!
-    //ToDo change stuff to base inspector class, such as xml output and inspection name, also logic etc.
-    //ToDo Much of the code is the same as in the inspect, redundant code is bad (fix)!
-    std::shared_ptr<XmlNode> node = std::shared_ptr<XmlNode>(new XmlNode("comment-style"));
+    //ToDo change stuff to base inspector class,
+    //ToDo such as xml output and inspection name, also logic etc.
+    //ToDo Much of the code is the same as in the inspect,
+    //ToDo redundant code is bad (fix)!
+    std::shared_ptr<XmlNode> node = std::shared_ptr<XmlNode>
+            (new XmlNode("comment-style"));
 
-    string errors;
-    string line;
-    stringstream sstream1;
+    std::string errors;
+    std::string line;
+    std::stringstream sstream1;
     sstream1.str(file_contents);
-    vector<string> f_contents;
+    std::vector<std::string> f_contents;
     bool can_check = true;
     bool isWrongCommentBlock = false;
     bool isWrongDoxygenBlock = false;
@@ -96,54 +101,57 @@ bool CommentStyle::inspect_and_fix(std::string &file_contents)    {
                 for(int to_fix = starterLine; to_fix < i; to_fix++)    {
                     if(isWrongCommentBlock) {
                         f_contents[to_fix].insert(0, "//");
-
                     }
                     else if(isWrongDoxygenBlock)    {
                         f_contents[to_fix].insert(0, "//!");
-
                     }
-
                 }
                 isWrongCommentBlock = isWrongDoxygenBlock = false;
                 has_been_fixed = true;
             }
-            // If wrong doxygen block start has been found
-            if((removeable = f_contents[i].find("/**", pos_prev)) != f_contents[i].npos)    {
+
+            if((removeable = f_contents[i].find("/**", pos_prev))
+               != f_contents[i].npos)    {
                 f_contents[i].replace(removeable, 3, "");
                 starterLine = i;
                 //has_been_fixed = false;
                 ++error_counter;
-                test_ran_successful = false;    // Current inspection ran with failures
-                //isWrongCommentBlock = false;     // Wrong comment block detected, set bool to true to also search for endline
+                test_ran_successful = false;
                 isWrongDoxygenBlock = true;
-                node->add_node_text("Wrong doxygen comment style found, started at line = " + to_string(i + 1) + "\n");
+                node->add_node_text("Wrong doxygen comment style found, "
+                                            "started at line = " +
+                                    std::to_string(i + 1) + "\n");
             }
-            else if((removeable = f_contents[i].find("/*", pos_prev)) != f_contents[i].npos)   {
+            else if((removeable = f_contents[i].find("/*", pos_prev))
+                    != f_contents[i].npos)   {
                 f_contents[i].replace(removeable, 2, "");
                 starterLine = i;
                 //has_been_fixed = false;
                 ++error_counter;
-                test_ran_successful = false;    // Current inspection ran with failures
-                isWrongCommentBlock = true;     // Wrong comment block detected, set bool to true to also search for endline
-                node->add_node_text("Wrong comment style found, started at line = " + to_string(i + 1) + "\n");
+                test_ran_successful = false;
+                isWrongCommentBlock = true;
+                node->add_node_text("Wrong comment style found, "
+                                            "started at line = " +
+                                            std::to_string(i + 1) + "\n");
             }
-                // Else if */ has been found, set line it is found on as end of comment block
             if((removeable = f_contents[i].find("*/", 0)) != f_contents[i].npos) {
                 has_been_fixed = false;
                 f_contents[i].replace(removeable, 2, "");
-                node->add_node_text("Wrong comment style ended at line =  " + to_string(i + 1) + "\n");
-                errors += "\tWrong comment style ended at line =  " + to_string(i + 1) + "\n";
+                node->add_node_text("Wrong comment style ended at line =  " +
+                                            std::to_string(i + 1) + "\n");
+                errors += "\tWrong comment style ended at line =  " +
+                        std::to_string(i + 1) + "\n";
             }
         }
     }
-    string nix;
+    std::string nix;
     for (uint16_t i = 0; i < f_contents.size(); ++i) {
         nix += f_contents[i];
 
     }
     file_contents = nix;
-    cout << nix << endl;
-    node->add_attribute("errors", to_string(error_counter));
+    std::cout << nix << std::endl;
+    node->add_attribute("errors", std::to_string(error_counter));
     if(test_ran_successful) {
         test_is_valid = true; // default is false
     }
@@ -152,7 +160,7 @@ bool CommentStyle::inspect_and_fix(std::string &file_contents)    {
     }
     return test_ran_successful;
 }
-bool CommentStyle::toggle(string str, uint32_t pos) {
+bool CommentStyle::toggle(std::string str, uint32_t pos) {
     uint32_t pos_next = str.find("\"", pos);
     if(pos_next != str.npos)  {
         pos_next += 2;

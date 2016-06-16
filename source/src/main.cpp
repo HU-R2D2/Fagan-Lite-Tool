@@ -38,18 +38,12 @@
  */
 #include <stdio.h>
 #include <iostream>
-#include <string>
 #include <vector>
-#include <fstream>
-#include <ctime>
-#include <sstream>
 #include "../include/FileSearcher.hpp"
 #include "../include/CommandLineOptions.hpp"
 #include "../include/FaganInspectionTest.hpp"
 
 using namespace std;
-#include <fstream>
-
 
 int main(int argc, char *argv[]) {
 
