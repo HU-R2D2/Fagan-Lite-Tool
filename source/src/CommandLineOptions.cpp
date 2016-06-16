@@ -27,6 +27,11 @@ CommandLineOptions::CommandLineOptions(int argc, char *argv[]) {
         cmdOptions[Commands::DIRECTORY] = "";
     }
 
+    if(!check_program_argument("template_file=", Commands::TEMPLATE))    {
+        std::cout << "could not find directory" << std::endl;
+        cmdOptions[Commands::TEMPLATE] = "./template.txt";
+    }
+
     if(!check_program_argument("output_file=", Commands::OUTPUT_FILE))   {
         CommandLineOptions::cmdOptions[Commands::OUTPUT_FILE] = "results.xml";
     }

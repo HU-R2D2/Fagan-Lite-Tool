@@ -59,8 +59,5 @@ int main(int argc, char *argv[]) {
 
     // Read template file
 
-    char c;
-    std::cin >> c;
-
     return 0;
 }

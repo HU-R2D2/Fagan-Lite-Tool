@@ -57,6 +57,7 @@ enum class Commands : uint16_t {
     DIRECTORY,
     CONFIG_FILE,
     OUTPUT_FILE,
+    TEMPLATE,
 };
 //! \brief This class contains all of the valid command line options,
 //!         that are passed through its ctor as an argument list.

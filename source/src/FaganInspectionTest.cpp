@@ -107,11 +107,12 @@ void FaganInspectionTest::run_all_inspections_and_fix(std::vector<std::string>
     XmlFileFormat xmlff{};
     auto root = std::shared_ptr<XmlNode>(new XmlNode("root"));
     root->add_attribute("xml:space", "preserve");
-    std::vector<BaseTest *> tests;
+    //std::vector<BaseTest *> tests;
 
     std::fstream fs(CLO.cmdOptions[Commands::OUTPUT_FILE], std::ios_base::out);
     fs << "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
     for (std::string fpath : fileLocations) {
+        std::vector<BaseTest *> tests;
         std::cout << "Running inspections on file: " << fpath << std::endl;
         XmlFileFormat xmlff;
         std::shared_ptr<XmlNode> file_node = std::shared_ptr<XmlNode>
@@ -119,12 +120,8 @@ void FaganInspectionTest::run_all_inspections_and_fix(std::vector<std::string>
         file_node->add_attribute("file_name", fpath);
         root->add_child_node(file_node);
 
-        r2d2::HeaderCheck hc(xmlff);
-        tests.push_back(&hc);
-        hc.set_current_file(fpath);
         xmlff.base_node = file_node;
 
-        std::vector<BaseTest *> tests;
         r2d2::DoxygenCheck dc{xmlff};
         tests.push_back(&dc);
 
@@ -139,9 +136,12 @@ void FaganInspectionTest::run_all_inspections_and_fix(std::vector<std::string>
 
         r2d2::HeaderCheck Hc(xmlff);
         tests.push_back(&Hc);
-        Hc.open_header("./template.txt");
-        //xmlff.add_xml_data(fpath);
-
+        uint32_t last_index = 0;
+        std::cout << "TEMPLATE LOCATION IS:\t" << CLO.cmdOptions[Commands::TEMPLATE] << endl;
+        Hc.open_header(CLO.cmdOptions[Commands::TEMPLATE]);
+        if((last_index = fpath.find_last_of("/")) != fpath.npos)    {
+            Hc.set_current_file(fpath.substr(last_index + 1));
+        }
         std::string f_content = get_file_contents(fpath.c_str());
         cs.inspect_and_fix(f_content);
 

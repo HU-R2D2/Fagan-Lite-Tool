@@ -41,9 +41,6 @@
 				A file should have 1 version specified; no more no less.
 			</version>
 		</doxygen>
-		<header>
-			No HEADER_VERSION tag was found in either the template header or specified file.
-		</header>
 		<inclusion-guards errors="1">
 			Invalid define found for Inclusion Guard!
 		</inclusion-guards>
