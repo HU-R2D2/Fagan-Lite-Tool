@@ -20,12 +20,14 @@ using namespace std;
 FaganInspectionTest::FaganInspectionTest(vector<string> fileLocations,
                                          CommandLineOptions& CLO) : CLO{CLO} {
     //run_all_inspections(fileLocations);
+    cout << "GOING TO RUN ALL INSPECTIONS AND TRYING TO FIX THEM"  << endl;
     run_all_inspections_and_fix(fileLocations);
 }
 
 
 void FaganInspectionTest::run_all_inspections(std::vector<std::string>
                                               fileLocations) {
+
     //ToDo Clean up the code within this method
     XmlFileFormat xmlff{};
     auto root = std::shared_ptr<XmlNode>(new XmlNode("root"));

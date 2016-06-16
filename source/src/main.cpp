@@ -46,7 +46,7 @@
 using namespace std;
 
 int main(int argc, char *argv[]) {
-
+    cout << "WHERE DOES IT ERROR" << endl;
     CommandLineOptions CLO(argc, argv);
 
     cout << "CLO.cmdOptions[Commands::DIRECTORY] " <<
