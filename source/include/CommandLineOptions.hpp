@@ -84,9 +84,8 @@ public:
 private:
 
     void checkInspections();    // Check in the cmds argument list,
-                                // for arguments that are linked to inspections.
-
-    bool checkInspection(std::string find_keyword, Commands type);
+    bool check_program_argument(std::string find_keyword,
+                                             Commands type);
     std::vector<std::string> cmds;
 
 };

@@ -1,3 +1,7 @@
+//
+// Created by Ferdi on 08-Jun-16.
+//
+
 #include "../include/XmlNode.hpp"
 
 XmlNode::XmlNode(std::string xml_node_name, std::string node_value)  {

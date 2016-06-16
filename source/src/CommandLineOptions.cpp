@@ -11,7 +11,8 @@ CommandLineOptions::CommandLineOptions(int argc, char *argv[]) {
         cmds.push_back(argv[i]);
     }
     // validate config file first
-    if(checkInspection("config_file=", Commands::CONFIG_FILE))   {
+
+    if(check_program_argument("config_file=", Commands::CONFIG_FILE))   {
         std::fstream fs(CommandLineOptions::cmdOptions[Commands::CONFIG_FILE],
                         std::ios_base::in);
         // get config file contents
@@ -21,17 +22,17 @@ CommandLineOptions::CommandLineOptions(int argc, char *argv[]) {
             cmds.push_back(s);
         }
     }
-    if(!checkInspection("base_directory=", Commands::DIRECTORY))    {
+    if(!check_program_argument("base_directory=", Commands::DIRECTORY))    {
         std::cout << "could not find directory" << std::endl;
         cmdOptions[Commands::DIRECTORY] = "";
     }
 
-    if(!checkInspection("output_file=", Commands::OUTPUT_FILE))   {
+    if(!check_program_argument("output_file=", Commands::OUTPUT_FILE))   {
         CommandLineOptions::cmdOptions[Commands::OUTPUT_FILE] = "results.xml";
     }
 
 }
-bool CommandLineOptions::checkInspection(std::string find_keyword,
+bool CommandLineOptions::check_program_argument(std::string find_keyword,
                                          Commands type)   {
     for (std::vector<std::string>::iterator i = cmds.begin(); i < cmds.end();
          i++) {
@@ -44,13 +45,13 @@ bool CommandLineOptions::checkInspection(std::string find_keyword,
     }
     return false;
 }
+
 void CommandLineOptions::checkInspections() {
     for (std::vector<std::string>::iterator i = cmds.begin(); i < cmds.end();
          i++) {
         if ((*i).find("inspect-all") != (*i).npos) {
             CommandLineOptions::cmdOptions[Commands::INSPECTIONS] =
                     "inspect-all";
-            cmds.erase(i);
         }
     }
 }

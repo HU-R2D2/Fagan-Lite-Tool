@@ -5,6 +5,8 @@
 #include "../include/LineLength.hpp"
 #include <iterator>
 #include <sstream>
+#include <iostream>
+
 
 LineLength::LineLength(XmlFileFormat &current_xml) : BaseTest{current_xml} {
 
@@ -38,8 +40,7 @@ bool LineLength::inspect(const std::string &file_contents) {
             //TAB IS CONVERTED TO SPACE IN MOST IDE'S. NOT IN string.length()
             test_ran_successful = false;
             node->add_node_text("line= " + std::to_string(i + 1) + " length= " +
-                                        std::to_string(f_contents[i].length()) +
-                                        "\n");
+                                        std::to_string(f_contents[i].length()) + "\n");
         }
     }
 
