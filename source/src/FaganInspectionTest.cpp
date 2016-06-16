@@ -8,6 +8,7 @@
 #include "../include/InclusionGuards.hpp"
 #include "../include/DoxygenCheck.hpp"
 #include "../include/IndentCheck.hpp"
+#include "../include/HeaderCheck.hpp"
 #include <fstream>
 FaganInspectionTest::FaganInspectionTest(std::vector<std::string> fileLocations,
                                          CommandLineOptions& CLO) : CLO{CLO} {
@@ -98,13 +99,21 @@ void FaganInspectionTest::run_all_inspections_and_fix(std::vector<std::string>
         CommentStyle cs(xmlff);
         tests.push_back(&cs);
 
+        r2d2::HeaderCheck Hc(xmlff);
+        tests.push_back(&Hc);
+        Hc.open_header("./template.txt");
         //xmlff.add_xml_data(fpath);
 
         std::string f_content = get_file_contents(fpath.c_str());
         cs.inspect_and_fix(f_content);
 
         for(const auto & test : tests) {
-            test->inspect(f_content);
+
+            try {
+                test->inspect_and_fix(f_content);
+            } catch (...) {
+                std::cerr << "Exception during test." << std::endl;
+            }
         }
 
         if (fpath.find(".hpp") != fpath.npos) {
@@ -113,7 +122,9 @@ void FaganInspectionTest::run_all_inspections_and_fix(std::vector<std::string>
         }
         std::cout << "arrived at the end" << std::endl;
         std::remove((fpath + "test").c_str());
+
         std::fstream fs2((fpath + "test").c_str(), std::ios_base::out);
+
         fs2 << f_content;
         fs2.close();
         //xmlff.add_xml_data("</file>\n");

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><root xml:space="preserve">
 	<file file_name="C:\Development\HBO\Year2\BlokC\ThemaOpdracht78\Fagan-Lite-Tool\test\testfiles/XmlNode.cpp">
-		<comment-style errors="4">
+		<comment-style errors="4" errors="4">
 			Wrong doxygen comment style found, started at line = 5
 			Wrong comment style ended at line =  10
 			Wrong doxygen comment style found, started at line = 11
@@ -18,9 +18,19 @@
 				A file should have 1 version specified; no more no less.
 			</version>
 		</doxygen>
-		<linelength errors="1">
-			line= 1 length= 2648
-		</linelength>
+		<comment-style errors="4" errors="4">
+			Wrong doxygen comment style found, started at line = 5
+			Wrong comment style ended at line =  10
+			Wrong doxygen comment style found, started at line = 11
+			Wrong comment style ended at line =  11
+			Wrong comment style found, started at line = 14
+			Wrong comment style ended at line =  14
+			Wrong comment style found, started at line = 15
+			Wrong comment style ended at line =  17
+		</comment-style>
+		<header>
+			No HEADER_VERSION tag was found in either the template header or specified file.
+		</header>
 	</file>
 	<file file_name="C:\Development\HBO\Year2\BlokC\ThemaOpdracht78\Fagan-Lite-Tool\test\testfiles/XmlNode.hpp">
 		<doxygen>
@@ -31,9 +41,9 @@
 				A file should have 1 version specified; no more no less.
 			</version>
 		</doxygen>
-		<linelength errors="1">
-			line= 1 length= 4090
-		</linelength>
+		<header>
+			No HEADER_VERSION tag was found in either the template header or specified file.
+		</header>
 		<inclusion-guards errors="1">
 			Invalid define found for Inclusion Guard!
 		</inclusion-guards>
