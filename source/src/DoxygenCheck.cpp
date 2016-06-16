@@ -135,10 +135,10 @@ namespace r2d2 {
         // Line count starts at 1 by default.
         // Count all line breaks representing the start of a new lines.
         return ((file.begin() + index) != file.end())
-               ? static_cast<size_t>(1 + std::count(file.begin(), file.begin() +
-                                                                  file.find(
-                                                                          text),
-                                                    '\n'))
+               ? static_cast<size_t>(1 +
+                        std::count(file.begin(),
+                                   file.begin() + file.find(text),
+                                   '\n'))
                : static_cast<size_t>(0);
     }
 
