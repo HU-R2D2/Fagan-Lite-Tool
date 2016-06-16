@@ -9,23 +9,31 @@
 #include "../include/InclusionGuards.hpp"
 #include "../include/DoxygenCheck.hpp"
 #include "../include/IndentCheck.hpp"
+
 #include "../include/HeaderCheck.hpp"
+#include "../include/CommandLineOptions.hpp"
 #include <fstream>
+#include <regex>
 #include <bits/unique_ptr.h>
 
 using namespace std;
 
-FaganInspectionTest::FaganInspectionTest(vector<string> fileLocations) {
+FaganInspectionTest::FaganInspectionTest(vector<string> fileLocations, CommandLineOptions& CLO) : CLO{CLO} {
 
-    run_all_inspections(fileLocations);
+    //run_all_inspections(fileLocations);
+    run_all_inspections_and_fix(fileLocations);
 }
 
-void FaganInspectionTest::run_all_inspections(vector<string> fileLocations) {
+void FaganInspectionTest::run_all_inspections_and_fix(vector<string> fileLocations) {
     //ToDo Clean up the code within this method
     XmlFileFormat xmlff{};
     auto root = std::shared_ptr<XmlNode>(new XmlNode("root"));
     root->add_attribute("xml:space", "preserve");
-    fstream fs("E:\\Development\\HBO\\Year2\\BlokC\\ThemaOpdracht7-8\\Fagan-Lite-Tool\\testfile.xml", ios_base::out);
+
+    // TODO: Replace by reading from a file.
+    std::string config = "header=./template.txt";
+
+    fstream fs(CLO.cmdOptions[Commands::OUTPUT_FILE], ios_base::out);
     fs << "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
 
     std::vector<BaseTest *> tests;
@@ -35,9 +43,24 @@ void FaganInspectionTest::run_all_inspections(vector<string> fileLocations) {
     r2d2::IndentCheck ic{xmlff};
     tests.push_back(&ic);
 
+
     r2d2::HeaderCheck hc{xmlff};
-    hc.open_header("../Temp.txt");
-    tests.push_back(&hc);
+    try {
+        std::regex regex{"header=(.+)(\n|$)"};
+        std::smatch match{};
+        if (std::regex_search(config, match, regex)) {
+            std::cout << "Header file: \"" << match[1] << "\"" << std::endl;
+            hc.open_header(match[1]);
+            tests.push_back(&hc);
+        } else {
+            std::cerr << "Header is not specified in config file." << std::endl;
+        }
+    } catch (...) {
+        // Skip this test if it failed to open the header.
+        // The error should be thrown from "open_header" which, as a result,
+        // does not add it to the test set. Catch being mandatory for the try.
+        std::cerr << "Failed to open header file." << std::endl;
+    }
 
     LineLength ll(xmlff);
     tests.push_back(&ll);
@@ -57,6 +80,7 @@ void FaganInspectionTest::run_all_inspections(vector<string> fileLocations) {
         xmlff.add_xml_data(fpath);
 
         string f_content = get_file_contents(fpath.c_str());
+        cs.inspect_and_fix(f_content);
 
         for(const auto & test : tests) {
             try {
@@ -70,6 +94,12 @@ void FaganInspectionTest::run_all_inspections(vector<string> fileLocations) {
             InclusionGuards IG(xmlff);
             IG.inspect(f_content);
         }
+        //std::remove(fpath.c_str());
+        cout << "arrived at the end" << endl;
+        std::remove((fpath + "test").c_str());
+        fstream fs2((fpath + "test").c_str(), ios_base::out);
+        fs2 << f_content;
+        fs2.close();
         xmlff.add_xml_data("</file>\n");
     }
 

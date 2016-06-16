@@ -6,20 +6,17 @@
 #include <string>
 #include <vector>
 #include "../source/include/LineLength.hpp"
-/*
-wrong comment
 
-*/
 using namespace std;
 
 TEST(FaganFeature, LineLength) {
     XmlFileFormat xmlf;
     vector<string> fileformat;
     fileformat.push_back(
-            "ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss\n");
-/*    string fileformat("ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss\n"
-                            "test \n"
-                            "ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss\n");*/
+            "ssssssssssssssssssssssssssssssssssssssssssssssssssss"
+                    "ssssssssssssssssssssssssssssssssssssssssssss"
+                    "ssssssssssssssssssssssssssssssss\n");
+
     {
         LineLength ll(xmlf);
         ll.inspect(fileformat[0]);

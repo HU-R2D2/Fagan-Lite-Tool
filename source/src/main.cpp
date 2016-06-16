@@ -2,7 +2,7 @@
 // @file <main.cpp>          
 // @date Created: <07-04-16>
 // @version <1.0>       
-// @author <Bob Dillen>           
+// @author <Ferdi Stoeltie>
 //
 // @section LICENSE
 // License: newBSD
@@ -48,6 +48,8 @@
 #include "../include/FaganInspectionTest.hpp"
 
 using namespace std;
+#include <fstream>
+
 
 int main(int argc, char *argv[]) {
 
@@ -60,12 +62,13 @@ int main(int argc, char *argv[]) {
 
     FileSearcher fs(CLO.cmdOptions[Commands::DIRECTORY]);
 
-    FaganInspectionTest FIT(fs.get_files());
+    FaganInspectionTest FIT(fs.get_files(), CLO);
 
-    string t_file;
 
     // Read template file
-/*    char c;
-    std::cin >> c;*/
+
+    char c;
+    std::cin >> c;
+
     return 0;
 }

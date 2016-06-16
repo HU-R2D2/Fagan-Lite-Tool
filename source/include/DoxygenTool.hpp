@@ -10,7 +10,7 @@
 //! \section LICENSE
 //! License: newBSD
 //!
-//! Copyright © 2016, HU University of Applied Sciences Utrecht.
+//! Copyright ï¿½ 2016, HU University of Applied Sciences Utrecht.
 //! All rights reserved.
 //!
 //! Redistribution and use in source and binary forms,
@@ -51,7 +51,8 @@ namespace r2d2 {
     //! @warning
     //! Some versions of certain compilers might not give an implementation for
     //! Regular Expressions (regex for short), despite giving the declaration.
-    //! As this module makes usage of said namespace, make sure it is implemented.
+    //! As this module makes usage of said namespace, make sure it is
+    //! implemented.
     class DoxygenTool final {
     private:
         // Delete unused copy and assignment functions.
@@ -100,16 +101,19 @@ namespace r2d2 {
         //! decoration is also removed. Therefore the structure is maintained.
         //!
         //! @param section Comment string to remove characters from.
-        //! @return String stripped from characters which won't appear in Doxygen.
+        //! @return String stripped from characters which won't appear in
+        //! Doxygen.
         const std::string strip_comment(const std::string &section) const;
 
-        //! @brief Gets all the follow-up for specified annotation in the section.
+        //! @brief Gets all the follow-up for specified annotation in
+        //! the section.
         //!
         //! @param section Piece of code to look for the annotation.
         //! @param annotation
         //! @return Gets a collection of thingies
-        const std::vector<std::string> get_annotated(const std::string &section,
-                                                     const std::string &annotation) const;
+        const std::vector<std::string> get_annotated(
+                const std::string &section,
+                const std::string &annotation) const;
 
         //! @brief Gets all doxygen comment blocks in the file.
         //!
