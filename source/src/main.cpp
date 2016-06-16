@@ -48,7 +48,19 @@
 #include "../include/FaganInspectionTest.hpp"
 
 using namespace std;
+#include <fstream>
 
+int main() {
+    fstream f1("C:\\Development\\HBO\\Year2\\BlokC\\ThemaOpdracht78\\Fagan-Lite-Tool\\test.cpp", ios_base::out);
+    for(unsigned int i = 0; i < 0xFFFFFF; i++)   {
+        //for(unsigned int j = 0; j < 0xFFFFFF; j++)   {
+            f1 << "double a" + to_string(i) + ";";
+        //}
+    }
+    f1.close();
+    return 1;
+}
+/*
 int main(int argc, char *argv[]) {
 
     cout << "test everywhere" << endl;
@@ -65,7 +77,9 @@ int main(int argc, char *argv[]) {
     string t_file;
 
     // Read template file
+*/
 /*    char c;
-    std::cin >> c;*/
+    std::cin >> c;*//*
+
     return 0;
-}
+}*/

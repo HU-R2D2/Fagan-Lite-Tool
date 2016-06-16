@@ -94,8 +94,6 @@ bool CommentStyle::inspect_and_fix(std::string &file_contents)    {
             uint32_t removeable = 0;
             if(!has_been_fixed) {
                 for(int to_fix = starterLine; to_fix < i; to_fix++)    {
-                    //f_contents[i].find("/*");
-                    cout << "adding //!" << endl;
                     if(isWrongCommentBlock) {
                         f_contents[to_fix].insert(0, "//");
 
@@ -109,7 +107,6 @@ bool CommentStyle::inspect_and_fix(std::string &file_contents)    {
                 isWrongCommentBlock = isWrongDoxygenBlock = false;
                 has_been_fixed = true;
             }
-            removeable = 0;
             // If wrong doxygen block start has been found
             if((removeable = f_contents[i].find("/**", pos_prev)) != f_contents[i].npos)    {
                 f_contents[i].replace(removeable, 3, "");
@@ -131,9 +128,8 @@ bool CommentStyle::inspect_and_fix(std::string &file_contents)    {
                 node->add_node_text("Wrong comment style found, started at line = " + to_string(i + 1) + "\n");
             }
                 // Else if */ has been found, set line it is found on as end of comment block
-            if(/*(isWrongCommentBlock || isWrongDoxygenBlock) &&*/ (removeable = f_contents[i].find("*/", 0)) != f_contents[i].npos) {
+            if((removeable = f_contents[i].find("*/", 0)) != f_contents[i].npos) {
                 has_been_fixed = false;
-                cout << "AWAITING THE FIX..." << endl;
                 f_contents[i].replace(removeable, 2, "");
                 node->add_node_text("Wrong comment style ended at line =  " + to_string(i + 1) + "\n");
                 errors += "\tWrong comment style ended at line =  " + to_string(i + 1) + "\n";
