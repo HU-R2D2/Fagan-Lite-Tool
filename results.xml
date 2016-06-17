@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?><root xml:space="preserve">
 	<file file_name="C:\Development\HBO\Year2\BlokC\ThemaOpdracht78\Fagan-Lite-Tool\test\testfiles/XmlNode.cpp">
-		<comment-style errors="4" errors="4">
-			Wrong doxygen comment style found, started at line = 5
-			Wrong comment style ended at line =  10
-			Wrong doxygen comment style found, started at line = 11
-			Wrong comment style ended at line =  11
-			Wrong comment style found, started at line = 14
-			Wrong comment style ended at line =  14
-			Wrong comment style found, started at line = 15
-			Wrong comment style ended at line =  17
-		</comment-style>
 		<doxygen>
 			<author errors="1">
 				No authors are specified in the file.
 			</author>
+			<brief errors="2">
+				Doxygen comment on line(s) 5 through 9 does not contain a brief description.
+				Doxygen comment on line(s) 11 through 10 does not contain a brief description.
+			</brief>
 			<version errors="1">
 				A file should have 1 version specified; no more no less.
 			</version>
 		</doxygen>
-		<comment-style errors="4" errors="4">
+		<linelength errors="4">
+			line= 34 length= 84
+			line= 36 length= 107
+			line= 38 length= 81
+			line= 102 length= 98
+		</linelength>
+		<comment-style errors="4">
 			Wrong doxygen comment style found, started at line = 5
 			Wrong comment style ended at line =  10
 			Wrong doxygen comment style found, started at line = 11
@@ -41,9 +41,20 @@
 				A file should have 1 version specified; no more no less.
 			</version>
 		</doxygen>
-		<header>
-			No HEADER_VERSION tag was found in either the template header or specified file.
-		</header>
+		<Indentation errors="2">
+			Indentation on line 57 is not according to the standard. Encountered unexpected character 'p'
+			Indentation on line 82 is not according to the standard. Encountered unexpected character 'p'
+		</Indentation>
+		<linelength errors="8">
+			line= 18 length= 81
+			line= 19 length= 81
+			line= 33 length= 81
+			line= 47 length= 82
+			line= 55 length= 86
+			line= 75 length= 103
+			line= 76 length= 87
+			line= 86 length= 81
+		</linelength>
 		<inclusion-guards errors="1">
 			Invalid define found for Inclusion Guard!
 		</inclusion-guards>

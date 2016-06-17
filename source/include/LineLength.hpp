@@ -6,7 +6,7 @@
 //! \brief  Makes sure all lines in a file are no longer than the
 //! max specified length.
 //!
-//! \copyright Copyright © 2016, HU University of Applied Sciences Utrecht.
+//! \copyright Copyright ï¿½ 2016, HU University of Applied Sciences Utrecht.
 //! All rights reserved.
 //!
 //! License: newBSD
@@ -73,7 +73,7 @@ public:
     //! @return Whether or not the file abides the standard.
     //!
     //! @warning As of now no meaningful implementation is given.
-    bool inspect_and_fix(std::string &file_contents) { return false; }
+    bool inspect_and_fix(std::string &file_contents) { return inspect(file_contents); }
 
 private:
     //std::string& f_content;

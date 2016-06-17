@@ -13,8 +13,6 @@
 #include <fstream>
 #include <regex>
 
-
-
 FaganInspectionTest::FaganInspectionTest(std::vector<std::string> fileLocations,
                                          CommandLineOptions& CLO) : CLO{CLO} {
     //run_all_inspections(fileLocations);
@@ -35,7 +33,6 @@ FaganInspectionTest::FaganInspectionTest(std::vector<std::string> fileLocations,
     }
 
 }
-
 
 void FaganInspectionTest::run_all_inspections(std::vector<std::string>
                                               fileLocations) {
@@ -139,7 +136,7 @@ void FaganInspectionTest::run_all_inspections_and_fix(std::vector<std::string>
             Hc.set_current_file(fpath.substr(last_index + 1));
         }
         std::string f_content = get_file_contents(fpath.c_str());
-        cs.inspect_and_fix(f_content);
+        //cs.inspect_and_fix(f_content);
 
         for(const auto & test : tests) {
             try {

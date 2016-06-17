@@ -10,7 +10,7 @@
 //! but this is practically useless as these files typically don't include
 //! inclusion guards; which would result in all tests failing.
 //!
-//! \copyright Copyright © 2016, HU University of Applied Sciences Utrecht.
+//! \copyright Copyright ï¿½ 2016, HU University of Applied Sciences Utrecht.
 //! All rights reserved.
 //!
 //! License: newBSD
@@ -66,7 +66,7 @@ public:
     //! @return Whether a inclusion guard is present according to the standard.
     //!
     //! @warning Currently not implemented in a meaningful way.
-    bool inspect_and_fix(std::string &file_contents) { return false; }
+    bool inspect_and_fix(std::string &file_contents) { return inspect(file_contents); }
 
 private:
 };
