@@ -35,6 +35,9 @@ CommandLineOptions::CommandLineOptions(int argc, char *argv[]) {
     if(!check_program_argument("output_file=", Commands::OUTPUT_FILE))   {
         CommandLineOptions::cmdOptions[Commands::OUTPUT_FILE] = "results.xml";
     }
+    if(!check_program_argument("inspection_type=", Commands::INSPECTION_TYPE))   {
+        CommandLineOptions::cmdOptions[Commands::OUTPUT_FILE] = "inspect-only";
+    }
 
 }
 bool CommandLineOptions::check_program_argument(std::string find_keyword,

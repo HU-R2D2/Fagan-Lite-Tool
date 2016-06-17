@@ -10,18 +10,30 @@
 #include "../include/IndentCheck.hpp"
 
 #include "../include/HeaderCheck.hpp"
-#include "../include/CommandLineOptions.hpp"
 #include <fstream>
 #include <regex>
-#include <bits/unique_ptr.h>
 
-using namespace std;
 
-FaganInspectionTest::FaganInspectionTest(vector<string> fileLocations,
+
+FaganInspectionTest::FaganInspectionTest(std::vector<std::string> fileLocations,
                                          CommandLineOptions& CLO) : CLO{CLO} {
     //run_all_inspections(fileLocations);
-    cout << "GOING TO RUN ALL INSPECTIONS AND TRYING TO FIX THEM"  << endl;
-    run_all_inspections_and_fix(fileLocations);
+    if(CLO.cmdOptions[Commands::INSPECTION_TYPE].find("inspect-only") !=
+            CLO.cmdOptions[Commands::INSPECTION_TYPE].npos)  {
+        std::cout << "running inspections only" << std::endl;
+        run_all_inspections(fileLocations);
+    }
+    else if(CLO.cmdOptions[Commands::INSPECTION_TYPE].find("inspect-fix") !=
+            CLO.cmdOptions[Commands::INSPECTION_TYPE].npos) {
+        std::cout << "running inspections and if possible, will fix also" <<
+                std::endl;
+        run_all_inspections_and_fix(fileLocations);
+    }
+    else    {
+        std::cout << "unknown inspection type in program argument list, "
+                             "ending program" << std::endl;
+    }
+
 }
 
 
@@ -139,7 +151,6 @@ void FaganInspectionTest::run_all_inspections_and_fix(std::vector<std::string>
         r2d2::HeaderCheck Hc(xmlff);
         tests.push_back(&Hc);
         uint32_t last_index = 0;
-        std::cout << "TEMPLATE LOCATION IS:\t" << CLO.cmdOptions[Commands::TEMPLATE] << endl;
         Hc.open_header(CLO.cmdOptions[Commands::TEMPLATE]);
         if((last_index = fpath.find_last_of("/")) != fpath.npos)    {
             Hc.set_current_file(fpath.substr(last_index + 1));
@@ -160,7 +171,6 @@ void FaganInspectionTest::run_all_inspections_and_fix(std::vector<std::string>
             InclusionGuards IG(xmlff);
             IG.inspect(f_content);
         }
-        std::cout << "arrived at the end" << std::endl;
         std::remove((fpath + "test").c_str());
         std::fstream fs2((fpath + "test").c_str(), std::ios_base::out);
         fs2 << f_content;
