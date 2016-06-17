@@ -36,7 +36,7 @@ CommandLineOptions::CommandLineOptions(int argc, char *argv[]) {
         CommandLineOptions::cmdOptions[Commands::OUTPUT_FILE] = "results.xml";
     }
     if(!check_program_argument("inspection_type=", Commands::INSPECTION_TYPE))   {
-        CommandLineOptions::cmdOptions[Commands::OUTPUT_FILE] = "inspect-only";
+        CommandLineOptions::cmdOptions[Commands::INSPECTION_TYPE] = "inspect-only";
     }
 
 }

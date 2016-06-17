@@ -45,9 +45,6 @@ void FaganInspectionTest::run_all_inspections(std::vector<std::string>
     auto root = std::shared_ptr<XmlNode>(new XmlNode("root"));
     root->add_attribute("xml:space", "preserve");
 
-    // TODO: Replace by reading from a file.
-    std::string config = "header=./template.txt";
-
     std::fstream fs(CLO.cmdOptions[Commands::OUTPUT_FILE], std::ios_base::out);
     fs << "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
 
@@ -76,30 +73,15 @@ void FaganInspectionTest::run_all_inspections(std::vector<std::string>
 
         std::string f_content = get_file_contents(fpath.c_str());
 
-        for (const auto &test : tests) {
-            test->inspect(f_content);
-        }
-
-        /*std::vector<BaseTest *> tests;
-        r2d2::DoxygenCheck dc{xmlff};
-        tests.push_back(&dc);
-
-        r2d2::IndentCheck ic{xmlff};
-        tests.push_back(&ic);*/
-
-
         r2d2::HeaderCheck hc{xmlff};
         try {
-            std::regex regex{"header=(.+)(\n|$)"};
-            std::smatch match{};
-            if (std::regex_search(config, match, regex)) {
-                std::cout << "Header file: \"" << match[1] << "\"" << std::endl;
-                hc.open_header(match[1]);
-                tests.push_back(&hc);
-            } else {
-                std::cerr << "Header is not specified in config file." <<
-                std::endl;
+            hc.open_header(CLO.cmdOptions[Commands::TEMPLATE]);
+
+            auto last_index = fpath.find_last_of("/");
+            if(last_index != fpath.npos)    {
+                hc.set_current_file(fpath.substr(last_index + 1));
             }
+            tests.push_back(&hc);
         } catch (...) {
             // Skip this test if it failed to open the header.
             // The error should be thrown from "open_header" which, as a result,
@@ -107,13 +89,14 @@ void FaganInspectionTest::run_all_inspections(std::vector<std::string>
             std::cerr << "Failed to open header file." << std::endl;
         }
 
-        /*LineLength ll(xmlff);
-        tests.push_back(&ll);
 
-        CommentStyle cs(xmlff);
-        tests.push_back(&cs);*/
-
+        for (const auto &test : tests) {
+            test->inspect(f_content);
+        }
     }
+    xmlff.base_node = root;
+    std::cout << xmlff.data();
+
 }
 void FaganInspectionTest::run_all_inspections_and_fix(std::vector<std::string>
                                                       fileLocations) {
