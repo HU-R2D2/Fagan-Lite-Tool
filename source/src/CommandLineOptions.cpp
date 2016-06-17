@@ -8,7 +8,6 @@
 CommandLineOptions::CommandLineOptions(int argc, char *argv[]) {
     // Populate the vector cmds, with the given argv
     for (int i = 0; i < argc; i++) {
-        std::cout << "does it go wrong here??" << std::endl;
         cmds.push_back(argv[i]);
     }
     // validate config file first
@@ -18,7 +17,6 @@ CommandLineOptions::CommandLineOptions(int argc, char *argv[]) {
                         std::ios_base::in);
         // get config file contents
         while(!fs.eof())    {
-            std::cout << "infinite loop in config file" << std::endl;
             std::string s;
             fs >> s;
             cmds.push_back(s);

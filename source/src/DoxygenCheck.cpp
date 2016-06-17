@@ -1,7 +1,4 @@
 //! \addtogroup 24 Fagan lite tool
-//! \brief <Brief description of module>
-//!
-//! <Description of module>
 //!
 //! \file   DoxygenCheck.hpp
 //! \author Matthijs Mud 1657223
